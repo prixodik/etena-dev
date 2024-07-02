@@ -1010,7 +1010,7 @@ h5, .title-h5 {
 }
 .first-section__img-1 {
   position: absolute;
-  top: 450px;
+  top: 40vh;
   left: 7rem;
   z-index: 2;
   animation: img1 10s linear infinite reverse;
@@ -1022,7 +1022,7 @@ h5, .title-h5 {
 }
 .first-section__img-2 {
   position: absolute;
-  top: 345px;
+  top: 35vh;
   right: 15rem;
   z-index: 2;
   animation: img2 10s 1s linear infinite reverse;
@@ -1039,7 +1039,7 @@ h5, .title-h5 {
 }
 .first-section__img-3 {
   position: absolute;
-  top: 14rem;
+  top: 25vh;
   left: 22rem;
   z-index: 2;
   animation: img3 12s linear infinite reverse;
@@ -1084,7 +1084,7 @@ h5, .title-h5 {
   transform: translateX(calc(-50% - 2rem));
   z-index: 1;
   animation: paradise 15s 0.5s linear infinite reverse;
-  width: 52vw;
+  width: 99vh;
 }
 @media (max-width: 1450px) {
   .first-section__paradise {
@@ -1098,6 +1098,7 @@ h5, .title-h5 {
   transform: translateX(-50%);
   z-index: 0;
   animation: logo 10s linear infinite reverse;
+  width: 95vh;
 }
 @media (max-width: 1450px) {
   .first-section__logo {
