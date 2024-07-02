@@ -927,7 +927,8 @@ h5, .title-h5 {
 .first-section {
   position: relative;
   z-index: 1;
-  height: 900px;
+  min-height: 600px;
+  height: 100vh;
   background: #64DFFF;
 }
 @media (min-width: 1941px) {
@@ -1078,11 +1079,12 @@ h5, .title-h5 {
 }
 .first-section__paradise {
   position: absolute;
-  top: 8rem;
+  bottom: 20px;
   left: 50%;
   transform: translateX(calc(-50% - 2rem));
   z-index: 1;
   animation: paradise 15s 0.5s linear infinite reverse;
+  width: 52vw;
 }
 @media (max-width: 1450px) {
   .first-section__paradise {
@@ -1368,10 +1370,10 @@ h5, .title-h5 {
   animation: firstTwoShowY 3s ease;
 }
 .two-section.is-first-anim .two-section__mleft {
-  animation: firstMLeft 5s ease;
+  animation: firstMLeft 4s ease;
 }
 .two-section.is-first-anim .two-section__mright {
-  animation: firstMRight 5s ease;
+  animation: firstMRight 4s ease;
 }
 
 @keyframes firstTwoShowY {

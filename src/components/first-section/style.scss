@@ -2,8 +2,8 @@
 	position: relative;
 	z-index: 1;
 	//overflow: hidden;
-	//min-height: 100vh;
-	height: 900px;
+	min-height: 600px;
+	height: 100vh;
 	background: #64DFFF;
 
 	@media (min-width: 1941px) {
@@ -157,11 +157,13 @@
 
 	&__paradise{
 		position: absolute;
-		top: 8rem;
+		//top: 8rem;
+		bottom: 20px;
 		left: 50%;
 		transform: translateX(calc(-50% - 2rem));
 		z-index: 1;
 		animation: paradise 15s .5s linear infinite reverse;
+		width: 52vw;
 
 		@include media($lg){
 			width: 58rem;
