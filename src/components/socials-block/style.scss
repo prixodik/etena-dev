@@ -1,0 +1,53 @@
+.socials-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @include media($md) {
+        flex-wrap: wrap;
+    }
+	@include media($xs) {
+        gap: 4px;
+    }
+
+    &__icon{
+		background: rgba($white,.24);
+		border-radius: 32px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 38px;
+		padding: 0 18px;
+		transition: all .3s ease-in-out;
+
+		svg, img{
+			flex: 0 0 24px;
+			width: 24px;
+			height: 24px;
+			fill: $white;
+			transition: all .3s ease-in-out;
+		}
+
+		&:hover{
+			background: $white;
+
+			svg{
+				fill: $orange;
+				fill: linear-gradient(234deg, #FF4A32 6.29%, #FF7E24 91.61%);
+			}
+		}
+
+		@include media($xs){
+			height: 30px;
+			padding: 0 14px;
+
+			svg, img{
+				flex: 0 0 16px;
+				width: 16px;
+				height: 16px;
+			}
+		}
+	}
+
+
+}

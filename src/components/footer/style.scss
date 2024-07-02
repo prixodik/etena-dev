@@ -1,0 +1,49 @@
+
+.footer{ background: $pink-dark; padding: 75px 0 40px; position: relative; color: $pink-2; 
+	&__container{ max-width: none; }
+	a{
+		&:hover{ color: $white; }
+	}
+	//&__info{}
+	&__copyright{ text-transform: uppercase; color: $brown-light; font: 30px 'Solomon Sans Book'; margin-bottom: 10px; }
+	&__slogan{ color: $pink-2;  }
+	&__mail{ text-align: center; color: $pink-2; } 
+	&__menu{ margin-top: 45px; padding-top: 45px; border-top: 1px rgba($white,0.12) solid; @include flex(space-between); 
+		&-item{ color: $brown-light; font: 14px $baseFF; }
+	} 
+
+	&--blue{ background: #9FCDDB; color: $white; }
+	&--blue &{
+		&__copyright{ color: $white; }
+		&__slogan{ color: $white; }
+		&__mail{ color: $white; } 
+		&__menu{ border-color: rgba($white, .5);
+			&-item{ color: $blue-dark;  }
+		} 
+	}
+
+	@include media($xlg){ padding: 60px 0 40px;
+		&__copyright{ font: 26px 'Solomon Sans Book'; }  
+		&__menu{ margin-top: 35px; padding-top: 35px; } 
+	}
+	@include media($md){ padding: 50px 0 40px;
+		&__menu{ margin-top: 35px; padding-top: 35px; } 
+	} 
+
+	@include media($sm){ padding: 70px 0; 
+		&__menu{ padding-top: 35px;  margin: 35px -15px -15px; @include flex(center);
+			&-item{ margin-bottom: 15px; flex: 0 1 auto; padding: 0 15px; }
+		} 
+	}
+
+	@include media($xs){ padding: 70px 0 50px; 
+		&__slogan{ font: 14px $baseFF; }
+		&__mail{ text-align: left; font: 14px $baseFF; margin-top: 15px;  } 
+		&__menu{ margin-top: 35px; padding-top: 35px;  @include flex(flex-start);  
+			&-item{ flex: 0 0 50%;  }
+		} 
+		&__soc{ margin-top: 60px;
+			.soc-list{ @include flex(flex-start,center,center); }
+		}
+	}
+}

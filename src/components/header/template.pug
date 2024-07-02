@@ -1,0 +1,18 @@
+
+mixin headerMin(data)
+	header.header
+
+mixin header(data)
+	include ../socials-block/template
+	//-+mobileMenu()
+
+	header.header&attributes(attributes)
+		._container.container
+			._row
+				._logo
+					a(href="/")
+						img._logo-orange(src="images/logo-orange.svg" alt="Etena")
+						img._logo-white(src="images/logo.svg" alt="Etena")
+				+socialsBlock()._soc
+
+

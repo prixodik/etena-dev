@@ -1,0 +1,48 @@
+//include normalize
+@import "libs/normalize";
+//include fonts
+@import "partials/fonts";
+//include sprite-svg
+//@import "partials/sprite-svg";
+//include variables
+@import "helpers/variables";
+// include functions
+@import "helpers/functions";
+
+//@import "helpers/breakpoints";
+//@import "helpers/grid-framework";
+//@import "helpers/grid";
+
+// include mixin
+@import "helpers/mixin";
+/* Ссылки
+-----------------------------*/
+@import "partials/link";
+/* Сетка
+-----------------------------*/
+//@import "partials/grid";
+/* Кнопки на сайте
+-----------------------------*/
+@import "partials/buttons";
+
+/* Базовые стили всего сайта
+-----------------------------*/
+@import "partials/base"; 
+
+/* TITLES */
+@import "partials/titles";
+//@import "partials/slick"; 
+
+//@import "partials/item-page";
+//@import "partials/fancybox";
+//@import "partials/table";
+
+  
+/* Шапка сайта
+-----------------------------*/ 
+@import "../components/loader-section/style";
+@import "../components/header/style";
+@import "../components/socials-block/style";
+@import "../components/first-section/style";
+@import "../components/two-section/style";
+

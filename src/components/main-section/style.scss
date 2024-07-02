@@ -1,0 +1,875 @@
+.main-section{ padding: 160px 0 90px;  flex: 1 1 auto;
+	&__title{ margin-bottom: 35px; }
+	&__filter{
+		&-item{ margin-bottom: 30px;  
+			.btn{ padding-left: 10px; padding-right: 10px; }
+		}
+	}
+	&__list{ margin-bottom: -30px;
+		&-item{ margin-bottom: 30px;  } 
+	}
+	&__pagination{ padding-top: 30px; } 
+
+	&__well{ background: #F5F5F5; border: 1px #D7DDE5 solid; border-radius: 12px; padding: 30px 20px; 
+			&-title{ margin-bottom: 15px; } 
+			&-head{ @include flex(space-between,center,center); margin-bottom: 15px; 
+				.main-section__well-title{ margin-bottom: 0; }
+				a{ color: $blue; text-decoration: underline;  }
+			}
+
+			&--comments{  
+				.main-section__well-item{ margin-bottom: 30px; @include flex(0,0,0,nowrap); }
+				.main-section__well-info{ flex: 0 0 20%; }
+				.main-section__well-date{ font: 14px $baseFF; color: $pink-dark; margin-bottom: 5px; }
+				.main-section__well-name{ font: 18px $baseFF; color: $black; margin-bottom: 5px; }
+				.main-section__well-bottom{ @include flex(space-between,center,center,nowrap); margin-top: 30px; }
+				.main-section__well-count{ flex: 0 0 20%; } 
+				.main-section__well-more{ flex: 1 1 auto;  
+					a{ border-bottom: 2px $pink-dark dashed; line-height: normal; color: $pink-dark; font-size: 18px; @include time(); 
+						&:hover{ text-decoration: none; border-color: transparent;  } 
+					}
+				}
+			}
+
+			&--services{  
+				.main-section__well-category{ margin-bottom: 60px; } 
+				.main-section__row{ margin-bottom: -25px; }
+				.main-section__col{ margin-bottom: 25px; } 
+				.main-section__buttons{ margin-bottom: 25px; }  
+			}
+
+			&--prices{
+				.main-section__well-add{ max-height: 0; overflow: hidden; @include time(); 
+					&.is-active{ max-height: 10000px; margin-top: 30px; overflow: visible;  }
+				}
+			}
+
+			&--photos &{
+				&-title{ margin-bottom: 35px; }
+				&-desc{ text-align: center; margin-bottom: 45px; color: $gray-dark; font: 14px/24px $baseFF; }
+				&-link{ position: relative;  @include flex(center); 
+					input{ display: block; width: 100%; height: 100%; opacity: 0; z-index: 2; position: absolute; top: 0; left: 0; } 
+				}
+				&-result{ margin-top: 40px; margin-bottom: -30px; }
+				&-item{ position: relative; margin-bottom: 30px;
+					img{ width: 200px; height: 200px; object-fit: cover; }
+				}
+				&-del{ position: absolute; top: -20px; right: 0; z-index: 4; @include flex(center,center,center); border-radius: 8px; background: $pink-2; width: 43px; height: 43px;  @include time(); 
+					svg{ width: 14px; height: 14px; fill: $pink-dark; display: block; @include time(); } 
+
+					&:hover{ background: $pink-dark; 
+						svg{ fill: $pink-2; }
+					}
+				}
+			}
+
+			&--work-clinic{ @include flex(0,0,0,nowrap); }
+			&--work-clinic &{
+				&-left{ margin-right: 20px; flex: 0 0 auto; }
+				&-img{ margin-bottom: 10px; 
+					img{ border: 5px $white solid; border-radius: 12px; box-shadow: 0 2px 4px rgba(#000,.12); width: 100px; height: 100px; object-fit: cover; display: block;   } 
+				}
+				&-rait{ margin: 0 auto; }
+				&-info{ flex: 10 1 auto; } 
+				&-title{ font: bold 18px $baseFF; color: $black; margin-bottom: 5px;
+					a{ text-decoration: underline;  }
+				}
+				&-position{ font: 14px $baseFF; color: $blue; margin-bottom: 30px; }
+				&-city{ font: 14px $baseFF; color: $pink-dark; } 
+				&-right{ flex: 0 1 auto; }
+				&-status{ @include flex(0,center,center,nowrap); font: 14px/19px $baseFF; color: $gray-dark; margin-bottom: 20px;
+					img{ flex: 0 0 auto; margin-right: 15px; }
+					p{ flex: 0 1 auto;  }
+				}
+				&-buttons{ @include flex(flex-end); 
+					.btn{ margin-left: 35px; 
+						&:first-child{ margin-left: 0;  }
+					}
+				}
+			}
+	}
+
+	&__panel{ position: fixed; top: 0; left: 0; bottom: 0; padding: 105px 20px 30px; z-index: 9;  overflow: hidden; @include time();
+		&-close{ margin-bottom: 25px; padding: 0 0 0 10px; position: relative;  
+			&:before{ content: ""; width: 12px; height: 12px; border-left: 2px $pink-dark solid; border-top: 2px $pink-dark solid; display: block; position: absolute; top: 0; left: 0;  }
+			span{ font: 12px/1 $baseFF; color: $white;  display: none; }
+		}
+		&-menu{ clear: both; }
+		&-item{ color: $pink-dark; margin-bottom: 20px; position: relative; 
+			&:last-child{ margin-bottom: 0; }
+			a{ @include flex(0,center,center,nowrap); }
+			span{ margin-left: 15px; display: block; opacity: 0; position: absolute; white-space: nowrap; left: 100%; top: 50%; transform: translateY(-50%); @include time(); }
+
+			&:hover{
+				.main-section__panel-icon{ background: $pink-dark; 
+					svg{ stroke: #F8C6B4;  }
+				}
+				span{ opacity: 1; }
+				a{ text-decoration: underline;  }
+			}
+
+			&.is-active{
+				.main-section__panel-icon{ background: $pink-dark; 
+					svg{ stroke: #F8C6B4;  }
+				}
+				//span{ opacity: 1; }
+				//a{ text-decoration: underline;  }
+			}
+		}
+		&-icon{ @include flex(center,center,center); background: #F8C6B4; border-radius: 50%; flex: 0 0 auto; width: 38px; height: 38px;  @include time();
+			svg{ max-width: 25px; max-height: 25px; fill: none; stroke: $pink-dark; display: block; @include time(); 
+				&.icon_panel-icon-2{ width: 17px; height: 26px; }
+				&.icon_panel-icon-3{ width: 18px; height: 12px; }
+				&.icon_panel-icon-4{ width: 18px; height: 18px; }
+				&.icon_panel-icon-5{ width: 18px; height: 18px; }
+				&.icon_panel-icon-6{ width: 17px; height: 24px; }
+				&.icon_panel-icon-7{ width: 23px; height: 26px; } 
+			}
+		}
+
+		&.is-active{ background: $pink-2; }
+		&.is-active &{
+			&-close{ float: right; padding: 0 30px 0 0;
+				&:before{ border-left: 0; border-right: 2px $pink-dark solid; left: auto; right: 0;  }
+				span{ display: block; opacity: 0; }
+			}
+			&-item{ 
+				span{ opacity: 1; position: static; transform: translateY(0);  }
+			}
+			/* &-icon{ @include flex(center,center,center); background: #F8C6B4; border-radius: 50%; flex: 0 0 auto; width: 38px; height: 38px;  @include time();
+				svg{ max-width: 25px; max-height: 25px; fill: none; stroke: $pink-dark; display: block; @include time(); 
+					&.icon_panel-icon-2{ width: 17px; height: 26px; }
+					&.icon_panel-icon-3{ width: 18px; height: 12px; }
+					&.icon_panel-icon-4{ width: 18px; height: 18px; }
+					&.icon_panel-icon-5{ width: 18px; height: 18px; }
+					&.icon_panel-icon-6{ width: 17px; height: 24px; }
+					&.icon_panel-icon-7{ width: 23px; height: 26px; } 
+				}
+			} */
+		}
+
+		&:hover{ overflow: visible; }  
+
+		&.is-active:hover &{
+			&-close{ 
+				&:before{ border-color: $white;  }
+				span{  opacity: 1; }
+			}
+		}
+	}
+
+	&--discount-page &{
+		&__list{ margin-bottom: 0;
+			&-item{ padding-top: 40px; margin-top: 40px; border-top: 1px $gray solid; margin-bottom: 0; 
+				&:nth-of-type(1), &:nth-of-type(2), &:nth-of-type(3){ padding-top: 0; margin-top: 0; border: 0;  }
+			} 
+		}
+	}  
+
+	&--registration-page{ background: url('../images/registration-page-bg.jpg') 50% 50% no-repeat $white; }
+	&--registration-page &{
+		&__container{
+			&--min{ max-width: 690px; }
+		} 
+		&__title{ text-align: center; margin-bottom: 35px; }
+		&__input{ margin-bottom: 20px;  
+			&:last-child{ margin-bottom: 0;  }
+		}
+		&__police{ margin: 30px 0 35px;  }
+		&__img{ margin-bottom: 80px; position: relative; z-index: 1; 
+			&:after{ content: ""; display: block; width: 0; height: 0; opacity: 0; @include time(); position: absolute; top: 50%; left: 50%; z-index: -1; transform: translate(-50%,-50%); @include gradient(90deg, #FCBBA5 0%, #EF95AE 100%);   border-radius: 50%; pointer-events: none; }   
+			img{ height: 250px; width: auto; margin: 0 auto; display: block; } 
+		}
+		&__button{ @include flex(center); }
+		&__row{ margin-top: 130px;  }
+		&__links{ @include flex(); color: $gray-dark; margin-top: 75px;
+			a{ color: $blue; text-decoration: underline; }
+			p{ margin: 0 20px 0 0; 
+				&:last-child{ margin-right: 0; }
+			}
+		}
+
+		&__col{
+			&:hover{ 
+				.main-section__img{
+					&:after{ width: 348px; height: 348px; opacity: 1; }
+				}
+			}
+		}
+	}
+
+	&--partners-page &{
+		&__group{ margin-bottom: 130px;
+			&:last-child{ margin-bottom: 0; }
+		}
+		&__img{ text-align: center; margin-bottom: 30px; }
+		&__title{ margin-bottom: 45px; } 
+		&__subtitle{ margin-bottom: 40px; }
+		&__row{ margin-bottom: -30px; }
+		&__col{ margin-bottom: 30px; } 
+	}
+
+	&--contacts-page &{
+		&__desc{ margin-bottom: 30px; }
+		&__row{ margin: 0; border-bottom: 1px $gray solid;
+			&--first{  border-top: 1px $gray solid;} 
+		}
+		&__label{ padding: 40px 50px 40px 0; text-align: right; }
+		&__value{ padding: 40px 0 40px 50px; color: $pink-dark;
+			a{ text-decoration: underline; }
+		}
+		&__soc{ margin-top: 90px;  }
+	}
+
+	&--news-view-page &{
+		&__date{ color: $pink-dark; font: 14px $baseFF; margin: 0 30px 0 0; }
+		&__count{ margin-right: 20px; color: $gray-dark; font-size: 14px; @include flex(0,center,center,nowrap); 
+			&:last-child{ margin-right: 0; } 
+			svg{ font-size: 12px; fill: $pink-dark; display: block; margin-right: 8px;   
+				&.icon_comment{ fill: none; stroke: $pink-dark; font-size: 16px; }
+			}
+		} 
+		&__info{ @include flex(flex-end,center,center,nowrap); }
+		&__head{ margin-bottom: 15px; } 
+		&__title{ margin-bottom: 0; line-height: normal;  }
+		&__img{ margin-bottom: 25px;
+			&--right{ float: right; margin-left: 25px;  }
+		}
+		&__back{ margin-bottom: 35px; @include flex(0,center,center,nowrap); font: $title-h1;
+			svg{ fill: none; stroke: #C5CAD1; margin-right: 10px; font-size: 20px; }
+		}
+
+		&__well{ margin-top: 30px; }
+	}
+
+	&--knowiedge-view-page &{
+		&__back{ margin-bottom: 35px; @include flex(0,center,center,nowrap); font: $title-h1;
+			svg{ fill: none; stroke: #C5CAD1; margin-right: 10px; font-size: 20px; }
+		}
+		&__head{ margin-bottom: 15px; @include flex(0,center,center,nowrap); } 
+		&__img{ margin-right: 20px; flex: 0 0 auto; 
+			img{ width: 100px; height: 100px; border: 5px $white solid; border-radius: 50%; display: block; box-shadow: 0 2px 4px rgba(#000,.08);  }
+		}
+		&__date{ color: $pink-dark; font: 14px $baseFF; margin: 0 30px 0 0; } 
+		&__count{ margin-right: 20px; color: $gray-dark; font-size: 14px; @include flex(0,center,center,nowrap); 
+			&:last-child{ margin-right: 0; } 
+			svg{ font-size: 12px; fill: $pink-dark; display: block; margin-right: 8px;   
+				&.icon_comment{ fill: none; stroke: $pink-dark; font-size: 16px; }
+			}
+		} 
+		&__title{ margin-bottom: 10px; color: $pink-dark; }  
+		&__info{ @include flex(0,center,center); margin-bottom: 10px; }
+		&__name{ font: bold 18px $baseFF; color: $black; }
+		&__city{ font: 14px $baseFF; color: $gray-dark; } 
+		&__well{ margin-top: 30px; } 
+		&__pagination{ padding-top: 30px; }  
+	}
+
+	&--faq-page{ background: url('../images/faq-page-bg.png') calc(100% + 300px) 300px no-repeat; } 
+	&--faq-page &{
+		&__title{ margin-bottom: 30px;  }
+		&__desc{ margin-bottom: 575px; }
+		&__buttons{ @include flex(center); margin-bottom: 60px; }
+		&__list{ margin-bottom: -30px;
+			&-item{ margin-bottom: 30px; }
+		}
+	}
+
+	&--profile-view &{
+		&__title{ margin-bottom: 30px; }
+		&__well{ /* background: #F5F5F5; border: 1px #D7DDE5 solid; border-radius: 12px; padding: 25px 30px; */ height: 100%; 
+
+			&--services{
+				.main-section__buttons{ @include flex(flex-end,flex-end,flex-end); }
+			}
+
+			&--contacts{ 
+				.main-section__buttons{ @include flex(flex-end,flex-end,flex-end); }
+			}
+		}
+		&__img{ position: relative; margin: 0 auto 15px; max-width: 146px;  
+			img{ display: block;  border-radius: 50%; max-width: 146px; max-height: 146px; border: 11px rgba($white,.5) solid; box-shadow: 0 2px 4px rgba(#000,.08); @include time(); } 
+		}
+		&__vip{ position: absolute; top: 11px; right: 0; z-index: 5;  border-radius: 0!important;  max-width: none!important; max-height: none!important; border: 0!important; box-shadow: none!important; } 
+		&__rait{ margin: 0 auto;  }
+		&__name{ font: bold 20px/26px $baseFF; color: $black; margin-bottom: 7px; text-transform: none;  }
+		&__position{ font: 16px $baseFF; color: $blue; margin-bottom: 20px; } 
+		&__counts{ margin-bottom: 20px;  }
+			
+		&__params{ @include flex(); margin-bottom: 20px;  
+			&-item{ margin-right: 40px; font: 16px/24px $baseFF; @include flex(0,0,0,nowrap);   
+				&:last-child{ margin-right: 0; }
+			}
+			&-label{ color: $gray-dark; flex: 0 0 auto; margin-right: 10px;   }
+			&-value{ color: $pink-dark; flex: 1 1 auto; } 
+		}
+		&__info{ @include flex(0,center,center,nowrap); color: $gray-dark; white-space: nowrap; 
+			&-icon{ fill: #841246; max-width: 18px; max-height: 18px; display: block; margin-right: 8px; }  
+			&-value{ font-size: 18px; color: $black; margin-left: 10px; }
+
+			&--xs{ display: none; }
+		}
+
+		&__img-col{ margin-bottom: 20px; }
+		&__info-col{ margin-bottom: 20px; }
+		&__services{ margin-bottom: 20px; } 
+		&__sales{ margin-bottom: 20px; }  
+		&__contacts{ margin-bottom: 20px; }   
+		&__photos{ margin-bottom: 20px; }   
+		&__personal{ margin-bottom: 20px; }   
+
+		&__contact{ @include flex(0,center,center,nowrap); margin-bottom: 10px; 
+			&-label{ flex: 0 0 20%; color: $gray-dark; }
+			&-value{ color: $pink-dark;  }
+		}
+
+		&__soc-icon{ @include flex(center,center,center); width: 30px; height: 30px; background: $gray-dark; border-radius: 4px;
+			svg{ fill: $white; width: 14px; height: 14px; display: block; }
+		}
+	}
+
+	&--profile-edit &{
+		&__title{ margin-bottom: 30px; }
+		&__buttons{ @include flex(flex-end,center,center); margin-top: 25px;
+			.btn{ margin-left: 30px; }
+		}
+		&__input{ margin-bottom: 20px; position: relative; 
+			&:last-child{ margin-bottom: 0;  }
+
+			&-label{ }
+			&-desc{ color: $gray-dark; font: 14px/18px $baseFF; }
+
+			&--with-icon{ @include flex(0,center,center,nowrap); 
+				.main-section__input-label{ flex: 0 0 80px; @include flex(center); padding-right: 20px; }   
+				.main-section__input-body{ flex: 1 1 auto; } 
+			}
+		}
+		&__well{ margin-bottom: 30px;
+			&:last-child{ margin-bottom: 0; }
+
+			&--img{ margin-bottom: 20px; }
+
+			&--works{ 
+				.main-section__well-type{ margin-bottom: 15px; }
+				.main-section__well-desc{ margin-bottom: 20px; color: $gray-dark; font: 14px/19px $baseFF;  }
+				.main-section__well-input{ margin-bottom: 20px; display: none; 
+					&.is-active{ display: block; }
+				}  
+			}
+		}
+		&__img{ position: relative; margin: 0 auto 15px; max-width: 168px;  
+			img{ display: block;  border-radius: 50%; max-width: 168px; max-height: 168px; border: 11px rgba($white,.5) solid; box-shadow: 0 2px 4px rgba(#000,.08); @include time(); }  
+		}
+		&__add-img{ @include flex(center,center,center,nowrap); text-decoration: underline; color: $pink-dark; position: relative;
+			input{ display: block; width: 100%; height: 100%; opacity: 0; z-index: 2; position: absolute; top: 0; left: 0; }
+			svg{ fill: none; stroke: $pink-dark; width: 22px; height: 17px; margin-right: 10px;  }
+		}
+		
+		&__rait{ margin: 0 0 40px;  font: 14px $baseFF; color: $gray-dark; 
+			&-stars{ margin-bottom: 10px; }
+			span{ font-size: 20px; color: $black;  }
+		}
+		&__group{ margin-bottom: 45px; }
+			
+		/* &__params{ @include flex(); margin-bottom: 20px;  
+			&-item{ margin-right: 40px; font: 16px/24px $baseFF; @include flex(0,0,0,nowrap);   
+				&:last-child{ margin-right: 0; }
+			}
+			&-label{ color: $gray-dark; flex: 0 0 auto; margin-right: 10px;   }
+			&-value{ color: $pink-dark; flex: 1 1 auto; } 
+		} */
+		&__info{ @include flex(0,center,center,nowrap); color: $gray-dark; white-space: nowrap; 
+			&-icon{ fill: #841246; max-width: 18px; max-height: 18px; display: block; margin-right: 8px; }  
+			&-value{ font-size: 18px; color: $black; margin-left: 10px; }
+
+			&--group{ margin-bottom: 40px; }
+		}
+
+		
+
+		/* &__contact{ @include flex(0,center,center,nowrap); margin-bottom: 10px; 
+			&-label{ flex: 0 0 20%; color: $gray-dark; }
+			&-value{ color: $pink-dark;  }
+		}
+
+		&__soc-icon{ @include flex(center,center,center); width: 30px; height: 30px; background: $gray-dark; border-radius: 4px;
+			svg{ fill: $white; width: 14px; height: 14px; display: block; }
+		} */
+	}
+
+	&--message-view &{
+		&__back{ margin-bottom: 60px; @include flex(0,center,center,nowrap); font: $title-h1;
+			svg{ fill: none; stroke: #C5CAD1; margin-right: 10px; font-size: 20px; }
+		}
+		&__info{ margin-bottom: 35px; }
+	}
+
+
+	@include media($xlg){
+		&__well{
+				
+				&--comments{  
+					.main-section__well-name{ font: 16px $baseFF; }
+					.main-section__well-more{ 
+						a{ font-size: 16px; }
+					}
+				}
+		}
+
+
+		&--profile-view &{
+			&__img{ max-width: 136px;  
+				img{ max-width: 136px; max-height: 136px; } 
+			}
+			&__name{ font: bold 18px/24px $baseFF; }
+			&__position{ font: 14px $baseFF; }
+				
+			&__params{ 
+				&-item{ font: 14px/24px $baseFF; }
+			}
+			&__info{ 
+				&-value{ font-size: 16px; }
+			}
+		}
+
+		&--profile-edit &{
+			
+			&__img{ max-width: 158px;  
+				img{ max-width: 158px; max-height: 158px; }  
+			}
+			
+			&__rait{
+				span{ font-size: 18px; }
+			}
+			&__info{ 
+				&-value{ font-size: 16px; }
+			}
+ 
+		}
+
+	}
+
+	@include media($md){ padding: 130px 0 70px;  
+		&--partners-page &{ 
+			&__group{ margin-bottom: 100px;
+				&:last-child{ margin-bottom: 0; }
+			}
+			&__title{ margin-bottom: 30px; } 
+			&__subtitle{ margin-bottom: 30px; }
+		}
+
+		&--contacts-page &{
+			//&__desc{ margin-bottom: 30px; }
+			
+			&__label{ padding: 30px 40px 30px 0; }
+			&__value{ padding: 30px 0 30px 40px; }
+			&__soc{ margin-top: 70px;  } 
+		}
+
+		&--profile-edit &{
+			&__container{ padding-left: 70px;  }
+		}
+
+		&--message-view &{
+			&__container{ padding-left: 70px;  }
+			&__back{ margin-bottom: 40px; }
+			&__info{ margin-bottom: 25px; }
+		} 
+	}
+
+	@include media($sm){
+		&__well{  padding: 20px 10px; //margin-top: 30px; 
+				// &-title{ margin-bottom: 15px; } 
+
+				&--comments{  
+					.main-section__well-item{ margin-bottom: 40px; }
+					.main-section__well-info{ flex: 0 0 25%; }
+					//.main-section__well-date{ font: 14px $baseFF; color: $pink-dark; margin-bottom: 5px; }
+					.main-section__well-name{ font: 16px $baseFF; }
+					//.main-section__well-bottom{ @include flex(space-between,center,center,nowrap); margin-top: 30px; }
+					.main-section__well-count{ display: none;  } 
+					 
+				}
+
+			&--services{  
+				.main-section__well-category{ margin-bottom: 40px; } 
+				.main-section__row{ margin-bottom: -15px; }
+				.main-section__col{ margin-bottom: 15px; } 
+			}
+
+			&--photos &{
+				&-title{ margin-bottom: 25px; }
+				&-desc{ margin-bottom: 35px; }
+				
+				&-result{ margin-top: 30px; margin-bottom: -20px; }
+				&-item{ margin-bottom: 20px;
+					img{ width: 120px; height: 120px; } 
+				}
+				&-del{ top: -15px; right: 5px; width: 33px; height: 33px;  }
+			}
+
+			&--work-clinic{ flex-wrap: wrap; }
+			&--work-clinic &{
+				/* &-left{ margin-right: 20px; flex: 0 0 auto; }
+				&-img{ margin-bottom: 10px; 
+					img{ border: 5px $white solid; border-radius: 12px; box-shadow: 0 2px 4px rgba(#000,.12); width: 100px; height: 100px; object-fit: cover; display: block;   } 
+				}
+				&-rait{ margin: 0 auto; } */
+				&-info{ flex: 0 0 calc(100% - 120px); } 
+				&-title{ font: bold 16px $baseFF; }
+				&-position{ font: 12px $baseFF; margin-bottom: 20px; }
+				&-city{ font: 12px $baseFF; color: $pink-dark; } 
+				&-right{ flex: 0 0 100%; margin-top: 20px;  }
+				&-status{ font: 12px/16px $baseFF; 
+					img{ margin-right: 10px; }
+				}
+				&-buttons{ @include flex(flex-start); 
+					.btn{ margin: 0 15px 0 0; 
+						&:last-child{ margin-right: 0;  }
+					}
+				}
+			}
+		}
+
+		&--discount-page &{
+			&__list{ margin-bottom: 0;
+				&-item{ padding-top: 30px; margin-top: 30px; border-top: 1px $gray solid; margin-bottom: 0; 
+					&:nth-of-type(1), &:nth-of-type(2){ padding-top: 0; margin-top: 0; border: 0;  } 
+					&:nth-of-type(3){ padding-top: 30px; margin-top: 30px; border-top: 1px $gray solid;  } 
+				} 
+			}
+		} 
+
+		&--registration-page &{
+			&__img{ margin-bottom: 40px; }
+			&__row{ margin-top: 70px;  } 
+		}
+
+		&--contacts-page &{
+			//&__desc{ margin-bottom: 30px; }
+			
+			&__label{ padding: 20px 30px 20px 0; }
+			&__value{ padding: 20px 0 20px 30px; }
+			&__soc{ margin-top: 50px;  }  
+		}
+
+		&--news-view-page &{
+			
+			&__img{ margin-bottom: 20px; width: 100%;
+				&--right{ float: none; margin-left: 0;  }
+			}
+			&__back{ margin-bottom: 25px; }
+
+		}
+
+		&--knowiedge-view-page &{
+			
+			&__back{ margin-bottom: 25px; }
+
+		}
+
+		&--profile-view &{
+			&__title{ margin-bottom: 20px; }
+			&__well{ 
+
+				&--services{
+					.main-section__buttons{ display: block; margin-top: 20px; }
+				}
+
+				&--contacts{ 
+					.main-section__buttons{ display: block; margin-top: 20px; }
+				}
+
+				&--personal{
+					.main-section__row{ margin-bottom: -20px; }
+					.main-section__col{ margin-bottom: 20px; }
+				}
+			}
+			/* &__img{ position: relative; margin: 0 auto 15px; max-width: 146px;  
+				img{ display: block;  border-radius: 50%; max-width: 146px; max-height: 146px; border: 11px rgba($white,.5) solid; box-shadow: 0 2px 4px rgba(#000,.08); @include time(); } 
+			} */
+			//&__vip{ position: absolute; top: 11px; right: 0; z-index: 5;  border-radius: 0!important;  max-width: none!important; max-height: none!important; border: 0!important; box-shadow: none!important; } 
+			//&__rait{ margin: 0 auto;  }
+			&__name{ font: bold 18px/24px $baseFF; }
+			&__position{ font: 14px $baseFF; } 
+			//&__counts{ margin-bottom: 20px;  }
+				
+			&__params{ 
+				&-item{ margin-right: 20px; font: 14px/20px $baseFF; 
+					&:last-child{ margin-right: 0; }
+				}
+			}
+			&__info{ 
+				&-value{ font-size: 16px; }
+			}
+
+			/* &__img-col{ margin-bottom: 20px; }
+			&__info-col{ margin-bottom: 20px; }
+			&__services{ margin-bottom: 20px; } 
+			&__sales{ margin-bottom: 20px; }  
+			&__contacts{ margin-bottom: 20px; }   
+			&__photos{ margin-bottom: 20px; }   
+			&__personal{ margin-bottom: 20px; }    */
+
+			&__contact{ 
+				&-label{ flex: 0 0 15%; }
+			} 
+		}
+
+		&--profile-edit &{
+			&__title{ margin-bottom: 20px; }
+			&__buttons{ margin-top: 20px;
+				.btn{ margin-left: 20px; }
+			}
+			&__input{ 
+
+				&--with-icon{  
+					.main-section__input-label{ flex: 0 0 60px; @include flex(center); padding-right: 20px; 
+						img{ max-width: 30px; }
+					}   
+				}
+			}
+			&__well{ margin-bottom: 20px;
+				&:last-child{ margin-bottom: 0; }
+			}
+			&__img{ max-width: 128px;  
+				img{ max-width: 128px; max-height: 128px; border-width: 6px; }  
+			}
+			/* &__add-img{ @include flex(center,center,center,nowrap); text-decoration: underline; color: $pink-dark; position: relative;
+				input{ display: block; width: 100%; height: 100%; opacity: 0; z-index: 2; position: absolute; top: 0; left: 0; }
+				svg{ fill: none; stroke: $pink-dark; width: 22px; height: 17px; margin-right: 10px;  }
+			} */
+			
+			&__rait{ margin: 0 0 30px;
+				&-stars{ margin-bottom: 5px; }
+				span{ font-size: 18px; }
+			}
+			&__group{ margin-bottom: 30px; }
+			
+			&__info{ 
+				//&-icon{ fill: #841246; max-width: 18px; max-height: 18px; display: block; margin-right: 8px; }  
+				&-value{ font-size: 16px; }
+
+				&--group{ margin-bottom: 30px; }
+			}
+		}
+	}
+
+	@include media($xs){ padding: 80px 0 40px; 
+		&__title{ margin-bottom: 20px; }
+		&__filter{ margin-bottom: 20px; 
+			&-item{ margin-bottom: 10px;  
+				//.btn{ padding-left: 10px; padding-right: 10px; }
+			}
+		}
+		&__list{ margin-bottom: -20px;
+			&-item{ margin-bottom: 20px; }
+		}
+		&__pagination{ padding-top: 20px; }  
+		&__panel{ padding: 70px 10px 30px; display: none; 
+			&-icon{ width: 30px; height: 30px; }
+		}
+
+
+		&__well{ //background: #F5F5F5; border: 1px #D7DDE5 solid; border-radius: 12px; padding: 30px 20px; margin-top: 30px;  
+				//&-title{ margin-bottom: 15px; } 
+				&-stars{ margin-bottom: 20px; }
+
+				&--comments{  
+					.main-section__well-item{ display: block; } 
+					.main-section__well-info{ margin-bottom: 20px;  }
+					//.main-section__well-date{ font: 14px $baseFF; color: $pink-dark; margin-bottom: 5px; }
+					//.main-section__well-name{ font: 18px $baseFF; color: $black; margin-bottom: 5px; }
+					.main-section__well-bottom{ display: block; margin-top: 30px; }
+					//.main-section__well-count{ flex: 0 0 20%; } 
+					.main-section__well-more{ text-align: center; margin-bottom: 20px;
+						a{  font-size: 16px;  } 
+					}
+				}
+
+			&--photos &{
+				&-title{ margin-bottom: 20px; }
+				&-desc{ margin-bottom: 30px; }
+				
+				//&-result{ margin-top: 30px; margin-bottom: -20px; }
+				&-item{ //margin-bottom: 20px;
+					img{ width: 100px; height: 100px; } 
+				}
+				//&-del{ top: -15px; right: 5px; width: 33px; height: 33px;  }
+			}
+
+			&--work-clinic &{
+				/* &-left{ margin-right: 10px; flex: 0 0 auto; }
+				&-img{
+					img{ border: 5px $white solid; border-radius: 12px; box-shadow: 0 2px 4px rgba(#000,.12); width: 100px; height: 100px; object-fit: cover; display: block;   } 
+				}
+				&-info{ flex: 0 0 calc(100% - 100px); }  */
+				 
+				&-buttons{ display: block;  
+					.btn{ margin: 0 0 10px 0; 
+						&:last-child{ margin-bottom: 0;  }
+					}
+				}
+			}
+		}
+
+		&--discount-page &{
+			&__list{ margin-bottom: 0;
+				&-item{ padding-top: 20px; margin-top: 20px; border-top: 1px $gray solid; margin-bottom: 0; 
+					&:nth-of-type(1){ padding-top: 0; margin-top: 0; border: 0;  }
+					&:nth-of-type(2){ padding-top: 20px; margin-top: 20px; border-top: 1px $gray solid;  }  
+				} 
+			}
+		} 
+
+		&--registration-page &{
+			&__img{ margin-bottom: 20px;
+				img{ height: 150px; }
+			}
+			&__row{ margin-top: 40px;  }
+			&__col{ margin-bottom: 40px;
+				&:last-child{ margin-bottom: 0;   }
+			}
+			&__links{  margin-top: 40px; display: block; }
+		}
+
+		&--partners-page &{ 
+			&__group{ margin-bottom: 70px;
+				&:last-child{ margin-bottom: 0; }
+			}
+			&__title{ margin-bottom: 30px; text-align: center; } 
+			&__subtitle{ margin-bottom: 30px; text-align: center;  }
+			&__row{ margin-bottom: -20px; }
+			&__img, &__col{ margin-bottom: 20px; }  
+		}
+
+		&--contacts-page &{
+			&__label{ padding: 15px 0 0; text-align: left; }
+			&__value{ padding: 0 0 15px 0; }
+			&__soc{ margin-top: 40px;  } 
+		}
+
+		&--news-view-page &{
+			&__date{ margin: 0 20px 0 0; }
+			&__info{ @include flex(flex-start,center,center,nowrap); }
+			&__head{ margin-bottom: 15px; } 
+			&__title{ margin-bottom: 20px; }
+			/* &__img{ margin-bottom: 25px;
+				&--right{ float: right; margin-left: 25px;  }
+			} */
+			&__back{ margin-bottom: 20px; font: $title-h1-xs; }
+
+			
+		}
+
+		&--knowiedge-view-page &{
+			&__date{ margin: 0 20px 0 0; }  
+			// &__info{ @include flex(flex-start,center,center,nowrap); }
+			&__head{ margin-bottom: 15px; } 
+			&__title{ margin-bottom: 20px; }
+			/* &__img{ margin-bottom: 25px;
+				&--right{ float: right; margin-left: 25px;  }
+			} */
+			&__back{ margin-bottom: 20px; font: $title-h1-xs; }
+
+			
+		}
+
+		&--faq-page{ background: none; } 
+		&--faq-page &{
+			&__title{ margin-bottom: 20px;  }
+			&__desc{ margin-bottom: 40px; }
+			&__buttons{ margin-bottom: 40px; }
+			&__list{ margin-bottom: -20px;
+				&-item{ margin-bottom: 20px; }
+			}
+		}
+
+		&--profile-view &{
+			/* &__title{ margin-bottom: 20px; }
+			&__well{ 
+
+				&--services{
+					.main-section__buttons{ display: block; margin-top: 20px; }
+				}
+
+				&--contacts{ 
+					.main-section__buttons{ display: block; margin-top: 20px; }
+				}
+
+				&--personal{
+					.main-section__row{ margin-bottom: -20px; }
+					.main-section__col{ margin-bottom: 20px; }
+				}
+			}
+			
+			//&__vip{ position: absolute; top: 11px; right: 0; z-index: 5;  border-radius: 0!important;  max-width: none!important; max-height: none!important; border: 0!important; box-shadow: none!important; } 
+			//&__rait{ margin: 0 auto;  }
+			&__name{ font: bold 18px/24px $baseFF; }
+			&__position{ font: 14px $baseFF; } 
+			//&__counts{ margin-bottom: 20px;  } 
+				
+			&__params{ 
+				&-item{ margin-right: 20px; font: 14px/20px $baseFF; 
+					&:last-child{ margin-right: 0; }
+				}
+			} */
+			&__info{ 
+				&.d-none_xs{ display: none; }
+
+				&--xs{ @include flex(center); margin-top: 10px; }
+			}
+
+			&__contact{ display: block;
+				&-label{ margin-bottom: 5px; }
+			} 
+		}
+
+		&--message-view &{
+			&__container{ padding-left: 15px;  } 
+		}
+
+		&--profile-edit &{
+			&__container{ padding-left: 15px;  }
+			&__left{ margin-bottom: 30px;  }
+			&__title{ font-size: 24px; }
+			&__buttons{ display: block;
+				.btn{ margin: 0 0 10px; width: 100%; padding-left: 10px; padding-right: 10px;  
+					&:last-child{ margin-bottom: 0;  }
+				}
+			}
+			&__input{ 
+				&-label{ margin-bottom: 5px; }
+
+				&--with-icon{  
+					.main-section__input-label{ flex: 0 0 40px; @include flex(center); padding-right: 10px; 
+						img{ max-width: 20px; max-height: 20px;  }
+					}   
+				}
+			}
+			/* &__well{ margin-bottom: 20px;
+				&:last-child{ margin-bottom: 0; }
+			} */
+			&__img{ max-width: 128px;  
+				img{ max-width: 128px; max-height: 128px; border-width: 6px; }  
+			}
+			/* &__add-img{ @include flex(center,center,center,nowrap); text-decoration: underline; color: $pink-dark; position: relative;
+				input{ display: block; width: 100%; height: 100%; opacity: 0; z-index: 2; position: absolute; top: 0; left: 0; }
+				svg{ fill: none; stroke: $pink-dark; width: 22px; height: 17px; margin-right: 10px;  }
+			} */
+			
+			&__rait{ margin: 0 0 30px;
+				&-stars{ margin-bottom: 5px; }
+				span{ font-size: 18px; }
+			}
+			&__group{ margin-bottom: 30px; }
+			
+			&__info{ 
+				//&-icon{ fill: #841246; max-width: 18px; max-height: 18px; display: block; margin-right: 8px; }  
+				&-value{ font-size: 16px; }
+
+				&--group{ margin-bottom: 30px; }
+			}
+		}
+	}
+}

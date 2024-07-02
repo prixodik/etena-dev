@@ -1,0 +1,13 @@
+
+.table{ width: 100%; border: 0; 
+	th{ font: 18px $baseFF; padding: 0 10px 15px; text-align: left; }  
+	td{ padding: 5px 10px; border-bottom: 1px $gray solid; }
+	&__empty{
+		td{ background: $gray; color: $gray-dark; text-align: center; padding: 5px; }
+	}
+
+	&--default{
+		th{ padding-bottom: 10px; font-size: 16px; color: $pink-dark; border-bottom: 1px $gray solid; }
+		td{ padding: 10px; font-size: 16px; }
+	}
+}

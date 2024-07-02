@@ -1,0 +1,121 @@
+
+*{ margin: 0; padding: 0; } 
+
+html {
+  height: 100%;
+  overflow-x: hidden;
+  max-width: 100vw; 
+
+  &.overflow{ overflow: hidden; } 
+}
+
+html {
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+@media (min-width: 1441px) and (max-width: 1940px) { // 1940 - 1024 = 416
+	html{ font-size: calc(18px + 2 * (100vw - 1441px) / 499) } 
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) { // 1940 - 1024 = 416
+	//html{ font-size: calc(4.9px + (10 - 4.9) * ((100vw - 1441px) / (2880 - 1441))); }
+	html{ font-size: calc(14px + 2 * (100vw - 1024px) / 416) } 
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+	html {
+	  font-size: 10px;
+	}
+}
+  
+@media (max-width: 767px) {
+	html {
+	  font-size: 10px;
+	}
+}
+
+body {
+  font-family: $baseFF;
+  color: $baseFClr;
+  font-size: $baseFS;
+  line-height: $baseLH;
+  font-weight: $baseFW;
+  font-style: $baseFSt;
+  min-height: 100%;
+  max-width: 100vw;  
+  position: relative;
+  background: $baseBg; 
+  overflow-x: hidden; 
+  overflow-y: auto;
+  @include flex(space-between,stretch,stretch,nowrap,column); 
+
+  &.is-overflow{ overflow: hidden; }
+
+  @include media($xlg){
+    font: 15px/25px $baseFF; 
+  }
+
+  @include media($xs){
+    font: 14px/24px $baseFF;
+  }
+}
+
+button,
+input[type='submit'] {
+  @include transition();
+}
+
+hr{ margin: 30px 0; height: 1px; background: $gray; border: 0; }
+
+p { margin: 0;  }
+
+img {
+  max-width: 100%;
+}
+
+svg{ display: block; width: 1em; height: 1em; fill: currentColor;  } 
+
+.slick-slider *,
+input, button,
+a:focus, a:hover {
+  outline: none !important;
+}
+* {
+  -webkit-locale: auto;
+  box-sizing: border-box;
+}
+*:after,
+*:before,
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.clearfix {
+  &:after {
+    content: '';
+    display: table;
+    width: 100%;
+    clear: both;
+  }
+}
+.container {
+  padding-left: $containerP;
+  padding-right: $containerP;
+  max-width: $containerW;
+  margin-left: auto;
+  margin-right: auto;
+  /* @include mq('dekstop') {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @include mq('tablet') {
+    padding-left: 5px;
+    padding-right: 5px;
+  } */
+  &.container-fluid {
+    max-width: 100%;
+  }
+}
+

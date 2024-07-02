@@ -1,0 +1,22 @@
+{
+  "name": "medclick",
+  "description": "template for team",
+  "main": "gulpfile.js",
+  "authors": [
+    "prixodik"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "fancybox": "^3.5.7",
+    "slick-ч": "^1.8.1",
+    "air-datepicker": "^2.2.3"
+  }
+}

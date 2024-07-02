@@ -1,0 +1,136 @@
+// Контрольные точки;
+$breakpointsPhone:             400px;
+$breakpointsPhoneWide:         480px;
+$breakpointsPhablet:           540px;
+$breakpointsTabletSmall:       640px;
+$breakpointsTablet:            768px;
+$breakpointsTabletWide:        992px;
+$breakpointsDesktop:           1200px;
+$breakpointsDesktopWideMd:     1450px;
+$breakpointsDesktopWide:       1700px;
+
+$xlg: $breakpointsDesktopWide;
+$lg: $breakpointsDesktopWideMd;
+$md: $breakpointsDesktop;
+$sm: $breakpointsTabletWide;
+$xs: $breakpointsTabletSmall;
+$xxs: $breakpointsPhoneWide;
+
+$breakpoints: (
+  "phone":        $breakpointsPhone,
+  "phone-wide":   $breakpointsPhoneWide,
+  "phablet":      $breakpointsPhablet,
+  "tablet-small": $breakpointsTabletSmall,
+  "tablet":       $breakpointsTablet,
+  "tablet-wide":  $breakpointsTabletWide,
+  "desktop":      $breakpointsDesktop,
+  "desktop-wide-md":      $breakpointsDesktopWideMd,
+  "desktop-wide": $breakpointsDesktopWide
+);
+
+// Цвета на сайте
+$white: #FFF;
+$white2: #F6F0EA;
+$black: #000;
+
+$brown-light: #38231E;
+$brown: #32201B;
+$brown-dark: #271815;
+
+$orange: #FF4B20;
+$gradient-to-orange: linear-gradient(90deg, rgba(#FF7E24,0) 0%, #FF4A32 100%);
+
+$blue-dark: #186C7F;
+$blue: #63B1C9;
+$blue-2: #62C6DD;
+$blue-light: #4FD7EF;
+
+$gray: #C5CAD1;
+$gray-dark: #7C8189;
+
+$pink-dark: #841246;
+$pink: #F281AA;
+$pink-2: #EF95AE;
+$pink-light: #F8CFC1;
+
+$yellow: #EADF19;
+$yellow-light: #fff63c;
+$red: #ff0000;
+
+$gray10: scale-color($black,$lightness:10%); // 1a1a1a
+
+$gradient-to-white: linear-gradient(90deg, rgba($white,0) 0%, $white 100%);
+
+$mobileBrackpoints: 'tablet';
+
+$enable-grid-classes: true !default;
+
+$grid-breakpoints: (
+  xxxs: 0,
+  xl: $xlg,
+  lg: $lg,
+  md: $md,
+  sm: $sm,
+  xs: $xs,
+  xxs: $xxs
+) !default;
+
+// Grids
+$grid-columns:              12;
+$grid-gutter-width:         30px;
+$baseFontF: 'Solomon Sans', 'Arial', sans-serif;
+$headlineFontF: 'Solomon Sans', 'Arial', sans-serif;
+
+$titleFF: $headlineFontF;
+
+$baseFS: 16px !default;
+$baseLH: 1.2; 
+$baseFW: 500;
+$baseFSt: normal;
+$baseFF: $baseFontF;
+$baseFClr: $black;
+$baseBg: #64DFFF; //$brown;
+
+$family: $baseFF;
+
+$containerW: 1200px;
+$containerP: calc($grid-gutter-width / 2);
+
+$baseLinkColor: $gray;
+$baseLinkColorHover: $black;
+
+
+
+// Ascending
+// Used to evaluate Sass maps like our grid breakpoints. 
+@mixin assert-ascending($map, $map-name) {
+  $prev-key: null;
+  $prev-num: null;
+  @each $key, $num in $map {
+    @if $prev-num == null {
+      // Do nothing
+    } @else if not comparable($prev-num, $num) {
+      @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    } @else if $prev-num < $num {
+      @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    }
+    $prev-key: $key;
+    $prev-num: $num;
+  }
+}
+
+// Starts at zero
+// Another grid mixin that ensures the min-width of the lowest breakpoint starts at 0.
+@mixin assert-starts-at-zero($map) { 
+  $values: map-values($map);
+  $first-value: nth($values, 1);
+  @if $first-value != 0 {
+    @warn "First breakpoint in `$grid-breakpoints` must start at 0, but starts at #{$first-value}.";
+  }
+} 
+
+@include assert-starts-at-zero($grid-breakpoints);
+
+
+
+

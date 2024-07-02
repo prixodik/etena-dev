@@ -1,0 +1,7 @@
+symbol/
+node_modules/
+bower_components/
+.idea/
+.gulp/
+package-lock.json
+files/

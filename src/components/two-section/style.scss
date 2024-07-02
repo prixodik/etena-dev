@@ -1,0 +1,136 @@
+.two-section{
+	position: relative;
+	z-index: 3;
+	margin-top: -400px;
+	//margin-bottom: -400px;
+
+	&__container{
+		width: 100%;
+		max-width: 1440px;
+		margin: 0 auto;
+		position: relative;
+		z-index: 2;
+		height: 64rem; //1024px;
+	}
+	
+	&__shadow{
+		position: absolute;
+		top: 278px;
+		left: 0;
+		width: 100%;
+		z-index: 6;
+	}
+	&__shadow2{
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100%;
+		z-index: 5;
+		//height: 530px;
+		//width: 1440px;
+	}
+
+	&__mright{
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 5;
+
+		@include media($lg){
+			&--hide-lg{
+				display: none;
+			}
+		}
+
+		@include media($md){
+			right: -5rem;
+		}
+	}
+
+	&__mleft{
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 5;
+
+		@include media($md){
+			left: -5rem;
+		}
+	}
+
+	&__hero{
+		position: absolute;
+		top: 160px;
+		left: 50%;
+		transform: translateX(calc(-50% - 7rem));
+		z-index: 7;
+	}
+
+	&__back{
+		position: absolute;
+		top: 215px;
+		left: 21rem;
+		z-index: 3;
+	}
+
+	&__below{
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		//transform: translateX(-50%);
+		z-index: 1;
+		width: 100%;
+
+		@media (min-width: 1941px){
+			top: 50%;
+			bottom: auto;
+		}
+	}
+
+	&.is-first-anim{
+		animation: firstTwoShowY 3s ease;
+	}
+
+	&.is-first-anim &{
+		&__mleft{
+			animation: firstMLeft 5s ease;
+		}
+		&__mright{
+			animation: firstMRight 5s ease;
+		}
+	}
+}
+
+@keyframes firstTwoShowY {
+	0%{
+		opacity: 1;
+		transform: translateY(100%);
+	}
+	100%{
+		opacity: 1;
+		transform: translateY(0%);
+	}
+}
+
+@keyframes firstMLeft {
+	0%{
+		opacity: 1;
+		transform: translateX(-200px);
+	}
+	100%{
+		opacity: 1;
+		transform: translateX(0%);
+	}
+}
+
+@keyframes firstMRight {
+	0%{
+		opacity: 1;
+		transform: translateX(200px);
+	}
+	100%{
+		opacity: 1;
+		transform: translateX(0%);
+	}
+}

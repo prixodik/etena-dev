@@ -1,0 +1,384 @@
+.first-section{
+	position: relative;
+	z-index: 1;
+	//overflow: hidden;
+	//min-height: 100vh;
+	height: 900px;
+	background: #64DFFF;
+
+	@media (min-width: 1941px) {
+		min-height: 100vh;
+	}
+
+	&__container{
+		width: 100%;
+		max-width: 1440px;
+		margin: 0 auto;
+		position: relative;
+		z-index: 7;
+		height: 100%;
+	}
+
+	&__pixel-1{
+		position: absolute;
+		top: 22rem;
+		left: 12rem;
+		z-index: 5;
+		transition: all 4s ease;
+		animation: opacity 4s ease infinite reverse;
+	}
+	&__pixel-2{
+		position: absolute;
+		top: 22rem;
+		right: 13rem;
+		z-index: 5;
+		transition: all 4s ease;
+		animation: opacity 4s 1s ease infinite reverse;
+	}
+	&__pixel-3{
+		position: absolute;
+		top: 35rem;
+		left: 16rem;
+		z-index: 5;
+		transition: all 4s ease;
+		animation: opacity 4s 2s ease infinite reverse;
+	}
+	&__pixel-4{
+		position: absolute;
+		top: 24rem;
+		left: 25rem;
+		z-index: 5;
+		transition: all 4s ease;
+		animation: opacity 4s 3s ease infinite reverse;
+	}
+	//----------------------
+	&__pixel-5{
+		position: absolute;
+		top: 12rem;
+		left: 22rem;
+		z-index: 5;
+		transition: all 4s ease;
+		animation: opacity 4s .5s ease infinite reverse;
+	}
+	&__pixel-6{
+		position: absolute;
+		top: 32rem;
+		right: 23rem;
+		z-index: 5;
+		transition: all 4s ease;
+		animation: opacity 4s 3s ease infinite reverse;
+	}
+	&__pixel-7{
+		position: absolute;
+		top: 25rem;
+		left: 46rem;
+		z-index: 5;
+		transition: all 4s ease;
+		animation: opacity 4s 1s ease infinite reverse;
+	}
+	&__pixel-8{
+		position: absolute;
+		top: 14rem;
+		left: 35rem;
+		z-index: 5;
+		transition: all 4s ease;
+		animation: opacity 4s 2s ease infinite reverse;
+	}
+
+
+
+	&__img-1{
+		position: absolute;
+		top: 450px;
+		left: 7rem;
+		z-index: 2;
+		animation: img1 10s linear infinite reverse;
+
+		@include media($lg){
+			left: 3rem;
+		}
+	}
+	&__img-2{
+		position: absolute;
+		top: 345px;
+		right: 15rem;
+		z-index: 2;
+		animation: img2 10s 1s linear infinite reverse;
+
+		@include media($lg){
+			right: 10rem;
+		}
+		@include media(1200px){
+			right: 5rem;
+		}
+	}
+	&__img-3{
+		position: absolute;
+		top: 14rem;
+		left: 22rem;
+		z-index: 2;
+		animation: img3 12s linear infinite reverse;
+
+		@include media($lg){
+			left: 13rem;
+		}
+	}
+
+	&__shadow-1{
+		position: absolute;
+		top: 10rem;
+		left: 50%;
+		transform: translateX(calc(-50% - 2rem));
+		width: 28.5rem;
+		z-index: 0;
+	}
+	&__shadow-2{
+		position: absolute;
+		top: 520px;
+		left: 50%;
+		transform: translateX(calc(-50% - 2rem));
+		width: 53.5rem;
+		z-index: 0;
+	}
+	&__shadow-3{
+		position: absolute;
+		top: 480px;
+		right: 11rem;
+		//width: 53.5rem;
+		z-index: 0;
+	}
+	&__shadow-4{
+		position: absolute;
+		top: 95px;
+		right: 1.5rem;
+		//width: 53.5rem;
+		z-index: 0;
+	}
+
+	&__paradise{
+		position: absolute;
+		top: 8rem;
+		left: 50%;
+		transform: translateX(calc(-50% - 2rem));
+		z-index: 1;
+		animation: paradise 15s .5s linear infinite reverse;
+
+		@include media($lg){
+			width: 58rem;
+		}
+	}
+
+	&__logo{
+		position: absolute;
+		top: 3rem;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 0;
+		animation: logo 10s linear infinite reverse;
+
+		@include media($lg){
+			width: 56.6rem;
+		}
+	}
+
+	&__cloud-1{
+		position: absolute;
+		top: 11rem;
+		right: 0;
+		z-index: -1;
+	}
+	&__cloud-2{
+		position: absolute;
+		top: -3rem;
+		right: 0;
+		z-index: -17;
+	}
+	&__cloud-3{
+		position: absolute;
+		top: 4rem;
+		left: 0;
+		z-index: -1;
+	}
+
+	&.is-first-anim &{
+		
+		&__img-1{
+			animation: firstShowY 2s ease;
+		}
+		&__img-2{
+			animation: firstShowY 3s ease;
+		}
+		&__img-3{
+			animation: firstShowY 2.5s ease;
+		}
+		&__shadows{
+			animation: opacity 2s ease;
+		}
+
+		&__container{
+			animation: firstShowY 5s ease;
+		}
+
+		&__cloud-1{
+			animation: firstCloud1 4s ease;
+		}
+		&__cloud-2{
+			animation: firstCloud2 4s ease;
+		}
+		&__cloud-3{
+			animation: firstCloud3 4s ease;
+		}
+
+		&__logo{
+			animation: firstLogo 3s ease;
+		}
+
+		&__paradise{
+			animation: firstParadise 3s ease;
+		}
+	}
+}
+
+@keyframes firstParadise {
+	0%{
+		opacity: 0;
+		transform: translate(calc(-50% - 2rem), 100%) scale(0.8);
+	}
+	30%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 1;
+		transform: translate(calc(-50% - 2rem), 0%) scale(1);
+	}
+}
+
+@keyframes firstLogo {
+	0%{
+		opacity: 0;
+		transform: translate(-50%, 500px) scale(0.9);
+	}
+	30%{
+		opacity: 1;
+		//transform: translate(-50%, 400px) scale(0.9);
+	}
+	100%{
+		opacity: 1;
+		transform: translate(-50%, 0%) scale(1);
+	}
+}
+
+@keyframes firstShowY {
+	0%{
+		opacity: 0;
+		transform: translateY(300px);
+	}
+	100%{
+		opacity: 1;
+		transform: translateY(0%);
+	}
+}
+
+@keyframes firstCloud1 {
+	0%{
+		opacity: 0;
+		transform: translate(300px, 100%);
+	}
+	100%{
+		opacity: 1;
+		transform: translate(0,0%);
+	}
+}
+
+@keyframes firstCloud2 {
+	0%{
+		opacity: 0;
+		transform: translate(330px, 100%);
+	}
+	100%{
+		opacity: 1;
+		transform: translate(0,0%);
+	}
+}
+
+@keyframes firstCloud3 {
+	0%{
+		opacity: 0;
+		transform: translate(-330px, 100%);
+	}
+	100%{
+		opacity: 1;
+		transform: translate(0,0);
+	}
+}
+
+@keyframes opacity {
+	0%{
+		opacity: 1;
+	}
+	50%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+
+@keyframes logo {
+	0%{
+		transform: translate(-50%, 0);
+	}
+	50%{
+		transform: translate(-50%, -30px);
+	}
+	100%{
+		transform: translate(-50%, 0);
+	}
+}
+@keyframes paradise {
+	0%{
+		transform: translate(calc(-50% - 2rem), 0);
+	}
+	50%{
+		transform: translate(calc(-50% - 2rem), 30px);
+	}
+	100%{
+		transform: translate(calc(-50% - 2rem), 0);
+	}
+}
+
+@keyframes img1 {
+	0%{
+		transform: translateY(0);
+	}
+	50%{
+		transform: translateY(-50px);
+	}
+	100%{
+		transform: translateY(0);
+	}
+}
+
+@keyframes img2{
+	0%{
+		transform: translateY(0);
+	}
+	50%{
+		transform: translateY(50px);
+	}
+	100%{
+		transform: translateY(0);
+	}
+}
+
+@keyframes img3{
+	0%{
+		transform: translateY(0);
+	}
+	50%{
+		transform: translate(-50px, 50px);
+	}
+	100%{
+		transform: translateY(0);
+	}
+}

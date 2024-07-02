@@ -1,0 +1,118 @@
+.btn {
+  border: 2px solid $pink-2;
+  background: $pink-2;
+  font: bold 20px/34px $baseFF;
+  padding: 10px 40px;
+  color: $black;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border-radius: 12px;
+  @include time();
+
+  &:hover {
+    border-color: #EF95AE;  
+    background: linear-gradient(180deg, #F5B8C9 0%, #F3ADC0 50%, #EF95AE 90%, #EF95AE 100%);
+  }
+  &:disabled,&[disabled], &:disabled:hover, &:disabled:focus {
+
+  }
+  &--border, &.btn-border {
+    background: $white; color: $pink-dark;
+    &:hover {
+      border-color: $pink-2;
+      background: $pink-2;
+      color: $white;
+
+      svg{ fill: $white; 
+        &.icon_like, &.icon_add-user, &.icon_add-comment, &.icon_price, &.icon_mail-open{ fill: none; stroke: $white;  }
+      }
+    }
+
+    &.btn--blue{ border-color: $blue; color: $blue; 
+      svg{ fill: $blue; 
+        &.icon_like, &.icon_add-user, &.icon_add-comment, &.icon_price, &.icon_mail-open{ fill: none; stroke: $blue;  } 
+      } 
+
+      &:hover {
+        border-color: $blue;
+        background: $blue; 
+        color: $white;
+
+        svg{ fill: $white;  
+          &.icon_like, &.icon_add-user, &.icon_add-comment, &.icon_price, &.icon_mail-open{ fill: none; stroke: $white;  }
+        }
+      }
+    }
+  }
+
+  &__rotate{ transform: rotate(180deg);  }
+
+  &--search{ background: $brown-light; border-color: $brown-light; border-radius: 12px; box-shadow: 0 2px 12px rgba(#631740,.75); font: bold 22px/30px $baseFF; color: $black; padding: 16px 50px;   
+    &.btn--white{ background: linear-gradient(180deg, $white 0%, #DFE9F1 70%, #C3D8DF 100%); border: 0; box-shadow: none;  
+      &:hover{ background: linear-gradient(180deg, $white 0%, $white 70%, #E7F2F6 100%); } 
+    } 
+  }  
+
+
+
+  &--gray{ background: #f0f0f0; border-color: #f0f0f0; box-shadow: 0 2px 12px rgba(#631740,.75); }
+
+  &--white-bg-shadow{ background: rgba($white,.3);  border-color: rgba($white,.1);  font: bold 22px/32px $baseFF; color: $pink-dark; padding: 30px 20px; box-shadow: 0 15px 30px rgba(#631740,.1); border-radius: 12px; width: 100%; max-width: 325px; text-transform: none;   }  
+
+  &--block{ width: 100%; padding-left: 10px; padding-right: 10px; max-width: none; }
+   
+
+  //&--block{ width: 100%; padding-left: 20px; padding-right: 20px;  }
+
+  &--icon{ @include flex(0,center,center,nowrap); display: inline-flex; padding-left: 30px; padding-right: 50px; 
+    svg{ font-size: 26px; fill: $pink-dark; margin-right: 15px; flex: 0 0 auto; @include time(); 
+      &.icon_like, &.icon_add-user,  &.icon_add-comment, &.icon_price, &.icon_mail-open{ fill: none; stroke: $pink-dark; stroke-width: 1.5px; }   
+    }
+    span{ flex: 1 1 auto; text-align: center;  }
+    span + svg{ margin: 0 0 0 40px;  }
+
+
+    &.btn--md{ padding: 10px 35px 10px 25px; font: 16px/24px $baseFF;   
+      svg{ margin-right: 10px; }
+    } 
+  }
+  &--icon-right{ @include flex(0,center,center,nowrap); display: inline-flex; padding-left: 50px; padding-right: 30px;
+    svg{ font-size: 26px; fill: $pink-dark; margin-left: 15px; flex: 0 0 auto; } 
+    span{ flex: 1 1 auto; text-align: center;  } 
+  }
+
+  /* &--tab{ padding: 20px 15px 15px; border: 1px #f7f7f7 solid; border-radius: 4px; background: #f7f7f7; font: 600 12px/1 $baseFF; text-transform: uppercase; display: block; width: 100%; text-align: center; 
+      
+      span{ font: 13px/1 $baseFF; text-transform: none; display: block; margin-top: 5px; } 
+
+      &:hover, &.is-active{ background: $yellow-light; border-color: $yellow-light;   }
+  } */
+
+  &--sm{ padding: 3px 20px; font-size: 16px; border-radius: 8px; }   
+
+  @include media($xlg){ font: bold 18px/30px $baseFF; 
+    &--search{ font: bold 20px/30px $baseFF;   } 
+
+    &--white-bg-shadow{ font: bold 20px/30px $baseFF; padding: 25px 20px;  }
+  }
+
+  @include media($md){ 
+    /* &--plus{ width: 32px; height: 32px; 
+      svg{ width: 10px; height: 10px; }
+    } */
+
+    &--search{ font: bold 20px/26px $baseFF; } 
+
+    &--white-bg-shadow{ font: bold 18px/26px $baseFF; padding: 20px 20px;  } 
+  }
+
+  @include media($xs){ padding: 12px 20px; text-align: center; width: 100%; font-size: 16px; 
+
+     &--search{ font: bold 22px/26px $baseFF; } 
+     
+  }
+}

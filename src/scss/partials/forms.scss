@@ -1,0 +1,90 @@
+.form-group {
+  // margin: 0 0 15px;
+  position: relative;
+  // padding: 20px 0 0;
+  .inp-lbl {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px 15px 15px;
+    pointer-events: none; 
+
+  }
+  .form-control:not(.form-control--default){ padding: 20px 15px 15px; font: 500 15px/1 $baseFF; color: $black;  } 
+  &.is-error {
+    .error-message {
+      display: block;
+    }
+  }
+  &.is-focus,
+  &.is-completed {
+    .inp-lbl {
+      font-size: 12px;
+      //bottom: 40px;  
+      padding: 0;
+    }
+  }
+
+  &--center{ 
+    .inp-lbl{ text-align: center; width: 100%; padding-left: 0; padding-right: 0;  }
+  }
+}
+
+.error-message { 
+  display: none;
+  color: $red;
+}
+.inp-lbl {
+  color: $gray;
+  transition: all 0.3s ease;
+}
+.form-control {
+  border: 1px solid #C5CAD1; 
+  padding: 10px 25px;
+  font: 16px/34px $family; 
+  background: $white;
+  color: $black;
+  display: block;
+  width: 100%;  
+  border-radius: 0; 
+
+  &:focus{ border: 2px #63B1C9 solid; padding: 9px 24px; outline: none; border-radius: 0;  }
+
+  &.is-error {
+    border-left-color: $red!important;
+  }
+
+  @include placeholder {
+    color: #adadad;
+    opacity: 1;
+  }
+
+  &--white{ border-color: $white; color: $white;  }
+
+  &--center{ text-align: center;  padding-left: 0!important; padding-right: 0!important;   } 
+
+  /* &--default{ border: 2px $white solid; background: $white; padding: 10px 15px; font: 16px/30px $baseFF; border-radius: 3px; 
+    &:focus{ box-shadow: 0 3px 7px rgba($black,0.1);  }
+
+    &.is-error {
+      border-color: $red!important; 
+    }
+  } */
+
+  &--search{ font: 16px/30px $baseFF; border: 1px solid #707070; background: rgba($black,.3); padding: 10px 20px; color: $white;  
+    &:focus{ color: $brown-light; }
+
+    &.form-control--white{ color: $white; background: rgba(#182435,.06); border-color: rgba(#707070,.06);  
+      @include placeholder {
+      color: rgba($white,.4); 
+      opacity: 1;
+    }
+    }
+  }    
+
+  
+}
+
+textarea.form-control{ background: $white; border: 1px #C5CAD1 solid; border-radius: 0; height: 170px; resize: none;  
+  &:focus{ border: 2px #63B1C9 solid; padding: 9px 24px; }
+} 

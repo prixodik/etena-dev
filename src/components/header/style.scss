@@ -1,0 +1,41 @@
+.header{
+	padding: 16px 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+	
+	&__row{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__logo{
+		position: relative;
+		z-index: 1;
+
+		&-orange{
+			position: absolute;
+			top: 0;
+			left: 0;
+			-webkit-clip-path: circle(0px at 100% 50%);
+			clip-path: circle(0px at 100% 50%);
+
+			-webkit-transition: -webkit-clip-path 1s cubic-bezier(0.52, 0.01, 0.16, 1);
+			transition: clip-path 1s cubic-bezier(0.52, 0.01, 0.16, 1);
+		}
+
+		img{
+			display: block;
+		}
+
+		&:hover &{
+			&-orange{
+				-webkit-clip-path: circle(120px at 100% 50%);
+				clip-path: circle(120px at 100% 50%);
+			}
+		}
+	}
+}

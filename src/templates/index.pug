@@ -1,0 +1,18 @@
+extends extends/base.pug
+append vars
+  - var pageUrl = 'index.html';
+  - var pageTitle = 'Etena';
+  - var classBody = 'homepage is-overflow';
+block styles
+  link(href="css/index.css", rel="stylesheet" )
+block content
+  include ../components/loader-section/template
+  +loaderSection()
+
+  include ../components/first-section/template
+  +firstSection()
+
+  include ../components/two-section/template
+  +twoSection()
+  
+block scripts
