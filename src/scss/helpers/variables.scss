@@ -37,6 +37,8 @@ $brown-light: #38231E;
 $brown: #32201B;
 $brown-dark: #271815;
 
+$milk: #F6F0EA;
+
 $orange: #FF4B20;
 $gradient-to-orange: linear-gradient(90deg, rgba(#FF7E24,0) 0%, #FF4A32 100%);
 
@@ -78,14 +80,14 @@ $grid-breakpoints: (
 // Grids
 $grid-columns:              12;
 $grid-gutter-width:         30px;
-$baseFontF: 'Solomon Sans', 'Arial', sans-serif;
-$headlineFontF: 'Solomon Sans', 'Arial', sans-serif;
+$baseFontF: "Inconsolata", monospace;
+$headlineFontF: 'Wood Dragon', sans-serif;
 
 $titleFF: $headlineFontF;
 
-$baseFS: 16px !default;
-$baseLH: 1.2; 
-$baseFW: 500;
+$baseFS: 18px !default;
+$baseLH: 1.5; 
+$baseFW: 400;
 $baseFSt: normal;
 $baseFF: $baseFontF;
 $baseFClr: $black;

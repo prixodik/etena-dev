@@ -1,6 +1,86 @@
 .four-section{
 	position: relative;
-	z-index: 1;
-	height: 100vh;
-	background: $brown;
+	z-index: 5;
+	padding-top: 100px;
+	background: url('../images/four-section/bg.png') 0 0/100% auto no-repeat #38231e;
+	//height: 100vh;
+	//background: $brown;
+
+	&__container{
+		max-width: 1280px;
+		margin: 0 auto;
+		height: 100%;
+		position: relative;
+		z-index: 2;
+	}
+
+	&__story{
+		font: 18rem/1 $titleFF;
+		color: $brown;
+		position: absolute;
+		top: -190px;
+		left: -15px;
+		z-index: -1;
+		pointer-events: none;
+		transition: all 4s linear;
+	}
+
+	&__row{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__info{
+		flex: 1 1 auto;
+		max-width: 550px;
+		position: relative;
+	}
+
+	&__img{
+		position: relative;
+		z-index: 1;
+		flex: 0 0 70%;
+		max-width: 750px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		//padding-bottom: 75%;
+
+		img{
+			position: relative;
+			top: -150px;
+			//left: 50%;
+			//transform: translate(-50%, 0%);
+			max-width: none;
+		}
+	}
+
+	&__title{
+		margin-bottom: 48px;
+		color: $orange;
+		text-indent: 120px;
+	}
+
+	&__text{
+		color: $milk;
+		max-width: 400px;
+
+		p{
+			margin-bottom: 32px;
+
+			&:last-child{
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	&__subtitle{
+		p{
+			margin-bottom: 32px;
+
+			&:last-child{
+				margin-bottom: 0;
+			}
+		}
+	}
 }

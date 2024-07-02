@@ -155,7 +155,7 @@ var uikit = {
 
 
 
-		var sceneThreeSun = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: (threeHeight * 1), offset: 100, triggerHook: 0.5})
+		var sceneThreeSun = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: (threeHeight * 0.5), offset: 0, triggerHook: 0.3})
 
 			//.setPin(".js-three-section")
 
@@ -275,7 +275,7 @@ $(document).ready(function() {
 
 		//Принудительная прокрутка вверх
 
-		$('html, body').animate({scrollTop: 0}, 'fast');
+		//!$('html, body').animate({scrollTop: 0}, 'fast');
 
         // Все элементы страницы полностью загружены
 

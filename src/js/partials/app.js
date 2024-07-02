@@ -52,7 +52,7 @@ var uikit = {
 			.addIndicators({name: "three-city"})
 			.addTo(this.controller);
 
-		var sceneThreeSun = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: (threeHeight * 1), offset: 100, triggerHook: 0.5})
+		var sceneThreeSun = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: (threeHeight * 0.5), offset: 0, triggerHook: 0.3})
 			//.setPin(".js-three-section")
 			.setTween(tweenSun)
 			.addIndicators({name: "three-sun"})
@@ -112,7 +112,7 @@ $(document).ready(function() {
 
     $(window).on('load', function() {
 		//Принудительная прокрутка вверх
-		$('html, body').animate({scrollTop: 0}, 'fast');
+		//!$('html, body').animate({scrollTop: 0}, 'fast');
         // Все элементы страницы полностью загружены
 
         $('.js-loader').fadeOut(400);

@@ -3,6 +3,7 @@
 	position: relative;
 	z-index: 2;
 	height: calc(1250px * 1);
+	padding-bottom: 300px;
 	//overflow: hidden;
 
 	&__bg{
@@ -22,9 +23,10 @@
 			top: 300px;
 			z-index: 3;
 			height: 100%;
-			object-fit: cover;
+			object-fit: contain;
 			max-width: none;
 			object-position: 50% 0%;
+			background: url('../images/three-section/bg.png') 50% 0/auto 100% repeat-x;
 		}
 		&-sun{
 			display: block;

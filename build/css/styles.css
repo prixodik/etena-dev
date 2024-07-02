@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap");
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -208,101 +209,10 @@ th {
 }
 
 @font-face {
-  font-family: "Solomon Sans";
-  src: url("../fonts/Solomon-Sans-Black.woff2") format("woff2"), url("../fonts/Solomon-Sans-Black.woff") format("woff");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Solomon Sans";
-  src: url("../fonts/Solomon-Sans-Black-Italic.woff2") format("woff2"), url("../fonts/Solomon-Sans-Black-Italic.woff") format("woff");
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Solomon Sans";
-  src: url("../fonts/Solomon-Sans-Bold-Italic.woff2") format("woff2"), url("../fonts/Solomon-Sans-Bold-Italic.woff") format("woff");
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Solomon Sans Book";
-  src: url("../fonts/Solomon-Sans-Book-Italic.woff2") format("woff2"), url("../fonts/Solomon-Sans-Book-Italic.woff") format("woff");
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Solomon Sans";
-  src: url("../fonts/Solomon-Sans-Bold.woff2") format("woff2"), url("../fonts/Solomon-Sans-Bold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Solomon Sans";
-  src: url("../fonts/Solomon-Sans-Normal-Italic.woff2") format("woff2"), url("../fonts/Solomon-Sans-Normal-Italic.woff") format("woff");
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Solomon Sans";
-  src: url("../fonts/Solomon-Sans-Light-Italic.woff2") format("woff2"), url("../fonts/Solomon-Sans-Light-Italic.woff") format("woff");
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Solomon Sans";
-  src: url("../fonts/Solomon-Sans-Light.woff2") format("woff2"), url("../fonts/Solomon-Sans-Light.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Solomon Sans Book";
-  src: url("../fonts/Solomon-Sans-Book.woff2") format("woff2"), url("../fonts/Solomon-Sans-Book.woff") format("woff");
+  font-family: "Wood Dragon";
+  src: url("../fonts/WoodDragon.woff2") format("woff2"), url("../fonts/WoodDragon.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Solomon Sans";
-  src: url("../fonts/Solomon-Sans-SemiBold.woff2") format("woff2"), url("../fonts/Solomon-Sans-SemiBold.woff") format("woff");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Solomon Sans";
-  src: url("../fonts/Solomon-Sans-Thin.woff2") format("woff2"), url("../fonts/Solomon-Sans-Thin.woff") format("woff");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Solomon Sans";
-  src: url("../fonts/Solomon-Sans-Normal.woff2") format("woff2"), url("../fonts/Solomon-Sans-Normal.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Solomon Sans";
-  src: url("../fonts/Solomon-Sans-SemiBold-Italic.woff2") format("woff2"), url("../fonts/Solomon-Sans-SemiBold-Italic.woff") format("woff");
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Solomon Sans";
-  src: url("../fonts/Solomon-Sans-Thin-Italic.woff2") format("woff2"), url("../fonts/Solomon-Sans-Thin-Italic.woff") format("woff");
-  font-weight: 100;
-  font-style: italic;
   font-display: swap;
 }
 /* Ссылки
@@ -340,7 +250,7 @@ a[href^="tel:"] {
 .btn {
   border: 2px solid #EF95AE;
   background: #EF95AE;
-  font: bold 20px/34px "Solomon Sans", "Arial", sans-serif;
+  font: bold 20px/34px "Inconsolata", monospace;
   padding: 10px 40px;
   color: #000;
   text-align: center;
@@ -412,7 +322,7 @@ a[href^="tel:"] {
   border-color: #38231E;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(99, 23, 64, 0.75);
-  font: bold 22px/30px "Solomon Sans", "Arial", sans-serif;
+  font: bold 22px/30px "Inconsolata", monospace;
   color: #000;
   padding: 16px 50px;
 }
@@ -432,7 +342,7 @@ a[href^="tel:"] {
 .btn--white-bg-shadow {
   background: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.1);
-  font: bold 22px/32px "Solomon Sans", "Arial", sans-serif;
+  font: bold 22px/32px "Inconsolata", monospace;
   color: #841246;
   padding: 30px 20px;
   box-shadow: 0 15px 30px rgba(99, 23, 64, 0.1);
@@ -481,7 +391,7 @@ a[href^="tel:"] {
 }
 .btn--icon.btn--md {
   padding: 10px 35px 10px 25px;
-  font: 16px/24px "Solomon Sans", "Arial", sans-serif;
+  font: 16px/24px "Inconsolata", monospace;
 }
 .btn--icon.btn--md svg {
   margin-right: 10px;
@@ -513,13 +423,13 @@ a[href^="tel:"] {
 }
 @media (max-width: 1700px) {
   .btn {
-    font: bold 18px/30px "Solomon Sans", "Arial", sans-serif;
+    font: bold 18px/30px "Inconsolata", monospace;
   }
   .btn--search {
-    font: bold 20px/30px "Solomon Sans", "Arial", sans-serif;
+    font: bold 20px/30px "Inconsolata", monospace;
   }
   .btn--white-bg-shadow {
-    font: bold 20px/30px "Solomon Sans", "Arial", sans-serif;
+    font: bold 20px/30px "Inconsolata", monospace;
     padding: 25px 20px;
   }
 }
@@ -530,10 +440,10 @@ a[href^="tel:"] {
     } */
   }
   .btn--search {
-    font: bold 20px/26px "Solomon Sans", "Arial", sans-serif;
+    font: bold 20px/26px "Inconsolata", monospace;
   }
   .btn--white-bg-shadow {
-    font: bold 18px/26px "Solomon Sans", "Arial", sans-serif;
+    font: bold 18px/26px "Inconsolata", monospace;
     padding: 20px 20px;
   }
 }
@@ -545,7 +455,7 @@ a[href^="tel:"] {
     font-size: 16px;
   }
   .btn--search {
-    font: bold 22px/26px "Solomon Sans", "Arial", sans-serif;
+    font: bold 22px/26px "Inconsolata", monospace;
   }
 }
 
@@ -592,11 +502,11 @@ html {
   }
 }
 body {
-  font-family: "Solomon Sans", "Arial", sans-serif;
+  font-family: "Inconsolata", monospace;
   color: #000;
-  font-size: 16px;
-  line-height: 1.2;
-  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 400;
   font-style: normal;
   min-height: 100%;
   max-width: 100vw;
@@ -616,12 +526,12 @@ body.is-overflow {
 }
 @media (max-width: 1700px) {
   body {
-    font: 15px/25px "Solomon Sans", "Arial", sans-serif;
+    font: 15px/25px "Inconsolata", monospace;
   }
 }
 @media (max-width: 640px) {
   body {
-    font: 14px/24px "Solomon Sans", "Arial", sans-serif;
+    font: 14px/24px "Inconsolata", monospace;
   }
 }
 
@@ -699,57 +609,56 @@ a:focus, a:hover {
 
 /* TITLES */
 h1, .title-h1 {
-  font: bold 36px/40px "Solomon Sans", "Arial", sans-serif;
-  color: #000;
-  margin: 0 0 25px 0;
+  font: 40px/1.3 "Wood Dragon", sans-serif;
+  margin: 0 0 24px 0;
 }
 @media (max-width: 640px) {
   h1, .title-h1 {
-    font: bold 30px/1.3 "Solomon Sans", "Arial", sans-serif;
+    font: 24px/1.3 "Wood Dragon", sans-serif;
   }
 }
 
 h2, .title-h2 {
-  font: bold 30px/1.3 "Solomon Sans", "Arial", sans-serif;
+  font: 40px/1.3 "Wood Dragon", sans-serif;
   color: #000;
-  margin: 0 0 25px 0;
+  margin: 0 0 24px 0;
 }
 @media (max-width: 640px) {
   h2, .title-h2 {
-    font: bold 26px/1.3 "Solomon Sans", "Arial", sans-serif;
+    font: 24px/1.3 "Wood Dragon", sans-serif;
   }
 }
 
 h3, .title-h3 {
-  font: bold 22px/1.3 "Solomon Sans", "Arial", sans-serif;
+  font: bold 22px/1.3 "Wood Dragon", sans-serif;
   color: #000;
   margin: 0 0 20px 0;
 }
 @media (max-width: 640px) {
   h3, .title-h3 {
-    font: bold 20px "Solomon Sans", "Arial", sans-serif;
+    font: bold 20px "Wood Dragon", sans-serif;
   }
 }
 
 h4, .title-h4 {
-  font: bold 20px/1.6 "Solomon Sans", "Arial", sans-serif;
+  font: bold 20px/1.6 "Wood Dragon", sans-serif;
   color: #000;
   margin: 0 0 15px 0;
 }
 @media (max-width: 640px) {
   h4, .title-h4 {
-    font: bold 18px "Solomon Sans", "Arial", sans-serif;
+    font: bold 18px "Wood Dragon", sans-serif;
   }
 }
 
 h5, .title-h5 {
-  font: bold 18px "Solomon Sans", "Arial", sans-serif;
+  font: bold 18px "Wood Dragon", sans-serif;
   color: #000;
   margin: 0 0 15px 0;
 }
 @media (max-width: 640px) {
   h5, .title-h5 {
-    font: bold 16px "Solomon Sans", "Arial", sans-serif;
+    font: bold 16px "Wood Dragon", sans-serif;
   }
 }
 
@@ -841,7 +750,7 @@ h5, .title-h5 {
 }
 .header {
   padding: 16px 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -1413,6 +1322,7 @@ h5, .title-h5 {
   position: relative;
   z-index: 2;
   height: 1250px;
+  padding-bottom: 300px;
 }
 .three-section__bg {
   position: absolute;
@@ -1431,9 +1341,10 @@ h5, .title-h5 {
   top: 300px;
   z-index: 3;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   max-width: none;
   object-position: 50% 0%;
+  background: url("../images/three-section/bg.png") 50% 0/auto 100% repeat-x;
 }
 .three-section__bg-sun {
   display: block;
@@ -1600,7 +1511,68 @@ h5, .title-h5 {
 
 .four-section {
   position: relative;
+  z-index: 5;
+  padding-top: 100px;
+  background: url("../images/four-section/bg.png") 0 0/100% auto no-repeat #38231e;
+}
+.four-section__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+.four-section__story {
+  font: 18rem/1 "Wood Dragon", sans-serif;
+  color: #32201B;
+  position: absolute;
+  top: -190px;
+  left: -15px;
+  z-index: -1;
+  pointer-events: none;
+  transition: all 4s linear;
+}
+.four-section__row {
+  display: flex;
+  justify-content: space-between;
+}
+.four-section__info {
+  flex: 1 1 auto;
+  max-width: 550px;
+  position: relative;
+}
+.four-section__img {
+  position: relative;
   z-index: 1;
-  height: 100vh;
-  background: #32201B;
+  flex: 0 0 70%;
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.four-section__img img {
+  position: relative;
+  top: -150px;
+  max-width: none;
+}
+.four-section__title {
+  margin-bottom: 48px;
+  color: #FF4B20;
+  text-indent: 120px;
+}
+.four-section__text {
+  color: #F6F0EA;
+  max-width: 400px;
+}
+.four-section__text p {
+  margin-bottom: 32px;
+}
+.four-section__text p:last-child {
+  margin-bottom: 0;
+}
+.four-section__subtitle p {
+  margin-bottom: 32px;
+}
+.four-section__subtitle p:last-child {
+  margin-bottom: 0;
 }
