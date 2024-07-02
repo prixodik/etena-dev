@@ -42,9 +42,9 @@ var uikit = {
 		var tweenHeroCenter = new TimelineMax()
 			.to(heroCenter, 1, {top: '400px'});
 		var tweenHeroLeft = new TimelineMax()
-			.to(heroLeft, 1, {transform: 'translateY(0)'});
+			.to(heroLeft, 1, {transform: 'translateX(0)'});
 		var tweenHeroRight = new TimelineMax()
-			.to(heroRight, 1, {transform: 'translateY(0)'});
+			.to(heroRight, 1, {transform: 'translateX(0)'});
 
 		var sceneThreeCity = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: (threeHeight * 1), offset: 0, triggerHook: 0.5})
 			//.setPin(".three-section__container")

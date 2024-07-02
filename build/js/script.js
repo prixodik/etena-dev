@@ -135,11 +135,11 @@ var uikit = {
 
 		var tweenHeroLeft = new TimelineMax()
 
-			.to(heroLeft, 1, {transform: 'translateY(0)'});
+			.to(heroLeft, 1, {transform: 'translateX(0)'});
 
 		var tweenHeroRight = new TimelineMax()
 
-			.to(heroRight, 1, {transform: 'translateY(0)'});
+			.to(heroRight, 1, {transform: 'translateX(0)'});
 
 
 

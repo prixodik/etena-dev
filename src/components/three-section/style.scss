@@ -144,7 +144,7 @@
 			top: 472px;
 			left: 135px;
 			z-index: 4;
-			transform: translateY(200px);
+			transform: translateX(-200px);
 
 			&-wrap{
 				position: relative;
@@ -182,7 +182,7 @@
 			top: 472px;
 			right: 170px;
 			z-index: 4;
-			transform: translateY(200px);
+			transform: translateX(200px);
 
 			&-wrap{
 				position: relative;
