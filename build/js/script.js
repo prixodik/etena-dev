@@ -143,13 +143,23 @@ var uikit = {
 
 
 
+		/* var sceneThree = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: (threeHeight * 2), offset: 0, triggerHook: 0})
+
+			.setPin(".js-three-section")
+
+			.addIndicators({name: "three"})
+
+			.addTo(this.controller); */
+
+
+
 		var sceneThreeCity = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: (threeHeight * 1), offset: 0, triggerHook: 0.5})
 
 			//.setPin(".three-section__container")
 
 			.setTween(tweenCity)
 
-			.addIndicators({name: "three-city"})
+			//.addIndicators({name: "three-city"})
 
 			.addTo(this.controller);
 
@@ -161,7 +171,7 @@ var uikit = {
 
 			.setTween(tweenSun)
 
-			.addIndicators({name: "three-sun"})
+			//.addIndicators({name: "three-sun"})
 
 			.addTo(this.controller);
 
@@ -173,7 +183,7 @@ var uikit = {
 
 			.setTween(tweenHeroCenter)
 
-			.addIndicators({name: "three-hero-center"})
+			//.addIndicators({name: "three-hero-center"})
 
 			.addTo(this.controller);
 
@@ -185,7 +195,7 @@ var uikit = {
 
 			.setTween(tweenHeroLeft)
 
-			.addIndicators({name: "three-hero-left"})
+			//.addIndicators({name: "three-hero-left"})
 
 			.addTo(this.controller);
 
@@ -197,7 +207,363 @@ var uikit = {
 
 			.setTween(tweenHeroRight)
 
-			.addIndicators({name: "three-hero-right"})
+			//.addIndicators({name: "three-hero-right"})
+
+			.addTo(this.controller);
+
+	},
+
+
+
+	animFour: function () {
+
+		var fourHeight = 5000;//this.wh(); //1250;
+
+		var story = document.getElementsByClassName('js-four-story');
+
+		var img1 = document.getElementsByClassName('js-four-img-1');
+
+		var cloud1 = document.getElementsByClassName('js-four-cloud-1');
+
+		var cloud2 = document.getElementsByClassName('js-four-cloud-2');
+
+		var img2 = document.getElementsByClassName('js-four-img-2');
+
+		var title = document.getElementsByClassName('js-four-title');
+
+		var text1 = document.getElementsByClassName('js-four-text-1');
+
+		var text2 = document.getElementsByClassName('js-four-text-2');
+
+		//var subtitle = document.getElementsByClassName('js-four-subtitle');
+
+		var contain1 = document.getElementsByClassName('js-four-contain-1');
+
+		var contain2 = document.getElementsByClassName('js-four-contain-2');
+
+		
+
+		$('.js-four-subtitle p').each(function(){
+
+			var str = $(this).text();
+
+			var newStr = str.replace(/([^\x00-\x80]|\w|\.|,)/g, "<span class='letter'>$&</span>");
+
+			$(this).html(newStr);
+
+		});
+
+
+
+		var tweenStory = new TimelineMax()
+
+			.to(story, 1, {opacity: '1', transform: 'translateY(0%) scale(1)'});
+
+			
+
+		var tweenCloud1 = new TimelineMax()
+
+			.to(cloud1, 1, {opacity: '1', transform: 'translate3d(0,0,0) scale(1)'});
+
+		var tweenCloud1Move = new TimelineMax()
+
+			.to(cloud1, 1, {opacity: '1', transform: 'translate3d(10%,20%,0) scale(1)'});
+
+		var tweenCloud1Out = new TimelineMax()
+
+			.to(cloud1, 1, {opacity: '0', transform: 'translate3d(10%,-100%,0) scale(1)'});
+
+
+
+		var tweenCloud2 = new TimelineMax()
+
+			.to(cloud2, 1, {opacity: '1', transform: 'translate(0,0) scale(1)'});
+
+		var tweenCloud2Move = new TimelineMax()
+
+			.to(cloud2, 1, {opacity: '1', transform: 'translate3d(-10%,-20%,0) scale(1)'});
+
+		var tweenCloud2Out = new TimelineMax()
+
+			.to(cloud2, 1, {opacity: '0', transform: 'translate3d(0,0,0) scale(0.8)'});
+
+
+
+		var tweenImg1 = new TimelineMax()
+
+			.to(img1, 1, {opacity: '1', transform: 'translateY(0%) scale(1)'});
+
+		var tweenImg1Out = new TimelineMax()
+
+			.to(img1, 1, {opacity: '0', transform: 'translateY(-100%) scale(0.8)'});
+
+		var tweenImg2 = new TimelineMax()
+
+			.to(img2, 1, {opacity: '1', transform: 'translateY(0%) scale(1)'});
+
+		var tweenImg2Out = new TimelineMax()
+
+			.to(img2, 1, {opacity: '0', transform: 'translateY(-100%) scale(0.8)'});
+
+		var tweenTitle = new TimelineMax()
+
+			.to(title, 1, {opacity: '1', transform: 'translateY(0%) scale(1)'});
+
+		var tweenTitleOut = new TimelineMax()
+
+			.to(title, 1, {opacity: '0', transform: 'translateY(-100%) scale(1)'});
+
+		var tweenText1 = new TimelineMax()
+
+			.to(text1, 1, {opacity: '1', transform: 'translateY(0%) scale(1)'});
+
+		var tweenText1Out = new TimelineMax()
+
+			.to(text1, 1, {opacity: '0', transform: 'translateY(-100%) scale(1)'});
+
+		var tweenText2 = new TimelineMax()
+
+			.to(text2, 1, {opacity: '1', transform: 'translateY(0%) scale(1)'});
+
+		var tweenText2Out = new TimelineMax()
+
+			.to(text2, 1, {opacity: '0', transform: 'translateY(-100%) scale(1)'});
+
+		//var tweenSubtitle = new TimelineMax()
+
+		//	.to(subtitle, 1, {opacity: '1', transform: 'translateY(0%) scale(1)'});
+
+		var tweenContain1Out = new TimelineMax()
+
+			.to(contain1, 1, {display: 'none'});
+
+		var tweenContain2Out = new TimelineMax()
+
+			.to(contain2, 1, {display: 'none'});
+
+
+
+		// Animation for each letter
+
+		var tweenLetters = new TimelineMax();
+
+		$('.js-four-subtitle .letter').each(function(index, element) {
+
+			tweenLetters.to(element, 20, {opacity: 1}, index * 0.1);
+
+		});
+
+
+
+		var sceneFour = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: (fourHeight * 1), offset: 0, triggerHook: 0})
+
+			.setPin(".js-four-section")
+
+			//.setTween(tweenStory)
+
+			.addIndicators({name: "four"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourStory = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 0, triggerHook: 0.7})
+
+			//.setPin(".js-four-section")
+
+			.setTween(tweenStory)
+
+			.addIndicators({name: "four-story"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourCloud1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 1000, offset: 350, triggerHook: 0.7})
+
+			//.setPin(".js-four-section")
+
+			.setTween(tweenCloud1)
+
+			.addIndicators({name: "four-cloud-1"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourCloud1Move = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 2000, offset: 1350, triggerHook: 0.7})
+
+			//.setPin(".js-four-section")
+
+			.setTween(tweenCloud1Move)
+
+			.addIndicators({name: "four-cloud-1-move"})
+
+			.addTo(this.controller);
+
+		
+
+		var sceneFourImg1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 300, triggerHook: 0.7})
+
+			//.setPin(".js-four-section")
+
+			.setTween(tweenImg1)
+
+			.addIndicators({name: "four-img-1"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourTitle = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 600, triggerHook: 0.7})
+
+			.setTween(tweenTitle)
+
+			.addIndicators({name: "four-title"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourText1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 900, triggerHook: 0.7})
+
+			.setTween(tweenText1)
+
+			.addIndicators({name: "four-text-1"})
+
+			.addTo(this.controller);
+
+		
+
+		var sceneFourImg1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 1800, triggerHook: 0.7})
+
+			.setTween(tweenImg1Out)
+
+			.addIndicators({name: "four-img-1-out"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourTitleOut = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 1900, triggerHook: 0.7})
+
+			.setTween(tweenTitleOut)
+
+			.addIndicators({name: "four-title-out"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourText1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 1950, triggerHook: 0.7})
+
+			.setTween(tweenText1Out)
+
+			.addIndicators({name: "four-text-1-out"})
+
+			.addTo(this.controller);
+
+		
+
+		var sceneFourContain1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 2100, triggerHook: 0.7})
+
+			.setTween(tweenContain1Out)
+
+			.addIndicators({name: "four-contain-1-out"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourImg2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 2200, triggerHook: 0.7})
+
+			//.setPin(".js-four-section")
+
+			.setTween(tweenImg2)
+
+			.addIndicators({name: "four-img-2"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourText2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 2800, triggerHook: 0.7})
+
+			.setTween(tweenText2)
+
+			.addIndicators({name: "four-text-2"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourImg2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 3300, triggerHook: 0.7})
+
+			.setTween(tweenImg2Out)
+
+			.addIndicators({name: "four-img-2-out"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourText2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 3450, triggerHook: 0.7})
+
+			.setTween(tweenText2Out)
+
+			.addIndicators({name: "four-text-2-out"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourCloud1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 3350, triggerHook: 0.7})
+
+			//.setPin(".js-four-section")
+
+			.setTween(tweenCloud1Out)
+
+			.addIndicators({name: "four-cloud-1-out"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourContain2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 3700, triggerHook: 0.7})
+
+			.setTween(tweenContain2Out)
+
+			.addIndicators({name: "four-contain-2-out"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourCloud2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 3800, triggerHook: 0.7})
+
+			.setTween(tweenCloud2)
+
+			.addIndicators({name: "four-cloud-2"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourCloud2Move = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 4300, triggerHook: 0.7})
+
+			.setTween(tweenCloud2Move)
+
+			.addIndicators({name: "four-cloud-2-move"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFourLetters = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 1000, offset: 3700, triggerHook: 0.7})
+
+			.setTween(tweenLetters)
+
+			.addIndicators({name: "four-letters"})
 
 			.addTo(this.controller);
 
@@ -210,6 +576,8 @@ var uikit = {
         this.dottedAnim();
 
         this.animThree();
+
+		this.animFour();
 
     }
 
