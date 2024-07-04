@@ -8,11 +8,12 @@
 	padding-bottom: 500px;
 
 	&__container{
-		max-width: 1280px;
+		max-width: 1300px;
 		margin: 0 auto;
 		height: 100%;
 		position: relative;
 		z-index: 2;
+		padding: 0 20px;
 	}
 
 	&__story{
@@ -67,6 +68,15 @@
 			//left: 50%;
 			//transform: translate(-50%, 0%);
 			max-width: none;
+		}
+
+		&-stone{
+			position: absolute;
+			top: 270px;
+			right: -0px;
+			z-index: 3;
+			max-width: none;
+			transition: all 6s linear;
 		}
 	}
 
@@ -171,6 +181,30 @@
 			transition: all 6s linear;
 			animation: opacity 6s linear infinite reverse;
 		}
+		&-11{ 
+			position: absolute;
+			z-index: 5;
+			top: 225px;
+			left: 115px;
+			transition: all 6s linear;
+			animation: opacity 6s linear infinite reverse;
+		}
+		&-12{ 
+			position: absolute;
+			z-index: 5;
+			top: 310px;
+			left: 430px;
+			transition: all 6s linear;
+			animation: opacity 6s linear infinite reverse;
+		}
+		&-13{ 
+			position: absolute;
+			z-index: 5;
+			top: 150px;
+			right: 150px;
+			transition: all 6s linear;
+			animation: opacity 6s linear infinite reverse;
+		}
 	}
 
 	&__title{
@@ -218,6 +252,75 @@
 			&:last-child{
 				margin-bottom: 0;
 			}
+		}
+	}
+
+	&__planets{
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		position: relative;
+		z-index: 4;
+	}
+
+	&__planet{
+		display: flex;
+		align-items: center;
+		color: $milk;
+		margin-bottom: 100px;
+		max-width: 840px;
+		transform: translateY(100%);
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100%;
+
+		&:first-child{
+			position: relative;
+		}
+
+		&:last-child{
+			margin-bottom: 0;
+		}
+
+		&-img{
+			flex: 0 0 300px;
+			max-width: 300px;
+			margin-right: 155px;
+			position: relative;
+
+			&:after{
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				width: 100%;
+				height: 100%;
+				border-radius: 303px;
+				opacity: 0.3;
+				background: #E4370E;
+				filter: blur(50px);
+			}
+
+			&--i2{
+				&:after{
+					opacity: 0.26;
+					background: #F18126;
+				}
+			}
+			&--i3{
+				&:after{
+					opacity: 0.26;
+					background: #1579B1;
+				}
+			}
+		}
+
+		&-title{
+			margin-bottom: 32px;
+			color: $milk;
 		}
 	}
 }

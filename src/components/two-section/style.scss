@@ -6,11 +6,12 @@
 
 	&__container{
 		width: 100%;
-		max-width: 1440px;
+		max-width: 1480px;
 		margin: 0 auto;
 		position: relative;
 		z-index: 2;
 		height: 62rem; //1024px;
+		padding: 0 20px;
 	}
 	
 	&__shadow{
@@ -85,6 +86,10 @@
 		@media (min-width: 1941px){
 			top: 50%;
 			bottom: auto;
+		}
+
+		@include media($xlg){
+			bottom: 50px;
 		}
 	}
 

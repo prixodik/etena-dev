@@ -1,49 +1,187 @@
+.footer {
+	height: 850px;
+	background: #38231e;
+	position: relative;
+	z-index: 5;
+	//overflow: hidden;
+	padding: 340px;
 
-.footer{ background: $pink-dark; padding: 75px 0 40px; position: relative; color: $pink-2; 
-	&__container{ max-width: none; }
-	a{
-		&:hover{ color: $white; }
-	}
-	//&__info{}
-	&__copyright{ text-transform: uppercase; color: $brown-light; font: 30px 'Solomon Sans Book'; margin-bottom: 10px; }
-	&__slogan{ color: $pink-2;  }
-	&__mail{ text-align: center; color: $pink-2; } 
-	&__menu{ margin-top: 45px; padding-top: 45px; border-top: 1px rgba($white,0.12) solid; @include flex(space-between); 
-		&-item{ color: $brown-light; font: 14px $baseFF; }
-	} 
+	&__container {
+		max-width: 1345px;
+		margin: 0 auto;
+		position: relative;
+		z-index: 2;
+		padding: 0 20px;
 
-	&--blue{ background: #9FCDDB; color: $white; }
-	&--blue &{
-		&__copyright{ color: $white; }
-		&__slogan{ color: $white; }
-		&__mail{ color: $white; } 
-		&__menu{ border-color: rgba($white, .5);
-			&-item{ color: $blue-dark;  }
-		} 
-	}
-
-	@include media($xlg){ padding: 60px 0 40px;
-		&__copyright{ font: 26px 'Solomon Sans Book'; }  
-		&__menu{ margin-top: 35px; padding-top: 35px; } 
-	}
-	@include media($md){ padding: 50px 0 40px;
-		&__menu{ margin-top: 35px; padding-top: 35px; } 
-	} 
-
-	@include media($sm){ padding: 70px 0; 
-		&__menu{ padding-top: 35px;  margin: 35px -15px -15px; @include flex(center);
-			&-item{ margin-bottom: 15px; flex: 0 1 auto; padding: 0 15px; }
-		} 
-	}
-
-	@include media($xs){ padding: 70px 0 50px; 
-		&__slogan{ font: 14px $baseFF; }
-		&__mail{ text-align: left; font: 14px $baseFF; margin-top: 15px;  } 
-		&__menu{ margin-top: 35px; padding-top: 35px;  @include flex(flex-start);  
-			&-item{ flex: 0 0 50%;  }
-		} 
-		&__soc{ margin-top: 60px;
-			.soc-list{ @include flex(flex-start,center,center); }
+		&--min {
+			max-width: 440px;
 		}
+	}
+
+	&__mountain{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		background: url('../images/footer/footer-mountain.png') 50% 100%/contain repeat-x;
+		pointer-events: none;
+	}
+
+	&__shadow-1{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		background: url('../images/footer/footer-shadow-1.png') 50% 50%/auto 100% no-repeat;
+		pointer-events: none;
+	}
+
+	&__shadow-2{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 3;
+		background: url('../images/footer/footer-shadow-2.png') 0% 100%/auto 100% no-repeat;
+		pointer-events: none;
+	}
+
+	&__logo{
+		position: absolute;
+		top: -115px;
+		left: 50%;
+		transform: translateX(-50%);
+		//width: 100%;
+		max-width: calc(100vw - 40px);
+		z-index: 0;
+		pointer-events: none;
+
+		@include media($xlg){
+			top: 0px;
+		}
+		@include media($lg){
+			top: 115px;
+		}
+	}
+
+	&__title {
+		color: $milk;
+		margin-bottom: 40px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__mountain-front {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		z-index: 3;
+		pointer-events: none;
+	}
+
+	&__hero {
+		position: absolute;
+		bottom: 0;
+		right: -45px;
+		z-index: 2;
+		pointer-events: none;
+	}
+
+	&__up {
+		position: absolute;
+		bottom: 50px;
+		left: 200px;
+		z-index: 2;
+		display: block;
+		height: 313px;
+
+		img{
+			display: block;
+		}
+
+		&-pixel-left{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			z-index: -1;
+			opacity: 0;
+			transition: all 0.5s ease;
+
+			img{
+				transition: all 4s linear;
+				animation: opacity 4s linear infinite reverse;
+			}
+		}
+		&-pixel-right{
+			position: absolute;
+			top: 50%;
+			right: 50%;
+			z-index: -1;
+			opacity: 0;
+			transition: all 0.5s ease;
+
+			img{
+				transition: all 4s linear;
+				animation: opacity 4s linear infinite reverse;
+			}
+		}
+		&-arrow{
+			position: absolute;
+			top: 65px;
+			left: 122px;
+			z-index: 2;
+			transition: all 0.5s ease;
+		}
+
+		&:hover &{
+			&-arrow{
+				top: 35px;
+			}
+			&-pixel-left{
+				opacity: 1;
+				top: 20px;
+				left: 40px;
+			}
+			&-pixel-right{
+				opacity: 1;
+				top: 50%;
+				right: 60px;
+			}
+		}
+
+		@include media($xlg){
+			left: 150px;
+		}
+		@include media($lg){
+			left: 75px;
+		}
+	}
+
+	&__bottom {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 3;
+		width: 100%;
+		padding: 60px 0;
+		color: $milk;
+	}
+
+	&__copyright {
+		font-family: $baseFF;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 150%; /* 24px */
+		letter-spacing: -0.16px;
+		text-transform: uppercase;
 	}
 }

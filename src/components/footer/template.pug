@@ -1,5 +1,25 @@
 
 mixin footer(data)
 	footer.footer&attributes(attributes)
-		._container.container
+		._shadow-1
+		img._logo(src="images/footer/footer-logo.svg", alt="")
+		._mountain
+		a._up.js-scroll-up(href="#")
+			._up-pixel-left
+				img.js-dotted(data-size="10" src="images/footer/footer-button-pixel-left.svg", alt="")
+			._up-pixel-right
+				img.js-dotted(data-size="10" src="images/footer/footer-button-pixel-right.svg", alt="")
+			img._up-arrow(src="images/footer/footer-button-up-arrow.png", alt="")
+			img(src="images/footer/footer-button-up.png", alt="")
+		._shadow-2
+		img._mountain-front(src="images/footer/footer-mountain-front.png", alt="")
+		img._hero(src="images/footer/footer-hero.png", alt="")
+		._container.-min
+			._title.title-h1 Begin Your Adventure in the World of Etena.
+			._buttons 
+				a.btn(href="#")
+					span Inferno magic travel
 			
+		._bottom
+			._container 
+				._copyright All Rights Reserved © ETENAlaB
