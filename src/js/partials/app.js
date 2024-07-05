@@ -326,7 +326,7 @@ var uikit = {
 		var sceneFourPlanet3 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 6900, triggerHook: 0.7})
 			.setTween(tweenPlanet3)
 			//.addIndicators({name: "four-planet-3"})
-			.addTo(this.controller);
+			.addTo(this.controller); 
 
 		/* var sceneFourPlanet3Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 6900, triggerHook: 0.7})
 			.setTween(tweenPlanet3)

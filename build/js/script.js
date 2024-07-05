@@ -703,7 +703,7 @@ var uikit = {
 
 			//.addIndicators({name: "four-planet-3"})
 
-			.addTo(this.controller);
+			.addTo(this.controller); 
 
 
 
