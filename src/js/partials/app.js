@@ -28,7 +28,7 @@ var uikit = {
 
 	animThree: function () {
 		//var scene = document.querySelector(".js-three-section");
-		var threeHeight = this.wh(); //1250;
+		var threeHeight = 0; //this.wh(); //1250;
 		var sun = document.getElementsByClassName('js-three-sun');
 		var city = document.getElementsByClassName('js-three-city');
 		var heroCenter = document.getElementsByClassName('js-three-hero-center');
@@ -182,51 +182,51 @@ var uikit = {
 			//.addIndicators({name: "four"})
 			.addTo(this.controller);
 
-		var sceneFourStory = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 0, triggerHook: 0.7})
+		var sceneFourStory = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 0, triggerHook: 0.7})
 			//.setPin(".js-four-section")
 			.setTween(tweenStory)
 			//.addIndicators({name: "four-story"})
 			.addTo(this.controller);
 
-		var sceneFourCloud1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 1000, offset: 350, triggerHook: 0.7})
+		var sceneFourCloud1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 350, triggerHook: 0.7})
 			//.setPin(".js-four-section")
 			.setTween(tweenCloud1)
 			//.addIndicators({name: "four-cloud-1"})
 			.addTo(this.controller);
 
-		var sceneFourCloud1Move = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 2000, offset: 1350, triggerHook: 0.7})
+		var sceneFourCloud1Move = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 1350, triggerHook: 0.7})
 			//.setPin(".js-four-section")
 			.setTween(tweenCloud1Move)
 			//.addIndicators({name: "four-cloud-1-move"})
 			.addTo(this.controller);
 		
-		var sceneFourImg1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 300, triggerHook: 0.7})
+		var sceneFourImg1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 300, triggerHook: 0.7})
 			//.setPin(".js-four-section")
 			.setTween(tweenImg1)
 			//.addIndicators({name: "four-img-1"})
 			.addTo(this.controller);
 
-		var sceneFourTitle = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 600, triggerHook: 0.7})
+		var sceneFourTitle = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 600, triggerHook: 0.7})
 			.setTween(tweenTitle)
 			//.addIndicators({name: "four-title"})
 			.addTo(this.controller);
 
-		var sceneFourText1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 900, triggerHook: 0.7})
+		var sceneFourText1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 900, triggerHook: 0.7})
 			.setTween(tweenText1)
 			//.addIndicators({name: "four-text-1"})
 			.addTo(this.controller);
 		
-		var sceneFourImg1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 1800, triggerHook: 0.7})
+		var sceneFourImg1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 1800, triggerHook: 0.7})
 			.setTween(tweenImg1Out)
 			//.addIndicators({name: "four-img-1-out"})
 			.addTo(this.controller);
 
-		var sceneFourTitleOut = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 1900, triggerHook: 0.7})
+		var sceneFourTitleOut = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 1900, triggerHook: 0.7})
 			.setTween(tweenTitleOut)
 			//.addIndicators({name: "four-title-out"})
 			.addTo(this.controller);
 
-		var sceneFourText1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 1950, triggerHook: 0.7})
+		var sceneFourText1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 1950, triggerHook: 0.7})
 			.setTween(tweenText1Out)
 			//.addIndicators({name: "four-text-1-out"})
 			.addTo(this.controller);
@@ -236,28 +236,28 @@ var uikit = {
 			//.addIndicators({name: "four-contain-1-out"})
 			.addTo(this.controller);
 
-		var sceneFourImg2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 2200, triggerHook: 0.7})
+		var sceneFourImg2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 2200, triggerHook: 0.7})
 			//.setPin(".js-four-section")
 			.setTween(tweenImg2)
 			//.addIndicators({name: "four-img-2"})
 			.addTo(this.controller);
 
-		var sceneFourText2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 2800, triggerHook: 0.7})
+		var sceneFourText2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 2800, triggerHook: 0.7})
 			.setTween(tweenText2)
 			//.addIndicators({name: "four-text-2"})
 			.addTo(this.controller);
 
-		var sceneFourImg2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 3300, triggerHook: 0.7})
+		var sceneFourImg2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 3300, triggerHook: 0.7})
 			.setTween(tweenImg2Out)
 			//.addIndicators({name: "four-img-2-out"})
 			.addTo(this.controller);
 
-		var sceneFourText2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 3450, triggerHook: 0.7})
+		var sceneFourText2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 3450, triggerHook: 0.7})
 			.setTween(tweenText2Out)
 			//.addIndicators({name: "four-text-2-out"})
 			.addTo(this.controller);
 
-		var sceneFourCloud1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 3350, triggerHook: 0.7})
+		var sceneFourCloud1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 3350, triggerHook: 0.7})
 			//.setPin(".js-four-section")
 			.setTween(tweenCloud1Out)
 			//.addIndicators({name: "four-cloud-1-out"})
@@ -268,27 +268,27 @@ var uikit = {
 			//.addIndicators({name: "four-contain-2-out"})
 			.addTo(this.controller);
 
-		var sceneFourCloud2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 3800, triggerHook: 0.7})
+		var sceneFourCloud2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 3800, triggerHook: 0.7})
 			.setTween(tweenCloud2)
 			//.addIndicators({name: "four-cloud-2"})
 			.addTo(this.controller);
 
-		var sceneFourCloud2Move = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 4300, triggerHook: 0.7})
+		var sceneFourCloud2Move = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 4300, triggerHook: 0.7})
 			.setTween(tweenCloud2Move)
 			//.addIndicators({name: "four-cloud-2-move"})
 			.addTo(this.controller);
 
-		var sceneFourLetters = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 1000, offset: 3700, triggerHook: 0.7})
+		var sceneFourLetters = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 3700, triggerHook: 0.7})
 			.setTween(tweenLetters)
 			//.addIndicators({name: "four-letters"})
 			.addTo(this.controller);
 		
-		var sceneFourSubtitleOut = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 4700, triggerHook: 0.7})
+		var sceneFourSubtitleOut = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 4700, triggerHook: 0.7})
 			.setTween(tweenSubtitleOut)
 			//.addIndicators({name: "four-subtitle-out"})
 			.addTo(this.controller);
 		
-		var sceneFourCloud2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 4700, triggerHook: 0.7})
+		var sceneFourCloud2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 4700, triggerHook: 0.7})
 			.setTween(tweenCloud2Out)
 			//.addIndicators({name: "four-cloud-2-out"})
 			.addTo(this.controller);
@@ -298,32 +298,32 @@ var uikit = {
 			//.addIndicators({name: "four-contain-3-out"})
 			.addTo(this.controller);
 
-		var sceneFourPlanet1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 4900, triggerHook: 0.7})
+		var sceneFourPlanet1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 4900, triggerHook: 0.7})
 			.setTween(tweenPlanet1)
 			//.addIndicators({name: "four-planet-1"})
 			.addTo(this.controller);
 
-		var sceneFourPlanet1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 5900, triggerHook: 0.7})
+		var sceneFourPlanet1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 5900, triggerHook: 0.7})
 			.setTween(tweenPlanet1Out)
 			//.addIndicators({name: "four-planet-1-out"})
 			.addTo(this.controller);
 
-		var sceneFourPlanet2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 5900, triggerHook: 0.7})
+		var sceneFourPlanet2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 5900, triggerHook: 0.7})
 			.setTween(tweenPlanet2)
 			//.addIndicators({name: "four-planet-2"})
 			.addTo(this.controller);
 
-		var sceneFourPlanet1Out2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 6900, triggerHook: 0.7})
+		var sceneFourPlanet1Out2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 6900, triggerHook: 0.7})
 			.setTween(tweenPlanet1Out2)
 			//.addIndicators({name: "four-planet-1-out-2"})
 			.addTo(this.controller);
 
-		var sceneFourPlanet2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 6900, triggerHook: 0.7})
+		var sceneFourPlanet2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 6900, triggerHook: 0.7})
 			.setTween(tweenPlanet2Out)
 			//.addIndicators({name: "four-planet-2-out"})
 			.addTo(this.controller);
 
-		var sceneFourPlanet3 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 6900, triggerHook: 0.7})
+		var sceneFourPlanet3 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 6900, triggerHook: 0.7})
 			.setTween(tweenPlanet3)
 			//.addIndicators({name: "four-planet-3"})
 			.addTo(this.controller);
