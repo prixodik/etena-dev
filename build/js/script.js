@@ -158,7 +158,7 @@ var uikit = {
 
 	animFirst: function(){
 
-		var threeHeight = 100; //1250;
+		var threeHeight = 10; //1250;
 
 		var firstScene = document.getElementsByClassName('js-first-section');
 
@@ -184,7 +184,7 @@ var uikit = {
 
 				if (event.scrollDirection === 'FORWARD') {
 
-					uikit.scrollToSection('.js-three-section'); // Прокрутка к следующему разделу, если скролим вниз
+					uikit.scrollToSection('.js-three-section-trigger'); // Прокрутка к следующему разделу, если скролим вниз
 
 				}
 
@@ -212,7 +212,7 @@ var uikit = {
 
 		//var scene = document.querySelector(".js-three-section");
 
-		var threeHeight = 300;//this.wh(); //1250;
+		var threeHeight = 10;//this.wh(); //1250;
 
 		var twoSection = document.getElementsByClassName('js-two-section');
 
@@ -246,7 +246,7 @@ var uikit = {
 
 		var tweenHeroCenter = new TimelineMax()
 
-			.to(heroCenter, 1, {top: '50%'});
+			.to(heroCenter, 1, {top: '40%'});
 
 		var tweenHeroLeft = new TimelineMax()
 
@@ -258,7 +258,7 @@ var uikit = {
 
 
 
-		var sceneThree = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: (threeHeight * 1), offset: 0, triggerHook: 0})
+		var sceneThree = new ScrollMagic.Scene({triggerElement: ".js-three-section-trigger", duration: (threeHeight * 1), offset: 0, triggerHook: 0})
 
 			//.setPin(".js-three-section")
 
@@ -270,11 +270,7 @@ var uikit = {
 
 				if (event.scrollDirection === 'REVERSE') {
 
-					setTimeout(() => {
-
-						uikit.scrollToSection('.js-first-section');	
-
-					},500);
+					uikit.scrollToSection('.js-first-section');	
 
 				}
 
@@ -572,7 +568,7 @@ var uikit = {
 
 				if (event.scrollDirection === 'REVERSE') {
 
-					uikit.scrollToSection('.js-three-section'); // Прокрутка к следующему разделу, если скролим вниз
+					uikit.scrollToSection('.js-three-section-trigger'); // Прокрутка к следующему разделу, если скролим вниз
 
 				}
 
@@ -1066,19 +1062,25 @@ $(document).ready(function() {
 
 		//Принудительная прокрутка вверх
 
-		//$('html, body').animate({scrollTop: 0}, 'fast');
+		$('html, body').animate({scrollTop: 0}, 'fast');
 
-		uikit.scrollToSection('.js-first-section');
+		//uikit.scrollToSection('.js-first-section',0);
 
         // Все элементы страницы полностью загружены
 
 
 
-        $('.js-loader').fadeOut(400);
+		setTimeout(()=>{
 
-		$('.js-first-section').addClass('is-first-anim');
+			$('.js-loader').fadeOut(400);
 
-		$('.js-two-section').addClass('is-first-anim');
+			$('.js-first-section').addClass('is-first-anim');
+
+			$('.js-two-section').addClass('is-first-anim');
+
+			uikit.mainInit();
+
+		}, 200);
 
 
 
@@ -1090,7 +1092,7 @@ $(document).ready(function() {
 
 			$('body, html').removeClass('is-overflow');
 
-		}, 4000);
+		}, 4200);
 
     });
 
@@ -1102,7 +1104,7 @@ $(document).ready(function () {
 
 
 
-    uikit.mainInit();
+    
 
 
 

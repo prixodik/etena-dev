@@ -44,7 +44,7 @@ var uikit = {
 	},
 
 	animFirst: function(){
-		var threeHeight = 100; //1250;
+		var threeHeight = 10; //1250;
 		var firstScene = document.getElementsByClassName('js-first-section');
 		var twoSection = document.getElementsByClassName('js-two-section');
 		
@@ -57,7 +57,7 @@ var uikit = {
 			.on('end', function (event) {
 				// Проверяем, что направление прокрутки вниз
 				if (event.scrollDirection === 'FORWARD') {
-					uikit.scrollToSection('.js-three-section'); // Прокрутка к следующему разделу, если скролим вниз
+					uikit.scrollToSection('.js-three-section-trigger'); // Прокрутка к следующему разделу, если скролим вниз
 				}
 			})
 			.addTo(this.controller);
@@ -71,7 +71,7 @@ var uikit = {
 
 	animThree: function () {
 		//var scene = document.querySelector(".js-three-section");
-		var threeHeight = 300;//this.wh(); //1250;
+		var threeHeight = 10;//this.wh(); //1250;
 		var twoSection = document.getElementsByClassName('js-two-section');
 		var sun = document.getElementsByClassName('js-three-sun');
 		var city = document.getElementsByClassName('js-three-city');
@@ -88,21 +88,19 @@ var uikit = {
 			.to(city, 1, {top: '0%'});
 		
 		var tweenHeroCenter = new TimelineMax()
-			.to(heroCenter, 1, {top: '50%'});
+			.to(heroCenter, 1, {top: '40%'});
 		var tweenHeroLeft = new TimelineMax()
 			.to(heroLeft, 0.8, {marginLeft: '0'});
 		var tweenHeroRight = new TimelineMax()
 			.to(heroRight, 0.8, {marginRight: '0'});
 
-		var sceneThree = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: (threeHeight * 1), offset: 0, triggerHook: 0})
+		var sceneThree = new ScrollMagic.Scene({triggerElement: ".js-three-section-trigger", duration: (threeHeight * 1), offset: 0, triggerHook: 0})
 			//.setPin(".js-three-section")
 			.addIndicators({name: "three"})
 			.on('leave', function (event) {
 				// Проверяем, что направление прокрутки вниз
 				if (event.scrollDirection === 'REVERSE') {
-					setTimeout(() => {
-						uikit.scrollToSection('.js-first-section');	
-					},500);
+					uikit.scrollToSection('.js-first-section');	
 				}
 			})
 			.on('end', function (event) {
@@ -251,7 +249,7 @@ var uikit = {
 			.on('leave', function (event) {
 				// Проверяем, что направление прокрутки вниз
 				if (event.scrollDirection === 'REVERSE') {
-					uikit.scrollToSection('.js-three-section'); // Прокрутка к следующему разделу, если скролим вниз
+					uikit.scrollToSection('.js-three-section-trigger'); // Прокрутка к следующему разделу, если скролим вниз
 				}
 			})
 			.on('end', function (event) {
@@ -498,25 +496,28 @@ $(document).ready(function() {
 
     $(window).on('load', function() {
 		//Принудительная прокрутка вверх
-		//$('html, body').animate({scrollTop: 0}, 'fast');
-		uikit.scrollToSection('.js-first-section');
+		$('html, body').animate({scrollTop: 0}, 'fast');
+		//uikit.scrollToSection('.js-first-section',0);
         // Все элементы страницы полностью загружены
 
-        $('.js-loader').fadeOut(400);
-		$('.js-first-section').addClass('is-first-anim');
-		$('.js-two-section').addClass('is-first-anim');
+		setTimeout(()=>{
+			$('.js-loader').fadeOut(400);
+			$('.js-first-section').addClass('is-first-anim');
+			$('.js-two-section').addClass('is-first-anim');
+			uikit.mainInit();
+		}, 200);
 
 		setTimeout(()=>{
 			$('.js-first-section').removeClass('is-first-anim');
 			$('.js-two-section').removeClass('is-first-anim');
 			$('body, html').removeClass('is-overflow');
-		}, 4000);
+		}, 4200);
     });
 });
 
 $(document).ready(function () {
 
-    uikit.mainInit();
+    
 
 });
 
