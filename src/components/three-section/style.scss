@@ -1,17 +1,19 @@
 .three-section{
 	background: linear-gradient(180deg, #FF4A32 -1.72%, #FF7E24 101.76%);
 	position: relative;
-	z-index: 2;
-	height: calc(1250px * 1);
+	z-index: 4;
+	height: calc(1250px + 400px);
 	padding-bottom: 300px;
+	//height: calc(100vh + 600px);
 	//overflow: hidden;
+	padding-top: 400px;
 
 	&__bg{
 		position: absolute;
-		top: 0;
+		top: 400px;
 		left: 0;
 		width: 100%;
-		height: 100%;
+		height: 1250px; //100%;
 		display: block;
 		z-index: -1;
 		pointer-events: none;
@@ -109,9 +111,9 @@
 
 		&-center{
 			position: absolute;
-			top: 600px;
+			top: 70%;
 			left: 50%;
-			transform: translate(-50%, 0px);
+			transform: translate(-50%, -30%);
 			z-index: 3;
 
 			&-wrap{
@@ -147,7 +149,8 @@
 			top: 472px;
 			left: 135px;
 			z-index: 4;
-			transform: translateX(-200px);
+			//transform: translateX(-200px);
+			margin-left: -200px;
 
 			&-wrap{
 				position: relative;
@@ -185,7 +188,8 @@
 			top: 472px;
 			right: 170px;
 			z-index: 4;
-			transform: translateX(200px);
+			//transform: translateX(200px);
+			margin-right: -200px;
 
 			&-wrap{
 				position: relative;

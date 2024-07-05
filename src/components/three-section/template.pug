@@ -1,6 +1,9 @@
 
 mixin threeSection(data)
-  .three-section.js-three-section&attributes(attributes)
+  .three-section&attributes(attributes)
+    include ../../components/two-section/template
+    +twoSection()
+    .js-three-section
     ._bg 
       ._bg-city.js-three-city
       img._bg-sun.js-three-sun(src="images/three-section/sun.png" alt="")

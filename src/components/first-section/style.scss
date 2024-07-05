@@ -1,10 +1,11 @@
 .first-section{
 	position: relative;
-	z-index: 1;
-	//overflow: hidden;
+	z-index: 4;
+	overflow: hidden;
 	min-height: 600px;
 	height: 100vh;
 	background: #64DFFF;
+	//transition: all .3s linear;
 
 	@media (min-width: 1941px) {
 		min-height: 100vh;
