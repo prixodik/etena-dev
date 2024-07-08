@@ -1420,7 +1420,7 @@ h5, .title-h5 {
 .four-section__img-wrap {
   position: relative;
   z-index: 1;
-  transform: translate3d(0, 100%, 0) scale(0.9);
+  transform: translate(0, 100%) scale(0.9);
   opacity: 0;
   transition: all 0.4s linear;
 }
@@ -1592,6 +1592,7 @@ h5, .title-h5 {
 }
 .four-section__subtitle p span {
   opacity: 0;
+  transition: all 0.2s linear;
 }
 .four-section__subtitle p:last-child {
   margin-bottom: 0;
