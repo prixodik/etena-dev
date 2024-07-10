@@ -268,7 +268,7 @@ var uikit = {
 
 			next: {
 
-				trigger: '.js-five-section-triggerr',
+				trigger: '.js-five-section-trigger',
 
 				offset: 0,
 
@@ -308,7 +308,7 @@ var uikit = {
 
 				trigger: '.js-five-section-trigger',
 
-				offset: 0,
+				offset: -100,
 
 				speed: 1
 
@@ -320,7 +320,7 @@ var uikit = {
 
 				offset: 0,
 
-				speed: 1.5
+				speed: 2
 
 			}
 
@@ -332,9 +332,9 @@ var uikit = {
 
 				trigger: '.js-five-img',
 
-				offset: 0,
+				offset: -100,
 
-				speed: 1.5
+				speed: 2
 
 			},
 
@@ -343,6 +343,8 @@ var uikit = {
 		}
 
 	],
+
+	//massCoordinSteps: [],
 
 	lastDirection: 'down',
 
@@ -404,6 +406,50 @@ var uikit = {
 
 
 
+	// Собираем координаты всех шагов
+
+	/* setMassCoordinSteps: function(){
+
+		this.steps.forEach((step, index) => {
+
+			var element = document.querySelector(step.next.trigger);
+
+			if (element) {
+
+				var elementRect = element.getBoundingClientRect();
+
+				var absoluteElementTop = elementRect.top + window.pageYOffset;
+
+				absoluteElementTop = absoluteElementTop + step.next.offset;
+
+				this.massCoordinSteps.push(absoluteElementTop || 0);
+
+			}
+
+		});
+
+		console.log(this.massCoordinSteps);
+
+	}, */
+
+
+
+	/* getPositionIndex: function(coordinate){
+
+		var closestIndex = this.massCoordinSteps.reduce((closestIndex, current, index) => {
+
+			return (Math.abs(current - coordinate) < Math.abs(this.massCoordinSteps[closestIndex] - coordinate) ? index : closestIndex);
+
+		}, 0);
+
+		console.log(closestIndex);
+
+		return closestIndex;
+
+	}, */
+
+
+
 	disableScroll: function() {
 
 		console.log("Scrolling disabled");
@@ -430,11 +476,9 @@ var uikit = {
 
 	scrollNext: function(){
 
-		console.log('next');
+		//console.log('next');
 
-		console.log(this.currentSlide);
-
-		console.log(this.steps[this.currentSlide]?.next);
+		//console.log(this.steps[this.currentSlide]?.next);
 
 		if(!this.steps[this.currentSlide]?.next?.trigger || this.disableTriggers) return false;
 
@@ -458,11 +502,9 @@ var uikit = {
 
 	scrollPrev: function(){
 
-		console.log('prev');
+		//console.log('prev');
 
-		console.log(this.currentSlide);
-
-		console.log(this.steps[this.currentSlide]?.prev);
+		//console.log(this.steps[this.currentSlide]?.prev);
 
 
 
@@ -532,9 +574,7 @@ var uikit = {
 
 	scrollToSection: function(section, speed = 1, offset = 0, ease = "power1.inOut") {
 
-		//var newPos = document.querySelector(section).offsetTop; // Получаем верхнюю границу элемента
-
-		//window.scrollTo({ top: newPos, behavior: 'smooth' }); // Прокрутка к элементу
+		
 
 		var element = document.querySelector(section);
 
@@ -544,27 +584,17 @@ var uikit = {
 
 			var absoluteElementTop = elementRect.top + window.pageYOffset;
 
-			//window.scrollTo({ top: absoluteElementTop, behavior: 'smooth' });
-
-			console.log('--'+absoluteElementTop+' + '+offset+'='+ (absoluteElementTop+offset));
+			//console.log('--'+absoluteElementTop+' + '+offset+'='+ (absoluteElementTop+offset));
 
 
 
 			// Отключаем скролл при начале анимации
-
-			//uikit.disableScroll();
-
-			// Обнуляем импульс прокрутки перед началом анимации
-
-			//window.scrollTo({ top: window.pageYOffset, behavior: 'instant' });
 
 			uikit.disableTriggers = true;
 
 
 
 			this.controller.scrollTo(function (newpos) {
-
-				//gsap.to(window, speed, {scrollTo: {y: newpos + offset}, ease: ease});
 
 				requestAnimationFrame(function() {
 
@@ -582,21 +612,15 @@ var uikit = {
 
 							uikit.disableTriggers = true;
 
-							//uikit.disableScroll();
-
 						},
 
 						onComplete: function() {
 
-							console.log($(window).scrollTop()+'!!!');
+							//console.log($(window).scrollTop()+'!!!');
 
 							if (uikit.disableTriggers) {
 
-								console.log('+');
-
 								gsap.killTweensOf(window); // Останавливаем все текущие анимации GSAP на объекте window
-
-								//window.scrollTo({ top: $(window).scrollTop(), behavior: 'instant' }); // Принудительно устанавливаем текущее положение прокрутки
 
 							}
 
@@ -605,8 +629,6 @@ var uikit = {
 							setTimeout(function() {
 
 								uikit.disableTriggers = false;
-
-								//uikit.enableScroll();
 
 							},300);
 
@@ -642,7 +664,7 @@ var uikit = {
 
 		var tweenTwoSectionIn = new TimelineMax()
 
-			.to(twoSection, 0.3, {top: '-49vh'});
+			.to(twoSection, 0.3, {top: '-52vh'});
 
 
 
@@ -650,39 +672,9 @@ var uikit = {
 
 			//.setPin(".js-first-section")
 
-			.addIndicators({name: "first"})
-
-			/* .on('end', function (event) {
-
-				if(uikit.disableTriggers) return;
-
-				//? 1 to 2
-
-				// Проверяем, что направление прокрутки вниз
-
-				if (event.scrollDirection === 'FORWARD') {
-
-					//uikit.scrollToSection('.js-three-section-trigger'); // Прокрутка к следующему разделу, если скролим вниз
-
-					uikit.scrollToSection('.js-three-section-trigger'); // Прокрутка к следующему разделу, если скролим вниз
-
-				}
-
-			}) */
+			//.addIndicators({name: "first"})
 
 			.addTo(this.controller);
-
-
-
-		/* var sceneTwoSectionIn = new ScrollMagic.Scene({triggerElement: ".js-two-section", duration: 0, offset: 0, triggerHook: 0})
-
-			//.setPin(".three-section__container")
-
-			.setTween(tweenTwoSectionIn)
-
-			.addIndicators({name: "two-section-in"})
-
-			.addTo(this.controller); */
 
 	},
 
@@ -742,7 +734,7 @@ var uikit = {
 
 			//.setPin(".js-three-section")
 
-			.addIndicators({name: "three"})
+			//.addIndicators({name: "three"})
 
 			/* .on('leave', function (event) {
 
@@ -786,7 +778,7 @@ var uikit = {
 
 			.setTween(tweenFirstSectionOut)
 
-			.addIndicators({name: "first-section-out"})
+			//.addIndicators({name: "first-section-out"})
 
 			.addTo(this.controller); */
 
@@ -822,7 +814,7 @@ var uikit = {
 
 			.setTween(tweenHeroCenter)
 
-			.addIndicators({name: "three-hero-center"})
+			//.addIndicators({name: "three-hero-center"})
 
 			.addTo(this.controller);
 
@@ -834,7 +826,7 @@ var uikit = {
 
 			.setTween(tweenHeroLeft)
 
-			.addIndicators({name: "three-hero-left"})
+			//.addIndicators({name: "three-hero-left"})
 
 			.addTo(this.controller);
 
@@ -846,15 +838,11 @@ var uikit = {
 
 			.setTween(tweenHeroRight)
 
-			.addIndicators({name: "three-hero-right"})
+			//.addIndicators({name: "three-hero-right"})
 
 			.addTo(this.controller);
 
 	},
-
-
-
-
 
 	
 
@@ -1030,7 +1018,7 @@ var uikit = {
 
 		var tweenPlanet1Out = gsap.timeline();
 
-		tweenPlanet1Out.to(planet1, {duration: 1, opacity: 0.5, y: '-120%'});
+		tweenPlanet1Out.to(planet1, {duration: 1, opacity: 0, y: '-120%'});
 
 		var tweenPlanet1Out2 = gsap.timeline();
 
@@ -1044,7 +1032,7 @@ var uikit = {
 
 		var tweenPlanet2Out = gsap.timeline();
 
-		tweenPlanet2Out.to(planet2, {duration: 1, opacity: 0.5, y: '-120%'});
+		tweenPlanet2Out.to(planet2, {duration: 1, opacity: 0, y: '-120%'});
 
 
 
@@ -1086,7 +1074,7 @@ var uikit = {
 
 			.setPin(".js-four-section")
 
-			.addIndicators({name: "four"})
+			//.addIndicators({name: "four"})
 
 			.addTo(this.controller);
 
@@ -1134,7 +1122,7 @@ var uikit = {
 
 			//.setTween(tweenStory)
 
-			.addIndicators({name: "four-trigger-1"})
+			//.addIndicators({name: "four-trigger-1"})
 
 			.addTo(this.controller);
 
@@ -1176,7 +1164,7 @@ var uikit = {
 
 			}) */
 
-			.addIndicators({name: "four-trigger-2"})
+			//.addIndicators({name: "four-trigger-2"})
 
 			.addTo(this.controller);
 
@@ -1218,7 +1206,7 @@ var uikit = {
 
 			}) */
 
-			.addIndicators({name: "four-trigger-3"})
+			//.addIndicators({name: "four-trigger-3"})
 
 			.addTo(this.controller);
 
@@ -1260,7 +1248,7 @@ var uikit = {
 
 			}) */
 
-			.addIndicators({name: "four-trigger-4"})
+			//.addIndicators({name: "four-trigger-4"})
 
 			.addTo(this.controller);
 
@@ -1302,7 +1290,7 @@ var uikit = {
 
 			}) */
 
-			.addIndicators({name: "four-trigger-5"})
+			//.addIndicators({name: "four-trigger-5"})
 
 			.addTo(this.controller);
 
@@ -1344,7 +1332,7 @@ var uikit = {
 
 			}) */
 
-			.addIndicators({name: "four-trigger-6"})
+			//.addIndicators({name: "four-trigger-6"})
 
 			.addTo(this.controller);
 
@@ -1376,7 +1364,7 @@ var uikit = {
 
 			//.setTween(tweenStory)
 
-			.addIndicators({name: "four-contain-1"})
+			//.addIndicators({name: "four-contain-1"})
 
 			.addTo(this.controller); */
 
@@ -1840,7 +1828,7 @@ var uikit = {
 
 			})
 
-			.addIndicators({name: "five-trigger"})
+			//.addIndicators({name: "five-trigger"})
 
 			.addTo(this.controller);
 
@@ -2010,7 +1998,7 @@ var uikit = {
 
 			.setTween(tweenTitleOut)
 
-			.addIndicators({name: "five-title-out"})
+			//.addIndicators({name: "five-title-out"})
 
 			.addTo(this.controller);
 
@@ -2022,7 +2010,7 @@ var uikit = {
 
 			.setTween(tweenTextOut)
 
-			.addIndicators({name: "five-text-out"})
+			//.addIndicators({name: "five-text-out"})
 
 			.addTo(this.controller);
 
@@ -2034,7 +2022,7 @@ var uikit = {
 
 			.setTween(tweenImgOut)
 
-			.addIndicators({name: "five-img-out"})
+			//.addIndicators({name: "five-img-out"})
 
 			.addTo(this.controller);
 
@@ -2058,13 +2046,13 @@ var uikit = {
 
 		//var twoSection = document.getElementsByClassName('js-two-section');
 
-		gsap.set(footerLogo, {x: '-=50%', y: '+=300'});
+		gsap.set(footerLogo, {opacity: '0', x: '-=50%', y: '+=200'});
 
 		gsap.set(footerText, {opacity: '0', y: '-=200'});
 
-		gsap.set(footerHero, {x: '+=50%'});
+		gsap.set(footerHero, {x: '+=100'});
 
-		gsap.set(footerScrollUp, {x: '-=50%'});
+		gsap.set(footerScrollUp, {x: '-=100'});
 
 
 
@@ -2104,7 +2092,7 @@ var uikit = {
 
 			.setTween(tweenLogo)
 
-			.addIndicators({name: "footer-logo"})
+			//.addIndicators({name: "footer-logo"})
 
 			.addTo(this.controller);
 
@@ -2116,7 +2104,7 @@ var uikit = {
 
 			.setTween(tweenText)
 
-			.addIndicators({name: "footer-text"})
+			//.addIndicators({name: "footer-text"})
 
 			.addTo(this.controller);
 
@@ -2128,7 +2116,7 @@ var uikit = {
 
 			.setTween(tweenHero)
 
-			.addIndicators({name: "footer-hero"})
+			//.addIndicators({name: "footer-hero"})
 
 			.addTo(this.controller);
 
@@ -2140,7 +2128,7 @@ var uikit = {
 
 			.setTween(tweenScrollUp)
 
-			.addIndicators({name: "footer-scroll-up"})
+			//.addIndicators({name: "footer-scroll-up"})
 
 			.addTo(this.controller);
 
@@ -2152,15 +2140,15 @@ var uikit = {
 
 		$('.js-scroll-up').click(function(){
 
-			//$('html, body').animate({scrollTop: 0}, 'slow');
-
 			uikit.disableTriggers = true;
 
-			uikit.scrollToSection('.js-first-section', 1, uikit.wh() * -1);
+			uikit.scrollToSection('.js-first-section', 3, uikit.wh() * -1);
 
 			
 
 			setTimeout(function () {
+
+				uikit.currentSlide = 0;
 
 				uikit.disableTriggers = false;
 
@@ -2191,6 +2179,8 @@ var uikit = {
 		this.scrollUp();
 
 		this.disableScroll();
+
+		//this.setMassCoordinSteps();
 
     }
 
@@ -2348,7 +2338,15 @@ $(window).resize(function () {
 
 $(window).scroll(function () {
 
-    //console.log($(this).scrollTop());
+    /* clearTimeout(window.scrollTimer);
+
+    window.scrollTimer = setTimeout(function(){
+
+        let scrollTo = uikit.getPositionIndex($(this).scrollTop());
+
+		uikit.scrollToSection(uikit.steps[scrollTo]?.next?.trigger, uikit.steps[scrollTo]?.next?.speed, uikit.steps[scrollTo]?.next?.offset, uikit.steps[scrollTo]?.next?.ease);
+
+    }, 1000); */
 
 });
 

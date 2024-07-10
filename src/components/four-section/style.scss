@@ -7,6 +7,15 @@
 	//background: $brown;
 	padding-bottom: 500px;
 
+	&__trigger{
+		position: absolute;
+		bottom: 300px;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		pointer-events: none;
+	}
+
 	&__container{
 		max-width: 1300px;
 		margin: 0 auto;

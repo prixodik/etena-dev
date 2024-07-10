@@ -88,7 +88,7 @@ var uikit = {
 				speed: 1
 			},
 			next: {
-				trigger: '.js-five-section-triggerr',
+				trigger: '.js-five-section-trigger',
 				offset: 0,
 				speed: 1
 			}
@@ -108,24 +108,25 @@ var uikit = {
 		{ // 10
 			prev: {
 				trigger: '.js-five-section-trigger',
-				offset: 0,
+				offset: -100,
 				speed: 1
 			},
 			next: {
 				trigger: '.js-footer',
 				offset: 0,
-				speed: 1.5
+				speed: 2
 			}
 		},
 		{ // 11
 			prev: {
 				trigger: '.js-five-img',
-				offset: 0,
-				speed: 1.5
+				offset: -100,
+				speed: 2
 			},
 			next: {}
 		}
 	],
+	//massCoordinSteps: [],
 	lastDirection: 'down',
 	currentSlide: 0,
 	nextSlide: 1,
@@ -156,6 +157,28 @@ var uikit = {
 		updateAnimation(); // Запускаем анимацию впервые
 	},
 
+	// Собираем координаты всех шагов
+	/* setMassCoordinSteps: function(){
+		this.steps.forEach((step, index) => {
+			var element = document.querySelector(step.next.trigger);
+			if (element) {
+				var elementRect = element.getBoundingClientRect();
+				var absoluteElementTop = elementRect.top + window.pageYOffset;
+				absoluteElementTop = absoluteElementTop + step.next.offset;
+				this.massCoordinSteps.push(absoluteElementTop || 0);
+			}
+		});
+		console.log(this.massCoordinSteps);
+	}, */
+
+	/* getPositionIndex: function(coordinate){
+		var closestIndex = this.massCoordinSteps.reduce((closestIndex, current, index) => {
+			return (Math.abs(current - coordinate) < Math.abs(this.massCoordinSteps[closestIndex] - coordinate) ? index : closestIndex);
+		}, 0);
+		console.log(closestIndex);
+		return closestIndex;
+	}, */
+
 	disableScroll: function() {
 		console.log("Scrolling disabled");
 		window.addEventListener('wheel', uikit.preventScroll, {passive: false});
@@ -169,9 +192,8 @@ var uikit = {
 	},
 
 	scrollNext: function(){
-		console.log('next');
-		console.log(this.currentSlide);
-		console.log(this.steps[this.currentSlide]?.next);
+		//console.log('next');
+		//console.log(this.steps[this.currentSlide]?.next);
 		if(!this.steps[this.currentSlide]?.next?.trigger || this.disableTriggers) return false;
 
 		uikit.scrollToSection(
@@ -183,9 +205,8 @@ var uikit = {
 		this.currentSlide = this.currentSlide + 1;
 	},
 	scrollPrev: function(){
-		console.log('prev');
-		console.log(this.currentSlide);
-		console.log(this.steps[this.currentSlide]?.prev);
+		//console.log('prev');
+		//console.log(this.steps[this.currentSlide]?.prev);
 
 		if(!this.steps[this.currentSlide]?.prev?.trigger || this.disableTriggers) return false;
 
@@ -220,23 +241,17 @@ var uikit = {
 	},
 
 	scrollToSection: function(section, speed = 1, offset = 0, ease = "power1.inOut") {
-		//var newPos = document.querySelector(section).offsetTop; // Получаем верхнюю границу элемента
-		//window.scrollTo({ top: newPos, behavior: 'smooth' }); // Прокрутка к элементу
+		
 		var element = document.querySelector(section);
 		if (element) {
 			var elementRect = element.getBoundingClientRect();
 			var absoluteElementTop = elementRect.top + window.pageYOffset;
-			//window.scrollTo({ top: absoluteElementTop, behavior: 'smooth' });
-			console.log('--'+absoluteElementTop+' + '+offset+'='+ (absoluteElementTop+offset));
+			//console.log('--'+absoluteElementTop+' + '+offset+'='+ (absoluteElementTop+offset));
 
 			// Отключаем скролл при начале анимации
-			//uikit.disableScroll();
-			// Обнуляем импульс прокрутки перед началом анимации
-			//window.scrollTo({ top: window.pageYOffset, behavior: 'instant' });
 			uikit.disableTriggers = true;
 
 			this.controller.scrollTo(function (newpos) {
-				//gsap.to(window, speed, {scrollTo: {y: newpos + offset}, ease: ease});
 				requestAnimationFrame(function() {
 					gsap.to(window, {
 						duration: speed,
@@ -245,19 +260,15 @@ var uikit = {
 						onStart: function() {
 							// Анимация началась
 							uikit.disableTriggers = true;
-							//uikit.disableScroll();
 						},
 						onComplete: function() {
-							console.log($(window).scrollTop()+'!!!');
+							//console.log($(window).scrollTop()+'!!!');
 							if (uikit.disableTriggers) {
-								console.log('+');
 								gsap.killTweensOf(window); // Останавливаем все текущие анимации GSAP на объекте window
-								//window.scrollTo({ top: $(window).scrollTop(), behavior: 'instant' }); // Принудительно устанавливаем текущее положение прокрутки
 							}
 							// Анимация закончилась
 							setTimeout(function() {
 								uikit.disableTriggers = false;
-								//uikit.enableScroll();
 							},300);
 						}
 					});
@@ -275,27 +286,12 @@ var uikit = {
 		var twoSection = document.getElementsByClassName('js-two-section');
 		
 		var tweenTwoSectionIn = new TimelineMax()
-			.to(twoSection, 0.3, {top: '-49vh'});
+			.to(twoSection, 0.3, {top: '-52vh'});
 
 		var sceneFirst = new ScrollMagic.Scene({triggerElement: ".js-first-section", duration: (threeHeight * 1), offset: 0, triggerHook: 0})
 			//.setPin(".js-first-section")
-			.addIndicators({name: "first"})
-			/* .on('end', function (event) {
-				if(uikit.disableTriggers) return;
-				//? 1 to 2
-				// Проверяем, что направление прокрутки вниз
-				if (event.scrollDirection === 'FORWARD') {
-					//uikit.scrollToSection('.js-three-section-trigger'); // Прокрутка к следующему разделу, если скролим вниз
-					uikit.scrollToSection('.js-three-section-trigger'); // Прокрутка к следующему разделу, если скролим вниз
-				}
-			}) */
+			//.addIndicators({name: "first"})
 			.addTo(this.controller);
-
-		/* var sceneTwoSectionIn = new ScrollMagic.Scene({triggerElement: ".js-two-section", duration: 0, offset: 0, triggerHook: 0})
-			//.setPin(".three-section__container")
-			.setTween(tweenTwoSectionIn)
-			.addIndicators({name: "two-section-in"})
-			.addTo(this.controller); */
 	},
 
 	animThree: function () {
@@ -325,7 +321,7 @@ var uikit = {
 
 		var sceneThree = new ScrollMagic.Scene({triggerElement: ".js-three-section-trigger", duration: (threeHeight * 1), offset: 0, triggerHook: 0})
 			//.setPin(".js-three-section")
-			.addIndicators({name: "three"})
+			//.addIndicators({name: "three"})
 			/* .on('leave', function (event) {
 				if(uikit.disableTriggers) return;
 				//? 2 to 1
@@ -347,7 +343,7 @@ var uikit = {
 		/* var sceneFirstSectionOut = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: 0, offset: 0, triggerHook: 0.7})
 			//.setPin(".three-section__container")
 			.setTween(tweenFirstSectionOut)
-			.addIndicators({name: "first-section-out"})
+			//.addIndicators({name: "first-section-out"})
 			.addTo(this.controller); */
 
 		var sceneThreeCity = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: 0/* (threeHeight * 1) */, offset: 0, triggerHook: 0})
@@ -365,23 +361,21 @@ var uikit = {
 		var sceneThreeHeroCenter = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: 0, offset: 0, triggerHook: 0})
 			//.setPin(".js-three-section")
 			.setTween(tweenHeroCenter)
-			.addIndicators({name: "three-hero-center"})
+			//.addIndicators({name: "three-hero-center"})
 			.addTo(this.controller);
 
 		var sceneThreeHeroLeft = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: 0, offset: 0, triggerHook: 0})
 			//.setPin(".js-three-section")
 			.setTween(tweenHeroLeft)
-			.addIndicators({name: "three-hero-left"})
+			//.addIndicators({name: "three-hero-left"})
 			.addTo(this.controller);
 
 		var sceneThreeHeroRight = new ScrollMagic.Scene({triggerElement: ".js-three-section", duration: 0, offset: 0, triggerHook: 0})
 			//.setPin(".js-three-section")
 			.setTween(tweenHeroRight)
-			.addIndicators({name: "three-hero-right"})
+			//.addIndicators({name: "three-hero-right"})
 			.addTo(this.controller);
 	},
-
-
 	
 	animFour: function () {
 		var fourHeight = 7400;//this.wh(); //1250;
@@ -469,14 +463,14 @@ var uikit = {
 		var tweenPlanet1 = gsap.timeline();
 		tweenPlanet1.to(planet1, {duration: 1, opacity: 1, y: '0%'});
 		var tweenPlanet1Out = gsap.timeline();
-		tweenPlanet1Out.to(planet1, {duration: 1, opacity: 0.5, y: '-120%'});
+		tweenPlanet1Out.to(planet1, {duration: 1, opacity: 0, y: '-120%'});
 		var tweenPlanet1Out2 = gsap.timeline();
 		tweenPlanet1Out2.to(planet1, {duration: 1, opacity: 0, y: '-240%'});
 
 		var tweenPlanet2 = gsap.timeline();
 		tweenPlanet2.to(planet2, {duration: 1, opacity: 1, y: '0%'});
 		var tweenPlanet2Out = gsap.timeline();
-		tweenPlanet2Out.to(planet2, {duration: 1, opacity: 0.5, y: '-120%'});
+		tweenPlanet2Out.to(planet2, {duration: 1, opacity: 0, y: '-120%'});
 
 		var tweenPlanet3 = gsap.timeline();
 		tweenPlanet3.to(planet3, {duration: 1, opacity: 1, y: '0%'});
@@ -497,7 +491,7 @@ var uikit = {
 
 		var sceneFour = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: (fourHeight * 1), offset: 0, triggerHook: 0})
 			.setPin(".js-four-section")
-			.addIndicators({name: "four"})
+			//.addIndicators({name: "four"})
 			.addTo(this.controller);
 
 		//?------------------------------------
@@ -521,7 +515,7 @@ var uikit = {
 				}
 			}) */
 			//.setTween(tweenStory)
-			.addIndicators({name: "four-trigger-1"})
+			//.addIndicators({name: "four-trigger-1"})
 			.addTo(this.controller);
 
 		var sceneFourTrigger2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 50, offset: 2450, triggerHook: 0})
@@ -542,7 +536,7 @@ var uikit = {
 					uikit.scrollToSection('.js-four-section', 2, 1340, "linear"); // Прокрутка к следующему разделу, если скролим вниз
 				}
 			}) */
-			.addIndicators({name: "four-trigger-2"})
+			//.addIndicators({name: "four-trigger-2"})
 			.addTo(this.controller);
 
 		var sceneFourTrigger3 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 50, offset: 3810, triggerHook: 0})
@@ -563,7 +557,7 @@ var uikit = {
 					uikit.scrollToSection('.js-four-section', 1, 1280); // Прокрутка к следующему разделу, если скролим вниз
 				}
 			}) */
-			.addIndicators({name: "four-trigger-3"})
+			//.addIndicators({name: "four-trigger-3"})
 			.addTo(this.controller);
 
 		var sceneFourTrigger4 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 50, offset: 5090, triggerHook: 0})
@@ -584,7 +578,7 @@ var uikit = {
 					uikit.scrollToSection('.js-four-section', 1, 1100); // Прокрутка к следующему разделу, если скролим вниз
 				}
 			}) */
-			.addIndicators({name: "four-trigger-4"})
+			//.addIndicators({name: "four-trigger-4"})
 			.addTo(this.controller);
 
 		var sceneFourTrigger5 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 50, offset: 6210, triggerHook: 0})
@@ -605,7 +599,7 @@ var uikit = {
 					uikit.scrollToSection('.js-four-section', 1, 1100); // Прокрутка к следующему разделу, если скролим вниз
 				}
 			}) */
-			.addIndicators({name: "four-trigger-5"})
+			//.addIndicators({name: "four-trigger-5"})
 			.addTo(this.controller);
 
 		var sceneFourTrigger6 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 50, offset: 7330, triggerHook: 0})
@@ -626,7 +620,7 @@ var uikit = {
 					uikit.scrollToSection('.js-four-section', 1, 700); // Прокрутка к следующему разделу, если скролим вниз
 				}
 			}) */
-			.addIndicators({name: "four-trigger-6"})
+			//.addIndicators({name: "four-trigger-6"})
 			.addTo(this.controller);
 
 		//?------------------------------------
@@ -642,7 +636,7 @@ var uikit = {
 				}
 			})
 			//.setTween(tweenStory)
-			.addIndicators({name: "four-contain-1"})
+			//.addIndicators({name: "four-contain-1"})
 			.addTo(this.controller); */
 
 		var sceneFourStory = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 0, triggerHook: 0.7})
@@ -874,7 +868,7 @@ var uikit = {
 					uikit.scrollToSection('.js-five-section-trigger'); // Прокрутка к следующему разделу, если скролим вниз
 				} */
 			})
-			.addIndicators({name: "five-trigger"})
+			//.addIndicators({name: "five-trigger"})
 			.addTo(this.controller);
 
 
@@ -959,19 +953,19 @@ var uikit = {
 		var sceneFiveTitleOut = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 200, offset: 400, triggerHook: 0.8})
 			//.setPin(".three-section__container")
 			.setTween(tweenTitleOut)
-			.addIndicators({name: "five-title-out"})
+			//.addIndicators({name: "five-title-out"})
 			.addTo(this.controller);
 
 		var sceneFiveTextOut = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 200, offset: 1000, triggerHook: 0.8})
 			//.setPin(".three-section__container")
 			.setTween(tweenTextOut)
-			.addIndicators({name: "five-text-out"})
+			//.addIndicators({name: "five-text-out"})
 			.addTo(this.controller);
 
 		var sceneFiveImgOut = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 400, offset: 400, triggerHook: 1})
 			//.setPin(".three-section__container")
 			.setTween(tweenImgOut)
-			.addIndicators({name: "five-img-out"})
+			//.addIndicators({name: "five-img-out"})
 			.addTo(this.controller);
 	},
 
@@ -983,10 +977,10 @@ var uikit = {
 		var footerHero = document.getElementsByClassName('js-footer-hero');
 		var footerScrollUp = document.getElementsByClassName('js-scroll-up');
 		//var twoSection = document.getElementsByClassName('js-two-section');
-		gsap.set(footerLogo, {x: '-=50%', y: '+=300'});
+		gsap.set(footerLogo, {opacity: '0', x: '-=50%', y: '+=200'});
 		gsap.set(footerText, {opacity: '0', y: '-=200'});
-		gsap.set(footerHero, {x: '+=50%'});
-		gsap.set(footerScrollUp, {x: '-=50%'});
+		gsap.set(footerHero, {x: '+=100'});
+		gsap.set(footerScrollUp, {x: '-=100'});
 
 		var tweenLogo = gsap.timeline();
 		tweenLogo.to(footerLogo, {
@@ -1006,35 +1000,35 @@ var uikit = {
 		var sceneLogo = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 0, triggerHook: 0.6})
 			//.setPin(".js-first-section")
 			.setTween(tweenLogo)
-			.addIndicators({name: "footer-logo"})
+			//.addIndicators({name: "footer-logo"})
 			.addTo(this.controller);
 
 		var sceneText = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 200, triggerHook: 0.6})
 			//.setPin(".js-first-section")
 			.setTween(tweenText)
-			.addIndicators({name: "footer-text"})
+			//.addIndicators({name: "footer-text"})
 			.addTo(this.controller);
 
 		var sceneHero = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 100, triggerHook: 0.6})
 			//.setPin(".js-first-section")
 			.setTween(tweenHero)
-			.addIndicators({name: "footer-hero"})
+			//.addIndicators({name: "footer-hero"})
 			.addTo(this.controller);
 
 		var sceneScrollUp = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 150, triggerHook: 0.6})
 			//.setPin(".js-first-section")
 			.setTween(tweenScrollUp)
-			.addIndicators({name: "footer-scroll-up"})
+			//.addIndicators({name: "footer-scroll-up"})
 			.addTo(this.controller);
 	},
 
 	scrollUp: function () {
 		$('.js-scroll-up').click(function(){
-			//$('html, body').animate({scrollTop: 0}, 'slow');
 			uikit.disableTriggers = true;
-			uikit.scrollToSection('.js-first-section', 1, uikit.wh() * -1);
+			uikit.scrollToSection('.js-first-section', 3, uikit.wh() * -1);
 			
 			setTimeout(function () {
+				uikit.currentSlide = 0;
 				uikit.disableTriggers = false;
 			},1100);
 			return false;
@@ -1050,6 +1044,7 @@ var uikit = {
 		this.animFooter();
 		this.scrollUp();
 		this.disableScroll();
+		//this.setMassCoordinSteps();
     }
 };
 
@@ -1128,5 +1123,9 @@ $(window).resize(function () {
 });
 
 $(window).scroll(function () {
-    //console.log($(this).scrollTop());
+    /* clearTimeout(window.scrollTimer);
+    window.scrollTimer = setTimeout(function(){
+        let scrollTo = uikit.getPositionIndex($(this).scrollTop());
+		uikit.scrollToSection(uikit.steps[scrollTo]?.next?.trigger, uikit.steps[scrollTo]?.next?.speed, uikit.steps[scrollTo]?.next?.offset, uikit.steps[scrollTo]?.next?.ease);
+    }, 1000); */
 });

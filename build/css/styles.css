@@ -374,6 +374,17 @@ body:before {
   height: 100%;
   z-index: 0;
 }
+body::-webkit-scrollbar {
+  width: 6px;
+}
+body::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb {
+  background: #FF4B20;
+  border-radius: 10px;
+}
 @media (max-width: 1700px) {
   body {
     font: 15px/25px "Inconsolata", monospace;
@@ -413,8 +424,10 @@ svg {
 }
 
 .slick-slider *,
-input, button,
-a:focus, a:hover {
+input,
+button,
+a:focus,
+a:hover {
   outline: none !important;
 }
 
@@ -445,13 +458,13 @@ a:focus, a:hover {
   margin-left: auto;
   margin-right: auto;
   /* @include mq('dekstop') {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  @include mq('tablet') {
-    padding-left: 5px;
-    padding-right: 5px;
-  } */
+     padding-left: 10px;
+     padding-right: 10px;
+   }
+   @include mq('tablet') {
+     padding-left: 5px;
+     padding-right: 5px;
+   } */
 }
 .container.container-fluid {
   max-width: 100%;
@@ -1049,7 +1062,7 @@ h5, .title-h5 {
 .two-section {
   z-index: 3;
   position: absolute;
-  top: -49vh;
+  top: -52vh;
   left: 0;
   width: 100%;
 }
@@ -1375,6 +1388,14 @@ h5, .title-h5 {
   padding-top: 200px;
   background: url("../images/four-section/bg.png") 0 0/100% auto no-repeat #38231e;
   padding-bottom: 500px;
+}
+.four-section__trigger {
+  position: absolute;
+  bottom: 300px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  pointer-events: none;
 }
 .four-section__container {
   max-width: 1300px;
