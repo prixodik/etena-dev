@@ -4,6 +4,16 @@
 	position: relative;
 	z-index: 5;
 
+	&__trigger{
+		display: block;
+		width: 100%;
+		height: 0;
+		position: absolute;
+		top: -380px;
+		left: 0;
+		pointer-events: none;
+	}
+
 	&__wrapper{
 		position: absolute;
 		top: 0;
@@ -63,11 +73,47 @@
 			height: 1150px;
 		}
 
-		img{
+		&-main{
 			margin: 0 auto;
 			display: block;
 			position: relative;
 			z-index: 1;
+		}
+
+		&-cloud-1{
+			position: absolute;
+			top: -25px;
+			left: -25px;
+			z-index: 4;
+			transform: translateY(70px);
+		}
+		&-cloud-2{
+			position: absolute;
+			top: 160px;
+			right: 10px;
+			z-index: 4;
+			transform: translateY(50px);
+		}
+		&-cloud-3{
+			position: absolute;
+			top: 135px;
+			left: 60px;
+			z-index: 4;
+			transform: translateY(70px);
+		}
+		&-cloud-4{
+			position: absolute;
+			top: -20px;
+			left: 670px;
+			z-index: 4;
+			transform: translateY(60px);
+		}
+		&-cloud-5{
+			position: absolute;
+			top: 80px;
+			left: 775px;
+			z-index: 4;
+			transform: translateY(80px);
 		}
 
 		&-bg{

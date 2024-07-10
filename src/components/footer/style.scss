@@ -55,7 +55,8 @@
 		position: absolute;
 		top: -115px;
 		left: 50%;
-		transform: translateX(-50%);
+		//transform: translate(-50%,0%);
+		//opacity: 0;
 		//width: 100%;
 		max-width: calc(100vw - 40px);
 		z-index: 0;

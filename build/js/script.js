@@ -102,7 +102,255 @@ var uikit = {
 
     xxs: '480',
 
-	disableTriggers: false,
+	steps: [
+
+		{ // 1
+
+			prev: {},
+
+			next: {
+
+				trigger: '.js-three-section-trigger'
+
+			}
+
+		},
+
+		{ // 2
+
+			prev: {
+
+				trigger: '.js-first-section'
+
+			},
+
+			next: {
+
+				trigger: '.js-four-section',
+
+				offset: 950
+
+			}
+
+		},
+
+		{ // 3
+
+			prev: {
+
+				trigger: '.js-three-section-trigger'
+
+			},
+
+			next: {
+
+				trigger: '.js-four-section',
+
+				offset: 1510,
+
+				speed: 2
+
+			}
+
+		},
+
+		{ // 4
+
+			prev: {
+
+				trigger: '.js-four-section',
+
+				offset: -1510,
+
+				speed: 1
+
+			},
+
+			next: {
+
+				trigger: '.js-four-section',
+
+				offset: 1340,
+
+				speed: 2,
+
+				ease: 'linear'
+
+			}
+
+		},
+
+		{ // 5
+
+			prev: {
+
+				trigger: '.js-four-section',
+
+				offset: -1310,
+
+				speed: 2,
+
+				ease: 'linear'
+
+			},
+
+			next: {
+
+				trigger: '.js-four-section',
+
+				offset: 1280,
+
+				speed: 1
+
+			}
+
+		},
+
+		{ // 6
+
+			prev: {
+
+				trigger: '.js-four-section',
+
+				offset: -1280,
+
+				speed: 1
+
+			},
+
+			next: {
+
+				trigger: '.js-four-section',
+
+				offset: 1100,
+
+				speed: 1
+
+			}
+
+		},
+
+		{ // 7
+
+			prev: {
+
+				trigger: '.js-four-section',
+
+				offset: -1100,
+
+				speed: 1
+
+			},
+
+			next: {
+
+				trigger: '.js-four-section',
+
+				offset: 1100,
+
+				speed: 1
+
+			}
+
+		},
+
+		{ // 8
+
+			prev: {
+
+				trigger: '.js-four-section',
+
+				offset: -1100,
+
+				speed: 1
+
+			},
+
+			next: {
+
+				trigger: '.js-five-section-triggerr',
+
+				offset: 0,
+
+				speed: 1
+
+			}
+
+		},
+
+		{ // 9
+
+			prev: {
+
+				trigger: '.js-four-section',
+
+				offset: -60,
+
+				speed: 1
+
+			},
+
+			next: {
+
+				trigger: '.js-five-img',
+
+				offset: 0,
+
+				speed: 1
+
+			}
+
+		},
+
+		{ // 10
+
+			prev: {
+
+				trigger: '.js-five-section-trigger',
+
+				offset: 0,
+
+				speed: 1
+
+			},
+
+			next: {
+
+				trigger: '.js-footer',
+
+				offset: 0,
+
+				speed: 1.5
+
+			}
+
+		},
+
+		{ // 11
+
+			prev: {
+
+				trigger: '.js-five-img',
+
+				offset: 0,
+
+				speed: 1.5
+
+			},
+
+			next: {}
+
+		}
+
+	],
+
+	lastDirection: 'down',
+
+	currentSlide: 0,
+
+	nextSlide: 1,
+
+	disableTriggers: true,
 
 	controller: new ScrollMagic.Controller(),
 
@@ -121,28 +369,6 @@ var uikit = {
     },
 
 
-
-    /* dottedAnim: function () {
-
-		var opacity = 1;
-
-		var anim = setInterval(() => {
-
-			$('.js-dotted').each(function(){ 
-
-				var size = $(this).data('size') || 70;
-
-				opacity = !opacity;
-
-				$(this).css('transform', 'translate(' + Math.ceil(Math.random() * 70) + 'px, ' + Math.ceil(Math.random() * size) + 'px)').css('opacity',  opacity);
-
-			});
-
-		}, 4000);
-
-		
-
-	}, */
 
 	dottedAnim: function () {
 
@@ -174,7 +400,133 @@ var uikit = {
 
 		updateAnimation(); // Запускаем анимацию впервые
 
-	},	
+	},
+
+
+
+	disableScroll: function() {
+
+		console.log("Scrolling disabled");
+
+		window.addEventListener('wheel', uikit.preventScroll, {passive: false});
+
+    	window.addEventListener('touchmove', uikit.preventScroll, {passive: false});
+
+	},
+
+	
+
+	enableScroll: function() {
+
+		console.log("Scrolling enabled");
+
+		window.removeEventListener('wheel', uikit.preventScroll, {passive: false});
+
+    	window.removeEventListener('touchmove', uikit.preventScroll, {passive: false});
+
+	},
+
+
+
+	scrollNext: function(){
+
+		console.log('next');
+
+		console.log(this.currentSlide);
+
+		console.log(this.steps[this.currentSlide]?.next);
+
+		if(!this.steps[this.currentSlide]?.next?.trigger || this.disableTriggers) return false;
+
+
+
+		uikit.scrollToSection(
+
+			this.steps[this.currentSlide].next.trigger,
+
+			this.steps[this.currentSlide].next.speed,
+
+			this.steps[this.currentSlide].next.offset,
+
+			this.steps[this.currentSlide].next.ease
+
+		);
+
+		this.currentSlide = this.currentSlide + 1;
+
+	},
+
+	scrollPrev: function(){
+
+		console.log('prev');
+
+		console.log(this.currentSlide);
+
+		console.log(this.steps[this.currentSlide]?.prev);
+
+
+
+		if(!this.steps[this.currentSlide]?.prev?.trigger || this.disableTriggers) return false;
+
+
+
+		uikit.scrollToSection(
+
+			this.steps[this.currentSlide].prev.trigger,
+
+			this.steps[this.currentSlide].prev.speed,
+
+			this.steps[this.currentSlide].prev.offset,
+
+			this.steps[this.currentSlide].prev.ease
+
+		);
+
+		this.currentSlide = this.currentSlide - 1;
+
+	},
+
+	preventScroll: function(e) {
+
+		let scrollDirection;
+
+		let scrollCount;
+
+
+
+		if (e.deltaY > 0 && !uikit.disableTriggers) {
+
+			scrollDirection = 'down';
+
+			uikit.scrollNext();
+
+		} else if (e.deltaY < 0 && !uikit.disableTriggers) {
+
+			scrollDirection = 'up';
+
+			uikit.scrollPrev();
+
+		} else {
+
+			scrollDirection = 'none';
+
+		}
+
+
+
+		scrollCount = e.deltaY;
+
+
+
+		//console.log("Wheel event prevented");
+
+		//console.log({ scrollDirection, scrollCount });
+
+		e.preventDefault();
+
+		e.stopPropagation();
+
+	},
 
 
 
@@ -194,9 +546,75 @@ var uikit = {
 
 			//window.scrollTo({ top: absoluteElementTop, behavior: 'smooth' });
 
+			console.log('--'+absoluteElementTop+' + '+offset+'='+ (absoluteElementTop+offset));
+
+
+
+			// Отключаем скролл при начале анимации
+
+			//uikit.disableScroll();
+
+			// Обнуляем импульс прокрутки перед началом анимации
+
+			//window.scrollTo({ top: window.pageYOffset, behavior: 'instant' });
+
+			uikit.disableTriggers = true;
+
+
+
 			this.controller.scrollTo(function (newpos) {
 
-				gsap.to(window, speed, {scrollTo: {y: newpos + offset}, ease: ease});
+				//gsap.to(window, speed, {scrollTo: {y: newpos + offset}, ease: ease});
+
+				requestAnimationFrame(function() {
+
+					gsap.to(window, {
+
+						duration: speed,
+
+						scrollTo: { y: newpos + offset },
+
+						ease: ease,
+
+						onStart: function() {
+
+							// Анимация началась
+
+							uikit.disableTriggers = true;
+
+							//uikit.disableScroll();
+
+						},
+
+						onComplete: function() {
+
+							console.log($(window).scrollTop()+'!!!');
+
+							if (uikit.disableTriggers) {
+
+								console.log('+');
+
+								gsap.killTweensOf(window); // Останавливаем все текущие анимации GSAP на объекте window
+
+								//window.scrollTo({ top: $(window).scrollTop(), behavior: 'instant' }); // Принудительно устанавливаем текущее положение прокрутки
+
+							}
+
+							// Анимация закончилась
+
+							setTimeout(function() {
+
+								uikit.disableTriggers = false;
+
+								//uikit.enableScroll();
+
+							},300);
+
+						}
+
+					});
+
+				});
 
 			});
 
@@ -234,19 +652,23 @@ var uikit = {
 
 			.addIndicators({name: "first"})
 
-			.on('end', function (event) {
+			/* .on('end', function (event) {
 
 				if(uikit.disableTriggers) return;
+
+				//? 1 to 2
 
 				// Проверяем, что направление прокрутки вниз
 
 				if (event.scrollDirection === 'FORWARD') {
 
+					//uikit.scrollToSection('.js-three-section-trigger'); // Прокрутка к следующему разделу, если скролим вниз
+
 					uikit.scrollToSection('.js-three-section-trigger'); // Прокрутка к следующему разделу, если скролим вниз
 
 				}
 
-			})
+			}) */
 
 			.addTo(this.controller);
 
@@ -322,9 +744,11 @@ var uikit = {
 
 			.addIndicators({name: "three"})
 
-			.on('leave', function (event) {
+			/* .on('leave', function (event) {
 
 				if(uikit.disableTriggers) return;
+
+				//? 2 to 1
 
 				// Проверяем, что направление прокрутки вниз
 
@@ -340,19 +764,17 @@ var uikit = {
 
 				if(uikit.disableTriggers) return;
 
+				//? 2 to 3
+
 				// Проверяем, что направление прокрутки вниз
 
 				if (event.scrollDirection === 'FORWARD') {
 
-					uikit.scrollToSection('.js-four-section-trigger'); // Прокрутка к следующему разделу, если скролим вниз
+					uikit.scrollToSection('.js-four-section', 0, 950); // Прокрутка к следующему разделу, если скролим вниз
 
-				}/* else{
+				}
 
-					uikit.scrollToSection('.js-first-section'); // Прокрутка к следующему разделу, если скролим вверх
-
-				} */
-
-			})
+			}) */
 
 			.addTo(this.controller);
 
@@ -432,547 +854,9 @@ var uikit = {
 
 
 
-	/* animFour: function () {
 
-		var fourHeight = 7400;//this.wh(); //1250;
 
-		var story = document.getElementsByClassName('js-four-story');
-
-		var img1 = document.getElementsByClassName('js-four-img-1');
-
-		var cloud1 = document.getElementsByClassName('js-four-cloud-1');
-
-		var cloud2 = document.getElementsByClassName('js-four-cloud-2');
-
-		var img2 = document.getElementsByClassName('js-four-img-2');
-
-		var title = document.getElementsByClassName('js-four-title');
-
-		var text1 = document.getElementsByClassName('js-four-text-1');
-
-		var text2 = document.getElementsByClassName('js-four-text-2');
-
-		var subtitle = document.getElementsByClassName('js-four-subtitle');
-
-		var contain1 = document.getElementsByClassName('js-four-contain-1');
-
-		var contain2 = document.getElementsByClassName('js-four-contain-2');
-
-		var contain3 = document.getElementsByClassName('js-four-contain-3');
-
-		var planet1 = document.getElementsByClassName('js-four-planet-1');
-
-		var planet2 = document.getElementsByClassName('js-four-planet-2');
-
-		var planet3 = document.getElementsByClassName('js-four-planet-3');
-
-		
-
-		$('.js-four-subtitle p').each(function(){
-
-			var str = $(this).text();
-
-			var newStr = str.replace(/([^\x00-\x80]|\w|\.|,)/g, "<span class='letter'>$&</span>");
-
-			$(this).html(newStr);
-
-		});
-
-
-
-		var tweenStory = new TimelineMax()
-
-			.to(story, 1, {opacity: '1', transform: 'translateY(0%) scale(1)'});
-
-			
-
-		var tweenCloud1 = new TimelineMax()
-
-			.to(cloud1, 1, {opacity: '1', transform: 'translate3d(0,0,0) scale(1)'});
-
-		var tweenCloud1Move = new TimelineMax()
-
-			.to(cloud1, 1, {opacity: '1', transform: 'translate3d(10%,20%,0) scale(1)'});
-
-		var tweenCloud1Out = new TimelineMax()
-
-			.to(cloud1, 1, {opacity: '0', transform: 'translate3d(10%,-100%,0) scale(1)'});
-
-
-
-		var tweenCloud2 = new TimelineMax()
-
-			.to(cloud2, 1, {opacity: '1', transform: 'translate(0,0) scale(1)'});
-
-		var tweenCloud2Move = new TimelineMax()
-
-			.to(cloud2, 1, {opacity: '1', transform: 'translate3d(-10%,-20%,0) scale(1)'});
-
-		var tweenCloud2Out = new TimelineMax()
-
-			.to(cloud2, 1, {opacity: '0', transform: 'translate3d(0,-100%,0) scale(0.8)'});
-
-
-
-		var tweenImg1 = new TimelineMax()
-
-			.to(img1, 1, {opacity: '1', transform: 'translateY(0%) scale(1)'});
-
-		var tweenImg1Out = new TimelineMax()
-
-			.to(img1, 1, {opacity: '0', transform: 'translateY(-100%) scale(0.8)'});
-
-		var tweenImg2 = new TimelineMax()
-
-			.to(img2, 1, {opacity: '1', transform: 'translateY(0%) scale(1)'});
-
-		var tweenImg2Out = new TimelineMax()
-
-			.to(img2, 1, {opacity: '0', transform: 'translateY(-100%) scale(0.8)'});
-
-		var tweenTitle = new TimelineMax()
-
-			.to(title, 1, {opacity: '1', transform: 'translateY(0%) scale(1)'});
-
-		var tweenTitleOut = new TimelineMax()
-
-			.to(title, 1, {opacity: '0', transform: 'translateY(-100%) scale(1)'});
-
-		var tweenText1 = new TimelineMax()
-
-			.to(text1, 1, {opacity: '1', transform: 'translateY(0%) scale(1)'});
-
-		var tweenText1Out = new TimelineMax()
-
-			.to(text1, 1, {opacity: '0', transform: 'translateY(-100%) scale(1)'});
-
-		var tweenText2 = new TimelineMax()
-
-			.to(text2, 1, {opacity: '1', transform: 'translateY(0%) scale(1)'});
-
-		var tweenText2Out = new TimelineMax()
-
-			.to(text2, 1, {opacity: '0', transform: 'translateY(-100%) scale(1)'});
-
-		var tweenSubtitleOut = new TimelineMax()
-
-			.to(subtitle, 1, {opacity: '0.2', transform: 'translateY(0%) scale(1)'});
-
-		var tweenContain1Out = new TimelineMax()
-
-			.to(contain1, 1, {display: 'none'});
-
-		var tweenContain2Out = new TimelineMax()
-
-			.to(contain2, 1, {display: 'none'});
-
-		var tweenContain3Out = new TimelineMax()
-
-			.to(contain3, 1, {position: 'absolute'});
-
-
-
-		var tweenPlanet1 = new TimelineMax()
-
-			.to(planet1, 1, {opacity: '1', transform: 'translateY(0%)'});
-
-		var tweenPlanet1Out = new TimelineMax()
-
-			.to(planet1, 1, {opacity: '0.5', transform: 'translateY(-120%)'});
-
-		var tweenPlanet1Out2 = new TimelineMax()
-
-			.to(planet1, 1, {opacity: '0', transform: 'translateY(-240%)'});
-
-
-
-		var tweenPlanet2 = new TimelineMax()
-
-			.to(planet2, 1, {opacity: '1', transform: 'translateY(0%)'});
-
-		var tweenPlanet2Out = new TimelineMax()
-
-			.to(planet2, 1, {opacity: '0.5', transform: 'translateY(-120%)'});
-
-
-
-		var tweenPlanet3 = new TimelineMax()
-
-			.to(planet3, 1, {opacity: '1', transform: 'translateY(0%)'});
-
-		//var tweenPlanet3Out = new TimelineMax()
-
-		//	.to(planet3, 1, {opacity: '0.5', transform: 'translateY(-100%)'});
-
-
-
-		// Animation for each letter
-
-		var tweenLetters = new TimelineMax();
-
-		$('.js-four-subtitle .letter').each(function(index, element) {
-
-			tweenLetters.to(element, 20, {opacity: 1}, index * 0.1);
-
-		});
-
-
-
-		var sceneFour = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: (fourHeight * 1), offset: 0, triggerHook: 0})
-
-			.setPin(".js-four-section")
-
-			.on('leave', function (event) {
-
-				// Проверяем, что направление прокрутки вниз
-
-				if (event.scrollDirection === 'REVERSE') {
-
-					uikit.scrollToSection('.js-three-section-trigger'); // Прокрутка к следующему разделу, если скролим вниз
-
-				}
-
-			})
-
-			.on('end', function (event) {
-
-				// Проверяем, что направление прокрутки вниз
-
-				if (event.scrollDirection === 'FORWARD') {
-
-					uikit.scrollToSection('.js-five-section'); // Прокрутка к следующему разделу, если скролим вниз
-
-				}
-
-			})
-
-			//.setTween(tweenStory)
-
-			.addIndicators({name: "four"})
-
-			.addTo(this.controller);
-
-		
-
-		var sceneFourContain1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 100, offset: 0, triggerHook: 0})
-
-			//.setPin(".js-four-section")
-
-			
-
-			.on('end', function (event) {
-
-				// Проверяем, что направление прокрутки вниз
-
-				if (event.scrollDirection === 'FORWARD') {
-
-					uikit.scrollToSection('.js-four-contain-2'); // Прокрутка к следующему разделу, если скролим вниз
-
-				}
-
-			})
-
-			//.setTween(tweenStory)
-
-			.addIndicators({name: "four-contain-1"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourStory = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 0, triggerHook: 0.7})
-
-			//.setPin(".js-four-section")
-
-			.setTween(tweenStory)
-
-			.addIndicators({name: "four-story"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourCloud1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 1000, offset: 350, triggerHook: 0.7})
-
-			//.setPin(".js-four-section")
-
-			.setTween(tweenCloud1)
-
-			.addIndicators({name: "four-cloud-1"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourCloud1Move = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 2000, offset: 1350, triggerHook: 0.7})
-
-			//.setPin(".js-four-section")
-
-			.setTween(tweenCloud1Move)
-
-			.addIndicators({name: "four-cloud-1-move"})
-
-			.addTo(this.controller);
-
-		
-
-		var sceneFourImg1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 300, triggerHook: 0.7})
-
-			//.setPin(".js-four-section")
-
-			.setTween(tweenImg1)
-
-			.addIndicators({name: "four-img-1"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourTitle = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 600, triggerHook: 0.7})
-
-			.setTween(tweenTitle)
-
-			.addIndicators({name: "four-title"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourText1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 900, triggerHook: 0.7})
-
-			.setTween(tweenText1)
-
-			.addIndicators({name: "four-text-1"})
-
-			.addTo(this.controller);
-
-		
-
-		var sceneFourImg1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 1800, triggerHook: 0.7})
-
-			.setTween(tweenImg1Out)
-
-			.addIndicators({name: "four-img-1-out"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourTitleOut = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 1900, triggerHook: 0.7})
-
-			.setTween(tweenTitleOut)
-
-			.addIndicators({name: "four-title-out"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourText1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 1950, triggerHook: 0.7})
-
-			.setTween(tweenText1Out)
-
-			//.addIndicators({name: "four-text-1-out"})
-
-			.addTo(this.controller);
-
-		
-
-		var sceneFourContain1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 2100, triggerHook: 0.7})
-
-			.setTween(tweenContain1Out)
-
-			//.addIndicators({name: "four-contain-1-out"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourImg2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 2200, triggerHook: 0.7})
-
-			//.setPin(".js-four-section")
-
-			.setTween(tweenImg2)
-
-			//.addIndicators({name: "four-img-2"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourText2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 2800, triggerHook: 0.7})
-
-			.setTween(tweenText2)
-
-			//.addIndicators({name: "four-text-2"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourImg2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 3300, triggerHook: 0.7})
-
-			.setTween(tweenImg2Out)
-
-			//.addIndicators({name: "four-img-2-out"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourText2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 3450, triggerHook: 0.7})
-
-			.setTween(tweenText2Out)
-
-			//.addIndicators({name: "four-text-2-out"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourCloud1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 3350, triggerHook: 0.7})
-
-			//.setPin(".js-four-section")
-
-			.setTween(tweenCloud1Out)
-
-			//.addIndicators({name: "four-cloud-1-out"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourContain2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 3700, triggerHook: 0.7})
-
-			.setTween(tweenContain2Out)
-
-			//.addIndicators({name: "four-contain-2-out"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourCloud2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 3800, triggerHook: 0.7})
-
-			.setTween(tweenCloud2)
-
-			//.addIndicators({name: "four-cloud-2"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourCloud2Move = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 4300, triggerHook: 0.7})
-
-			.setTween(tweenCloud2Move)
-
-			//.addIndicators({name: "four-cloud-2-move"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourLetters = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 1000, offset: 3700, triggerHook: 0.7})
-
-			.setTween(tweenLetters)
-
-			//.addIndicators({name: "four-letters"})
-
-			.addTo(this.controller);
-
-		
-
-		var sceneFourSubtitleOut = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 4700, triggerHook: 0.7})
-
-			.setTween(tweenSubtitleOut)
-
-			//.addIndicators({name: "four-subtitle-out"})
-
-			.addTo(this.controller);
-
-		
-
-		var sceneFourCloud2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 4700, triggerHook: 0.7})
-
-			.setTween(tweenCloud2Out)
-
-			//.addIndicators({name: "four-cloud-2-out"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourContain3Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 5000, triggerHook: 0.7})
-
-			.setTween(tweenContain3Out)
-
-			//.addIndicators({name: "four-contain-3-out"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourPlanet1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 4900, triggerHook: 0.7})
-
-			.setTween(tweenPlanet1)
-
-			//.addIndicators({name: "four-planet-1"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourPlanet1Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 5900, triggerHook: 0.7})
-
-			.setTween(tweenPlanet1Out)
-
-			//.addIndicators({name: "four-planet-1-out"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourPlanet2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 5900, triggerHook: 0.7})
-
-			.setTween(tweenPlanet2)
-
-			//.addIndicators({name: "four-planet-2"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourPlanet1Out2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 6900, triggerHook: 0.7})
-
-			.setTween(tweenPlanet1Out2)
-
-			//.addIndicators({name: "four-planet-1-out-2"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourPlanet2Out = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 6900, triggerHook: 0.7})
-
-			.setTween(tweenPlanet2Out)
-
-			//.addIndicators({name: "four-planet-2-out"})
-
-			.addTo(this.controller);
-
-
-
-		var sceneFourPlanet3 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 500, offset: 6900, triggerHook: 0.7})
-
-			.setTween(tweenPlanet3)
-
-			//.addIndicators({name: "four-planet-3"})
-
-			.addTo(this.controller);
-
-	}, */
-
-
+	
 
 	animFour: function () {
 
@@ -1202,32 +1086,6 @@ var uikit = {
 
 			.setPin(".js-four-section")
 
-			/* .on('leave', function (event) {
-
-				// Проверяем, что направление прокрутки вверх
-
-				if (event.scrollDirection === 'REVERSE') {
-
-					uikit.scrollToSection('.js-three-section-trigger'); // Прокрутка к следующему разделу, если скролим вверх
-
-				}
-
-			})
-
-			.on('end', function (event) {
-
-				// Проверяем, что направление прокрутки вниз
-
-				if (event.scrollDirection === 'FORWARD') {
-
-					uikit.scrollToSection('.js-four-section', 300, 1800); // Прокрутка к следующему разделу, если скролим вниз
-
-				}
-
-			}) */
-
-			//.setTween(tweenStory)
-
 			.addIndicators({name: "four"})
 
 			.addTo(this.controller);
@@ -1238,13 +1096,15 @@ var uikit = {
 
 
 
-		var sceneFourTrigger1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 30, offset: 1030, triggerHook: 0})
+		var sceneFourTrigger1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 50, offset: 1030, triggerHook: 0})
 
 			//.setPin(".js-four-section")
 
-			.on('leave', function (event) {
+			/* .on('leave', function (event) {
 
 				if(uikit.disableTriggers) return;
+
+				//? 3 to 2
 
 				// Проверяем, что направление прокрутки вверх
 
@@ -1260,15 +1120,17 @@ var uikit = {
 
 				if(uikit.disableTriggers) return;
 
+				//? 3 to 4
+
 				// Проверяем, что направление прокрутки вниз
 
 				if (event.scrollDirection === 'FORWARD') {
 
-					uikit.scrollToSection('.js-four-section-trigger', 2, 1200); // Прокрутка к следующему разделу, если скролим вниз
+					uikit.scrollToSection('.js-four-section', 2, 1410); // Прокрутка к следующему разделу, если скролим вниз
 
 				}
 
-			})
+			}) */
 
 			//.setTween(tweenStory)
 
@@ -1278,13 +1140,15 @@ var uikit = {
 
 
 
-		var sceneFourTrigger2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 30, offset: 2450, triggerHook: 0})
+		var sceneFourTrigger2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 50, offset: 2450, triggerHook: 0})
 
 			//.setPin(".js-four-section")
 
-			.on('leave', function (event) {
+			/* .on('leave', function (event) {
 
 				if(uikit.disableTriggers) return;
+
+				//? 4 to 3
 
 				// Проверяем, что направление прокрутки вверх
 
@@ -1300,15 +1164,17 @@ var uikit = {
 
 				if(uikit.disableTriggers) return;
 
+				//? 4 to 5
+
 				// Проверяем, что направление прокрутки вниз
 
 				if (event.scrollDirection === 'FORWARD') {
 
-					uikit.scrollToSection('.js-four-section', 2, 1320, "linear"); // Прокрутка к следующему разделу, если скролим вниз
+					uikit.scrollToSection('.js-four-section', 2, 1340, "linear"); // Прокрутка к следующему разделу, если скролим вниз
 
 				}
 
-			})
+			}) */
 
 			.addIndicators({name: "four-trigger-2"})
 
@@ -1316,13 +1182,15 @@ var uikit = {
 
 
 
-		var sceneFourTrigger3 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 30, offset: 3790, triggerHook: 0})
+		var sceneFourTrigger3 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 50, offset: 3810, triggerHook: 0})
 
 			//.setPin(".js-four-section")
 
-			.on('leave', function (event) {
+			/* .on('leave', function (event) {
 
 				if(uikit.disableTriggers) return;
+
+				//? 5 to 4
 
 				// Проверяем, что направление прокрутки вверх
 
@@ -1340,13 +1208,15 @@ var uikit = {
 
 				// Проверяем, что направление прокрутки вниз
 
+				//? 5 to 6
+
 				if (event.scrollDirection === 'FORWARD') {
 
 					uikit.scrollToSection('.js-four-section', 1, 1280); // Прокрутка к следующему разделу, если скролим вниз
 
 				}
 
-			})
+			}) */
 
 			.addIndicators({name: "four-trigger-3"})
 
@@ -1354,13 +1224,15 @@ var uikit = {
 
 
 
-		var sceneFourTrigger4 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 30, offset: 5090, triggerHook: 0})
+		var sceneFourTrigger4 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 50, offset: 5090, triggerHook: 0})
 
 			//.setPin(".js-four-section")
 
-			.on('leave', function (event) {
+			/* .on('leave', function (event) {
 
 				if(uikit.disableTriggers) return;
+
+				//? 6 to 5
 
 				// Проверяем, что направление прокрутки вверх
 
@@ -1376,6 +1248,8 @@ var uikit = {
 
 				if(uikit.disableTriggers) return;
 
+				//? 6 to 7
+
 				// Проверяем, что направление прокрутки вниз
 
 				if (event.scrollDirection === 'FORWARD') {
@@ -1384,7 +1258,7 @@ var uikit = {
 
 				}
 
-			})
+			}) */
 
 			.addIndicators({name: "four-trigger-4"})
 
@@ -1392,13 +1266,15 @@ var uikit = {
 
 
 
-		var sceneFourTrigger5 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 30, offset: 6210, triggerHook: 0})
+		var sceneFourTrigger5 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 50, offset: 6210, triggerHook: 0})
 
 			//.setPin(".js-four-section")
 
-			.on('leave', function (event) {
+			/* .on('leave', function (event) {
 
 				if(uikit.disableTriggers) return;
+
+				//? 7 to 6
 
 				// Проверяем, что направление прокрутки вверх
 
@@ -1413,6 +1289,8 @@ var uikit = {
 			.on('end', function (event) {
 
 				if(uikit.disableTriggers) return;
+
+				//? 7 to 8
 
 				// Проверяем, что направление прокрутки вниз
 
@@ -1422,7 +1300,7 @@ var uikit = {
 
 				}
 
-			})
+			}) */
 
 			.addIndicators({name: "four-trigger-5"})
 
@@ -1430,13 +1308,15 @@ var uikit = {
 
 
 
-		var sceneFourTrigger6 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 30, offset: 7330, triggerHook: 0})
+		var sceneFourTrigger6 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 50, offset: 7330, triggerHook: 0})
 
 			//.setPin(".js-four-section")
 
-			.on('leave', function (event) {
+			/* .on('leave', function (event) {
 
 				if(uikit.disableTriggers) return;
+
+				//? 8 to 7
 
 				// Проверяем, что направление прокрутки вверх
 
@@ -1451,6 +1331,8 @@ var uikit = {
 			.on('end', function (event) {
 
 				if(uikit.disableTriggers) return;
+
+				//? 8 to 9
 
 				// Проверяем, что направление прокрутки вниз
 
@@ -1460,7 +1342,7 @@ var uikit = {
 
 				}
 
-			})
+			}) */
 
 			.addIndicators({name: "four-trigger-6"})
 
@@ -1472,7 +1354,7 @@ var uikit = {
 
 		
 
-		var sceneFourContain1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 100, offset: 0, triggerHook: 0})
+		/* var sceneFourContain1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 100, offset: 0, triggerHook: 0})
 
 			//.setPin(".js-four-section")
 
@@ -1496,7 +1378,7 @@ var uikit = {
 
 			.addIndicators({name: "four-contain-1"})
 
-			.addTo(this.controller);
+			.addTo(this.controller); */
 
 
 
@@ -1506,7 +1388,7 @@ var uikit = {
 
 			.setTween(tweenStory)
 
-			.addIndicators({name: "four-story"})
+			//.addIndicators({name: "four-story"})
 
 			.addTo(this.controller);
 
@@ -1518,7 +1400,7 @@ var uikit = {
 
 			.setTween(tweenCloud1)
 
-			.addIndicators({name: "four-cloud-1"})
+			//.addIndicators({name: "four-cloud-1"})
 
 			.addTo(this.controller);
 
@@ -1530,7 +1412,7 @@ var uikit = {
 
 			.setTween(tweenCloud1Move)
 
-			.addIndicators({name: "four-cloud-1-move"})
+			//.addIndicators({name: "four-cloud-1-move"})
 
 			.addTo(this.controller);
 
@@ -1542,7 +1424,7 @@ var uikit = {
 
 			.setTween(tweenImg1)
 
-			.addIndicators({name: "four-img-1"})
+			//.addIndicators({name: "four-img-1"})
 
 			.addTo(this.controller);
 
@@ -1552,7 +1434,7 @@ var uikit = {
 
 			.setTween(tweenTitle)
 
-			.addIndicators({name: "four-title"})
+			//.addIndicators({name: "four-title"})
 
 			.addTo(this.controller);
 
@@ -1562,7 +1444,7 @@ var uikit = {
 
 			.setTween(tweenText1)
 
-			.addIndicators({name: "four-text-1"})
+			//.addIndicators({name: "four-text-1"})
 
 			.addTo(this.controller);
 
@@ -1572,7 +1454,7 @@ var uikit = {
 
 			.setTween(tweenImg1Out)
 
-			.addIndicators({name: "four-img-1-out"})
+			//.addIndicators({name: "four-img-1-out"})
 
 			.addTo(this.controller);
 
@@ -1582,7 +1464,7 @@ var uikit = {
 
 			.setTween(tweenTitleOut)
 
-			.addIndicators({name: "four-title-out"})
+			//.addIndicators({name: "four-title-out"})
 
 			.addTo(this.controller);
 
@@ -1804,6 +1686,16 @@ var uikit = {
 
 		var fiveImg = document.getElementsByClassName('js-five-img');
 
+		var fiveCloud1 = document.getElementsByClassName('js-five-cloud-1');
+
+		var fiveCloud2 = document.getElementsByClassName('js-five-cloud-2');
+
+		var fiveCloud3 = document.getElementsByClassName('js-five-cloud-3');
+
+		var fiveCloud4 = document.getElementsByClassName('js-five-cloud-4');
+
+		var fiveCloud5 = document.getElementsByClassName('js-five-cloud-5');
+
 		
 
 
@@ -1826,6 +1718,10 @@ var uikit = {
 
 		tweenTitle.to(fiveTitle, {duration: 1, opacity: 1, y: '0%', scale: 1});
 
+		var tweenTitleOut = gsap.timeline();
+
+		tweenTitleOut.to(fiveTitle, {duration: 1, opacity: 0, y: '-50%', scale: 1});
+
 
 
 		// Создание таймлайна и анимации для текста
@@ -1833,6 +1729,10 @@ var uikit = {
 		var tweenText = gsap.timeline();
 
 		tweenText.to(fiveText, {duration: 1, opacity: 1, y: '0%', scale: 1});
+
+		var tweenTextOut = gsap.timeline();
+
+		tweenTextOut.to(fiveText, {duration: 1, opacity: 0, y: '-50%', scale: 1});
 
 
 
@@ -1844,11 +1744,77 @@ var uikit = {
 
 
 
+		var tweenImgOut = gsap.timeline();
+
+		tweenImgOut.to(fiveImg, {duration: 1, y: '10%', scale: 0.9});
+
+
+
+		var tweenCloud1 = gsap.timeline();
+
+		tweenCloud1.to(fiveCloud1, {duration: 1, y: '-80%', scale: 1});
+
+
+
+		var tweenCloud2 = gsap.timeline();
+
+		tweenCloud2.to(fiveCloud2, {duration: 1, y: '-100%', scale: 1});
+
+
+
+		var tweenCloud3 = gsap.timeline();
+
+		tweenCloud3.to(fiveCloud3, {duration: 1, y: '-70%', scale: 1});
+
+
+
+		var tweenCloud4 = gsap.timeline();
+
+		tweenCloud4.to(fiveCloud4, {duration: 1, y: '-80%', scale: 1});
+
+
+
+		var tweenCloud5 = gsap.timeline();
+
+		tweenCloud5.to(fiveCloud5, {duration: 1, y: '-90%', scale: 1});
+
+
+
+		var tweenCloud1Out = gsap.timeline();
+
+		tweenCloud1.to(fiveCloud1, {duration: 1, y: '0%', scale: 1});
+
+
+
+		var tweenCloud2Out = gsap.timeline();
+
+		tweenCloud2.to(fiveCloud2, {duration: 1, y: '0%', scale: 1});
+
+
+
+		var tweenCloud3Out = gsap.timeline();
+
+		tweenCloud3.to(fiveCloud3, {duration: 1, y: '0%', scale: 1});
+
+
+
+		var tweenCloud4Out = gsap.timeline();
+
+		tweenCloud4.to(fiveCloud4, {duration: 1, y: '0%', scale: 1});
+
+
+
+		var tweenCloud5Out = gsap.timeline();
+
+		tweenCloud5.to(fiveCloud5, {duration: 1, y: '0%', scale: 1});
+
+
+
 		var sceneFiveTrigger = new ScrollMagic.Scene({triggerElement: ".js-five-section-trigger", duration: 30, offset: -450, triggerHook: 0})
 
 			//.setPin(".js-four-section")
 
-			.on('leave', function (event) {
+			/* .on('leave', function (event) {
 
 				if(uikit.disableTriggers) return;
 
@@ -1860,7 +1826,7 @@ var uikit = {
 
 				}
 
-			})
+			}) */
 
 			.on('end', function (event) {
 
@@ -1894,6 +1860,66 @@ var uikit = {
 
 
 
+		var sceneFiveCloud1 = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 890, offset: 0, triggerHook: 0.8})
+
+			//.setPin(".three-section__container")
+
+			.setTween(tweenCloud1)
+
+			//.addIndicators({name: "five-title"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFiveCloud2 = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 850, offset: 0, triggerHook: 0.8})
+
+			//.setPin(".three-section__container")
+
+			.setTween(tweenCloud2)
+
+			//.addIndicators({name: "five-title"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFiveCloud3 = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 900, offset: 0, triggerHook: 0.8})
+
+			//.setPin(".three-section__container")
+
+			.setTween(tweenCloud3)
+
+			//.addIndicators({name: "five-title"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFiveCloud4 = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 750, offset: 0, triggerHook: 0.8})
+
+			//.setPin(".three-section__container")
+
+			.setTween(tweenCloud4)
+
+			//.addIndicators({name: "five-title"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFiveCloud5 = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 650, offset: 0, triggerHook: 0.8})
+
+			//.setPin(".three-section__container")
+
+			.setTween(tweenCloud5)
+
+			//.addIndicators({name: "five-title"})
+
+			.addTo(this.controller);
+
+
+
 		var sceneFiveText = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 200, offset: 200, triggerHook: 0.8})
 
 			//.setPin(".three-section__container")
@@ -1906,13 +1932,215 @@ var uikit = {
 
 
 
-		var sceneFiveImg = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 400, offset: 0, triggerHook: 1})
+		var sceneFiveImg = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 800, offset: 0, triggerHook: 1})
 
 			//.setPin(".three-section__container")
 
 			.setTween(tweenImg)
 
 			//.addIndicators({name: "five-img"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFiveCloud1Out = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 950, offset: 0, triggerHook: 0.8})
+
+			//.setPin(".three-section__container")
+
+			.setTween(tweenCloud1Out)
+
+			//.addIndicators({name: "five-title"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFiveCloud2Out = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 850, offset: 0, triggerHook: 0.8})
+
+			//.setPin(".three-section__container")
+
+			.setTween(tweenCloud2Out)
+
+			//.addIndicators({name: "five-title"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFiveCloud3Out = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 750, offset: 0, triggerHook: 0.8})
+
+			//.setPin(".three-section__container")
+
+			.setTween(tweenCloud3Out)
+
+			//.addIndicators({name: "five-title"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFiveCloud4Out = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 800, offset: 0, triggerHook: 0.8})
+
+			//.setPin(".three-section__container")
+
+			.setTween(tweenCloud4Out)
+
+			//.addIndicators({name: "five-title"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFiveCloud5Out = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 900, offset: 0, triggerHook: 0.8})
+
+			//.setPin(".three-section__container")
+
+			.setTween(tweenCloud5Out)
+
+			//.addIndicators({name: "five-title"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFiveTitleOut = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 200, offset: 400, triggerHook: 0.8})
+
+			//.setPin(".three-section__container")
+
+			.setTween(tweenTitleOut)
+
+			.addIndicators({name: "five-title-out"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFiveTextOut = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 200, offset: 1000, triggerHook: 0.8})
+
+			//.setPin(".three-section__container")
+
+			.setTween(tweenTextOut)
+
+			.addIndicators({name: "five-text-out"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneFiveImgOut = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 400, offset: 400, triggerHook: 1})
+
+			//.setPin(".three-section__container")
+
+			.setTween(tweenImgOut)
+
+			.addIndicators({name: "five-img-out"})
+
+			.addTo(this.controller);
+
+	},
+
+
+
+	animFooter: function(){
+
+		var footerHeight = 300; //1250;
+
+		//var footerScene = document.getElementsByClassName('js-footer');
+
+		var footerLogo = document.getElementsByClassName('js-footer-logo');
+
+		var footerText = document.getElementsByClassName('js-footer-text');
+
+		var footerHero = document.getElementsByClassName('js-footer-hero');
+
+		var footerScrollUp = document.getElementsByClassName('js-scroll-up');
+
+		//var twoSection = document.getElementsByClassName('js-two-section');
+
+		gsap.set(footerLogo, {x: '-=50%', y: '+=300'});
+
+		gsap.set(footerText, {opacity: '0', y: '-=200'});
+
+		gsap.set(footerHero, {x: '+=50%'});
+
+		gsap.set(footerScrollUp, {x: '-=50%'});
+
+
+
+		var tweenLogo = gsap.timeline();
+
+		tweenLogo.to(footerLogo, {
+
+			duration: 1,
+
+			opacity: 1,
+
+			//clearProps: "transform", // Сбрасывает предыдущие значения transform
+
+			x: '+=0%',
+
+			y: 0
+
+		});
+
+		var tweenText = gsap.timeline()
+
+			.to(footerText, {duration: 1, opacity: 1, y: 0});
+
+		var tweenHero = gsap.timeline()
+
+			.to(footerHero, {duration: 1, opacity: 1, x: 0});
+
+		var tweenScrollUp = gsap.timeline()
+
+			.to(footerScrollUp, {duration: 1, opacity: 1, x: 0});
+
+
+
+		var sceneLogo = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 0, triggerHook: 0.6})
+
+			//.setPin(".js-first-section")
+
+			.setTween(tweenLogo)
+
+			.addIndicators({name: "footer-logo"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneText = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 200, triggerHook: 0.6})
+
+			//.setPin(".js-first-section")
+
+			.setTween(tweenText)
+
+			.addIndicators({name: "footer-text"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneHero = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 100, triggerHook: 0.6})
+
+			//.setPin(".js-first-section")
+
+			.setTween(tweenHero)
+
+			.addIndicators({name: "footer-hero"})
+
+			.addTo(this.controller);
+
+
+
+		var sceneScrollUp = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 150, triggerHook: 0.6})
+
+			//.setPin(".js-first-section")
+
+			.setTween(tweenScrollUp)
+
+			.addIndicators({name: "footer-scroll-up"})
 
 			.addTo(this.controller);
 
@@ -1958,7 +2186,11 @@ var uikit = {
 
 		this.animFive();
 
+		this.animFooter();
+
 		this.scrollUp();
+
+		this.disableScroll();
 
     }
 
@@ -2038,7 +2270,7 @@ $(document).ready(function() {
 
 		setTimeout(()=>{
 
-			uikit.disableTriggers = false;
+			
 
 			$('.js-loader').fadeOut(400);
 
@@ -2060,6 +2292,8 @@ $(document).ready(function() {
 
 			$('body, html').removeClass('is-overflow');
 
+			uikit.disableTriggers = false;
+
 		}, 4200);
 
     });
@@ -2072,7 +2306,7 @@ $(document).ready(function () {
 
 
 
-    
+    uikit.disableScroll();
 
 
 
@@ -2114,7 +2348,7 @@ $(window).resize(function () {
 
 $(window).scroll(function () {
 
-    
+    //console.log($(this).scrollTop());
 
 });
 
