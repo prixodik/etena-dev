@@ -2,9 +2,10 @@
 mixin footer(data)
 	footer.footer.js-footer&attributes(attributes)
 		._shadow-1
-		img._logo.js-footer-logo(src="images/footer/footer-logo.svg", alt="")
+		._logo.js-footer-logo
+			img.js-scale(src="images/footer/footer-logo.svg", alt="")
 		._mountain
-		a._up.js-scroll-up(href="#")
+		a._up.js-scroll-up.js-scale(href="#")
 			._up-pixel-left
 				img.js-dotted(data-size="10" src="images/footer/footer-button-pixel-left.svg", alt="")
 			._up-pixel-right
@@ -13,7 +14,8 @@ mixin footer(data)
 			img(src="images/footer/footer-button-up.png", alt="")
 		._shadow-2
 		img._mountain-front(src="images/footer/footer-mountain-front.png", alt="")
-		img._hero.js-footer-hero(src="images/footer/footer-hero.png", alt="")
+		._hero.js-footer-hero
+			img.js-scale(src="images/footer/footer-hero.png", alt="")
 		._container.-min.js-footer-text
 			._title.title-h1 Begin Your Adventure in the World of Etena.
 			._buttons 

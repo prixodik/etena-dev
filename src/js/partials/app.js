@@ -5,6 +5,15 @@ var uikit = {
     sm: '992',
     xs: '640',
     xxs: '480',
+	scale: function(){
+		let ratio = window.devicePixelRatio;
+		console.log('DevicePixelRatio = '+ratio);
+		if(ratio > 1 && ratio < 2){
+			return (1 / ratio);
+		}else{
+			return 1;
+		}
+	},
 	steps: [
 		{ // 1
 			prev: {},
@@ -221,6 +230,7 @@ var uikit = {
 	preventScroll: function(e) {
 		let scrollDirection;
 		let scrollCount;
+		//console.log(e);
 
 		if (e.deltaY > 0 && !uikit.disableTriggers) {
 			scrollDirection = 'down';
@@ -234,8 +244,8 @@ var uikit = {
 
 		scrollCount = e.deltaY;
 
-		//console.log("Wheel event prevented");
-		//console.log({ scrollDirection, scrollCount });
+		console.log("Wheel event prevented");
+		console.log({ scrollDirection, scrollCount });
 		e.preventDefault();
 		e.stopPropagation();
 	},
@@ -285,8 +295,20 @@ var uikit = {
 		var firstScene = document.getElementsByClassName('js-first-section');
 		var twoSection = document.getElementsByClassName('js-two-section');
 		
+		console.log(this.scale());
+		console.log(52 / this.scale());
+		
+		let twoSectionTop = 52;
+		if(this.ww() <= this.lg && this.ww() > this.md){ // lg
+			twoSectionTop = 62;
+		}else if(this.ww() <= this.md && this.ww() > this.sm){
+			twoSectionTop = 62;
+		}
+
+		var top = twoSectionTop / this.scale(); // 0.8 * 52 * 0.2 = 20% увеличение значения top
+
 		var tweenTwoSectionIn = new TimelineMax()
-			.to(twoSection, 0.3, {top: '-52vh'});
+			.to(twoSection, 0.3, {top: '-'+top+'vh'});
 
 		var sceneFirst = new ScrollMagic.Scene({triggerElement: ".js-first-section", duration: (threeHeight * 1), offset: 0, triggerHook: 0})
 			//.setPin(".js-first-section")
@@ -735,7 +757,7 @@ var uikit = {
 			//.addIndicators({name: "four-cloud-2-move"})
 			.addTo(this.controller);
 
-		var sceneFourLetters = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 1000, offset: 3700, triggerHook: 0.7})
+		var sceneFourLetters = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 1000, offset: 3700, triggerHook: 0.9})
 			.setTween(tweenLetters)
 			//.addIndicators({name: "four-letters"})
 			.addTo(this.controller);
@@ -908,7 +930,7 @@ var uikit = {
 			//.addIndicators({name: "five-title"})
 			.addTo(this.controller);
 
-		var sceneFiveText = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 200, offset: 200, triggerHook: 0.8})
+		var sceneFiveText = new ScrollMagic.Scene({triggerElement: ".js-five-section", duration: 200, offset: 200, triggerHook: 1})
 			//.setPin(".three-section__container")
 			.setTween(tweenText)
 			//.addIndicators({name: "five-text"})
@@ -1103,7 +1125,34 @@ $(document).ready(function() {
 $(document).ready(function () {
 
     uikit.disableScroll();
+	/* function getWindowsScale() {
+		let scale = Math.round(window.devicePixelRatio * 100);
+		return scale + "%";
+	}
+	
+	console.log("Current Windows scale: " + getWindowsScale()); */
 
+	var scale = window.devicePixelRatio;
+    if (scale > 1 && scale < 2) {
+		let scaleProc = 100 - ((1 / scale) * 100);
+		//console.log('--'+scaleProc);
+		$('<style>:root {--scale: ' + scaleProc + '%;}</style>').prependTo('head');
+		$('.js-scale').css('transform','scale(' + (1 / scale) + ')');
+				/* $('body>div').css('width',(100 * scale) + '%');
+				$('body>div').css('height',(100 * scale) + '%'); */
+                //document.body.style.transform = 'scale(' + (1 / scale) + ')';
+            	//document.body.style.width = (100 * scale) + '%';
+                //document.body.style.height = (100 * scale) + '%';
+    }else if(uikit.ww() <= uikit.md && uikit.ww() > uikit.sm){
+		scale = 1.25;
+		let scaleProc = 100 - ((1 / scale) * 100);
+		//console.log('--'+scaleProc);
+		$('<style>:root {--scale: ' + scaleProc + '%;}</style>').prependTo('head');
+		$('.js-scale').css('transform','scale(' + (1 / scale) + ')');
+	}else{
+		$('<style>:root {--scale: 0%;}</style>').prependTo('head');
+	}
+	
 });
 
 var clrTimeOut;

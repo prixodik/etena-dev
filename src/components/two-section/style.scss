@@ -8,6 +8,10 @@
 	//margin-top: -400px;
 	//margin-bottom: -450px;
 
+	@include media($lg){
+		top: -62vh;
+	}
+
 	&__container{
 		width: 100%;
 		max-width: 1480px;
@@ -34,6 +38,14 @@
 		z-index: 5;
 		//height: 530px;
 		//width: 1440px;
+
+		@include media($md){
+			top: 120px;
+		}
+
+		img{
+			width: 100%;
+		}
 	}
 
 	&__mright{
@@ -42,6 +54,10 @@
 		right: 0;
 		z-index: 5;
 
+		img{
+			transform-origin: 100% 0;
+		}
+
 		@include media($lg){
 			&--hide-lg{
 				display: none;
@@ -49,7 +65,7 @@
 		}
 
 		@include media($md){
-			right: -5rem;
+			right: -25vw;
 		}
 	}
 
@@ -59,8 +75,12 @@
 		left: 0;
 		z-index: 5;
 
+		img{
+			transform-origin: 0% 0;
+		}
+
 		@include media($md){
-			left: -5rem;
+			left: -25vw;
 		}
 	}
 
@@ -70,6 +90,10 @@
 		left: 50%;
 		transform: translateX(calc(-50% - 7rem));
 		z-index: 7;
+
+		img{
+			transform-origin: 50% 100%;
+		}
 	}
 
 	&__back{
@@ -77,6 +101,10 @@
 		top: 215px;
 		left: 21rem;
 		z-index: 3;
+
+		@include media($md){
+			left: 7rem;
+		}
 	}
 
 	&__below{
@@ -94,6 +122,10 @@
 
 		@include media($xlg){
 			bottom: 50px;
+		}
+		@include media($md){
+			top: auto;
+			bottom: 0;
 		}
 	}
 

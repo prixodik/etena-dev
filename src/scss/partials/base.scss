@@ -61,6 +61,10 @@ body {
 	overflow-y: auto;
 	@include flex(space-between, stretch, stretch, nowrap, column);
 
+	& .js-scale{
+		transform-origin: 50% 0;
+	}
+
 	&.is-overflow {
 		overflow: hidden;
 	}

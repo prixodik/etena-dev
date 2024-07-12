@@ -11,7 +11,7 @@ mixin threeSection(data)
     ._container
       ._hero-center.js-three-hero-center
         ._hero-center-wrap
-          img._hero-center-main(src="images/three-section/hero-center.png", alt="")
+          img._hero-center-main.js-scale(src="images/three-section/hero-center.png", alt="")
           img._hero-center-stone(src="images/three-section/hero-center-stone.png", alt="")
           img._hero-center-shadow(src="images/three-section/hero-center-shadow.png", alt="")
           img._pixel-2.js-dotted(src="images/three-section/pixel-2.svg", alt="")
@@ -19,7 +19,7 @@ mixin threeSection(data)
 
       ._hero-left.js-three-hero-left
         ._hero-left-wrap
-          img._hero-left-main(src="images/three-section/hero-left.png", alt="")
+          img._hero-left-main.js-scale(src="images/three-section/hero-left.png", alt="")
           img._hero-left-stone-1.js-dotted( src="images/three-section/hero-left-stone-1.png", alt="")
           img._hero-left-stone-2(src="images/three-section/hero-left-stone-2.png", alt="")
           img._pixel-3.js-dotted(src="images/three-section/pixel-3.svg", alt="")
@@ -27,7 +27,8 @@ mixin threeSection(data)
 
       ._hero-right.js-three-hero-right
         ._hero-right-wrap
-          img._hero-right-main(src="images/three-section/hero-right.png", alt="")
+          ._hero-right-main
+            img.js-scale(src="images/three-section/hero-right.png", alt="")
           img._hero-right-stone-1.js-dotted(src="images/three-section/hero-right-stone-1.png", alt="")
           img._hero-right-stone-2(src="images/three-section/hero-right-stone-2.png", alt="")
           img._pixel-1.js-dotted(src="images/three-section/pixel-1.svg", alt="")

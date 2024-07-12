@@ -53,7 +53,7 @@
 
 	&__logo{
 		position: absolute;
-		top: -115px;
+		top: calc(-115px + var(--scale));
 		left: 50%;
 		//transform: translate(-50%,0%);
 		//opacity: 0;
@@ -62,11 +62,16 @@
 		z-index: 0;
 		pointer-events: none;
 
+		img{
+			width: 100%;
+			transform-origin: 50% 50%;
+		}
+
 		@include media($xlg){
-			top: 0px;
+			top: calc(0px + var(--scale));
 		}
 		@include media($lg){
-			top: 115px;
+			top: calc(153px + var(--scale));
 		}
 	}
 
@@ -94,6 +99,11 @@
 		right: -45px;
 		z-index: 2;
 		pointer-events: none;
+
+		img{
+			width: 100%;
+			transform-origin: 50% 100%;
+		}
 	}
 
 	&__up {
@@ -103,6 +113,7 @@
 		z-index: 2;
 		display: block;
 		height: 313px;
+		transform-origin: 50% 100%;
 
 		img{
 			display: block;

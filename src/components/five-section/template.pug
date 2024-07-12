@@ -2,11 +2,13 @@ mixin fiveSection(data)
   .five-section.js-five-section&attributes(attributes)
     ._wrapper
       ._container
-        ._row 
-          ._title.title-h1.js-five-title This NFT project, beginning with the vivid and dynamic Demons of Etena, invites you to partake in a saga of resurgence, power, and mystery. 
+        ._row.js-scale
+          ._title.title-h1.js-five-title 
+            span.js-scale2 This NFT project, beginning with the vivid and dynamic Demons of Etena, invites you to partake in a saga of resurgence, power, and mystery. 
           ._text.js-five-text
-            p The future of Etena hangs in the balance, its destiny intertwined with the revival of Etena Dust and the secrets it holds.
-            p Join the adventure, align with a clan, and be a part of the legend that shapes the destiny of Etena.
+            .js-scale2
+              p The future of Etena hangs in the balance, its destiny intertwined with the revival of Etena Dust and the secrets it holds.
+              p Join the adventure, align with a clan, and be a part of the legend that shapes the destiny of Etena.
 
     ._img.js-five-img
       img._img-cloud-1.js-five-cloud-1(src="images/five-section/five-cloud-1.png", alt="")
@@ -14,7 +16,7 @@ mixin fiveSection(data)
       img._img-cloud-3.js-five-cloud-3(src="images/five-section/five-cloud-3.png", alt="")
       img._img-cloud-4.js-five-cloud-4(src="images/five-section/five-cloud-4.png", alt="")
       img._img-cloud-5.js-five-cloud-5(src="images/five-section/five-cloud-5.png", alt="")
-      img._img-main(src="images/five-section/five-img2.png", alt="")
+      img._img-main.js-scale(src="images/five-section/five-img2.png", alt="")
       //-._img-bg
       ._img-shadow
       

@@ -46,7 +46,8 @@
 		margin: 0 auto;
 		position: relative;
 		z-index: 2;
-		height: 100%;
+		//--scale: 20%;
+		height: calc(100% - var(--scale));
 		padding: 0 20px;
 	}
 
@@ -127,6 +128,7 @@
 				position: relative;
 				z-index: 3;
 				max-width: none;
+				transform-origin: 50% 100%!important;
 			}
 			&-stone{
 				position: absolute;
@@ -146,11 +148,15 @@
 
 		&-left{
 			position: absolute;
-			top: 272px;
+			top: calc(272px - var(--scale));
 			left: 135px;
 			z-index: 4;
 			//transform: translateX(-200px);
 			margin-left: -200px;
+
+			@include media($lg){
+				left: 35px;
+			}
 
 			&-wrap{
 				position: relative;
@@ -163,6 +169,7 @@
 				position: relative;
 				z-index: 4;
 				max-width: none;
+				transform-origin: 50% 100%!important;
 			}
 
 			&-stone-1{
@@ -172,6 +179,7 @@
 				z-index: 1;
 				max-width: none;
 				transition: all 5s linear;
+				opacity: 1!important;
 			}
 
 			&-stone-2{
@@ -185,11 +193,15 @@
 
 		&-right{
 			position: absolute;
-			top: 272px;
+			top: calc(272px - var(--scale));
 			right: 170px;
 			z-index: 4;
 			//transform: translateX(200px);
 			margin-right: -200px;
+
+			@include media($lg){
+				right: 70px;
+			}
 
 			&-wrap{
 				position: relative;
@@ -203,6 +215,10 @@
 				z-index: 4;
 				max-width: none;
 				animation: img1 20s linear infinite;
+
+				img{
+					transform-origin: 50% 100%!important;
+				}
 			}
 			&-stone-1{
 				position: absolute;

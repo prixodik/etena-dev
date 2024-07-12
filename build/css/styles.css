@@ -361,6 +361,9 @@ body {
   align-items: stretch;
   align-content: stretch;
 }
+body .js-scale {
+  transform-origin: 50% 0;
+}
 body.is-overflow {
   overflow: hidden;
 }
@@ -859,9 +862,17 @@ h5, .title-h5 {
   animation: paradise 15s 0.5s linear infinite reverse;
   width: 99vh;
 }
+.first-section__paradise img {
+  transform-origin: 50% 60% !important;
+}
 @media (max-width: 1450px) {
   .first-section__paradise {
     width: 58rem;
+  }
+}
+@media (max-width: 1200px) {
+  .first-section__paradise {
+    bottom: 60px;
   }
 }
 .first-section__logo {
@@ -876,6 +887,11 @@ h5, .title-h5 {
 @media (max-width: 1450px) {
   .first-section__logo {
     width: 56.6rem;
+  }
+}
+@media (max-width: 1200px) {
+  .first-section__logo {
+    top: 6rem;
   }
 }
 .first-section__cloud-1 {
@@ -1066,6 +1082,11 @@ h5, .title-h5 {
   left: 0;
   width: 100%;
 }
+@media (max-width: 1450px) {
+  .two-section {
+    top: -62vh;
+  }
+}
 .two-section__container {
   width: 100%;
   max-width: 1480px;
@@ -1090,11 +1111,22 @@ h5, .title-h5 {
   width: 100%;
   z-index: 5;
 }
+@media (max-width: 1200px) {
+  .two-section__shadow2 {
+    top: 120px;
+  }
+}
+.two-section__shadow2 img {
+  width: 100%;
+}
 .two-section__mright {
   position: absolute;
   top: 0;
   right: 0;
   z-index: 5;
+}
+.two-section__mright img {
+  transform-origin: 100% 0;
 }
 @media (max-width: 1450px) {
   .two-section__mright--hide-lg {
@@ -1103,7 +1135,7 @@ h5, .title-h5 {
 }
 @media (max-width: 1200px) {
   .two-section__mright {
-    right: -5rem;
+    right: -25vw;
   }
 }
 .two-section__mleft {
@@ -1112,9 +1144,12 @@ h5, .title-h5 {
   left: 0;
   z-index: 5;
 }
+.two-section__mleft img {
+  transform-origin: 0% 0;
+}
 @media (max-width: 1200px) {
   .two-section__mleft {
-    left: -5rem;
+    left: -25vw;
   }
 }
 .two-section__hero {
@@ -1124,11 +1159,19 @@ h5, .title-h5 {
   transform: translateX(calc(-50% - 7rem));
   z-index: 7;
 }
+.two-section__hero img {
+  transform-origin: 50% 100%;
+}
 .two-section__back {
   position: absolute;
   top: 215px;
   left: 21rem;
   z-index: 3;
+}
+@media (max-width: 1200px) {
+  .two-section__back {
+    left: 7rem;
+  }
 }
 .two-section__below {
   position: absolute;
@@ -1146,6 +1189,12 @@ h5, .title-h5 {
 @media (max-width: 1700px) {
   .two-section__below {
     bottom: 50px;
+  }
+}
+@media (max-width: 1200px) {
+  .two-section__below {
+    top: auto;
+    bottom: 0;
   }
 }
 .two-section.is-first-anim {
@@ -1231,7 +1280,7 @@ h5, .title-h5 {
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  height: 100%;
+  height: calc(100% - var(--scale));
   padding: 0 20px;
 }
 .three-section__pixel-2 {
@@ -1299,6 +1348,7 @@ h5, .title-h5 {
   position: relative;
   z-index: 3;
   max-width: none;
+  transform-origin: 50% 100% !important;
 }
 .three-section__hero-center-stone {
   position: absolute;
@@ -1316,10 +1366,15 @@ h5, .title-h5 {
 }
 .three-section__hero-left {
   position: absolute;
-  top: 272px;
+  top: calc(272px - var(--scale));
   left: 135px;
   z-index: 4;
   margin-left: -200px;
+}
+@media (max-width: 1450px) {
+  .three-section__hero-left {
+    left: 35px;
+  }
 }
 .three-section__hero-left-wrap {
   position: relative;
@@ -1331,6 +1386,7 @@ h5, .title-h5 {
   position: relative;
   z-index: 4;
   max-width: none;
+  transform-origin: 50% 100% !important;
 }
 .three-section__hero-left-stone-1 {
   position: absolute;
@@ -1339,6 +1395,7 @@ h5, .title-h5 {
   z-index: 1;
   max-width: none;
   transition: all 5s linear;
+  opacity: 1 !important;
 }
 .three-section__hero-left-stone-2 {
   position: absolute;
@@ -1349,10 +1406,15 @@ h5, .title-h5 {
 }
 .three-section__hero-right {
   position: absolute;
-  top: 272px;
+  top: calc(272px - var(--scale));
   right: 170px;
   z-index: 4;
   margin-right: -200px;
+}
+@media (max-width: 1450px) {
+  .three-section__hero-right {
+    right: 70px;
+  }
 }
 .three-section__hero-right-wrap {
   position: relative;
@@ -1365,6 +1427,9 @@ h5, .title-h5 {
   z-index: 4;
   max-width: none;
   animation: img1 20s linear infinite;
+}
+.three-section__hero-right-main img {
+  transform-origin: 50% 100% !important;
 }
 .three-section__hero-right-stone-1 {
   position: absolute;
@@ -1438,6 +1503,13 @@ h5, .title-h5 {
   flex-direction: column;
   align-items: flex-end;
 }
+@media (max-width: 1200px) {
+  .four-section__img {
+    flex: 0 0 55%;
+    max-width: 55%;
+    align-items: center;
+  }
+}
 .four-section__img-wrap {
   position: relative;
   z-index: 1;
@@ -1449,6 +1521,14 @@ h5, .title-h5 {
   position: relative;
   top: -150px;
   max-width: none;
+}
+.four-section__img-main img {
+  transform-origin: 50% 50%;
+}
+@media (max-width: 1200px) {
+  .four-section__img-main {
+    top: -50px;
+  }
 }
 .four-section__img-stone {
   position: absolute;
@@ -1466,6 +1546,11 @@ h5, .title-h5 {
   pointer-events: none;
   transform: translate3d(-100%, 100%, 0) scale(0.9);
 }
+@media (max-width: 1200px) {
+  .four-section__cloud-1 {
+    width: 90%;
+  }
+}
 .four-section__cloud-2 {
   position: absolute;
   top: 100px;
@@ -1474,6 +1559,11 @@ h5, .title-h5 {
   pointer-events: none;
   transform: translate(100%, 100%) scale(1.3);
   opacity: 0;
+}
+@media (max-width: 1200px) {
+  .four-section__cloud-2 {
+    width: 80%;
+  }
 }
 .four-section__pixel-1 {
   position: absolute;
@@ -1649,6 +1739,7 @@ h5, .title-h5 {
   max-width: 300px;
   margin-right: 155px;
   position: relative;
+  transform-origin: 50% 50% !important;
 }
 .four-section__planet-img:after {
   content: "";
@@ -1855,20 +1946,24 @@ h5, .title-h5 {
 }
 .footer__logo {
   position: absolute;
-  top: -115px;
+  top: calc(-115px + var(--scale));
   left: 50%;
   max-width: calc(100vw - 40px);
   z-index: 0;
   pointer-events: none;
 }
+.footer__logo img {
+  width: 100%;
+  transform-origin: 50% 50%;
+}
 @media (max-width: 1700px) {
   .footer__logo {
-    top: 0px;
+    top: calc(0px + var(--scale));
   }
 }
 @media (max-width: 1450px) {
   .footer__logo {
-    top: 115px;
+    top: calc(153px + var(--scale));
   }
 }
 .footer__title {
@@ -1893,6 +1988,10 @@ h5, .title-h5 {
   z-index: 2;
   pointer-events: none;
 }
+.footer__hero img {
+  width: 100%;
+  transform-origin: 50% 100%;
+}
 .footer__up {
   position: absolute;
   bottom: 50px;
@@ -1900,6 +1999,7 @@ h5, .title-h5 {
   z-index: 2;
   display: block;
   height: 313px;
+  transform-origin: 50% 100%;
 }
 .footer__up img {
   display: block;

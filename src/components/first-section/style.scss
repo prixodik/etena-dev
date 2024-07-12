@@ -166,8 +166,15 @@
 		animation: paradise 15s .5s linear infinite reverse;
 		width: 99vh;
 
+		img{
+			transform-origin: 50% 60%!important;
+		}
+
 		@include media($lg){
 			width: 58rem;
+		}
+		@include media($md){
+			bottom: 60px;
 		}
 	}
 
@@ -182,6 +189,9 @@
 
 		@include media($lg){
 			width: 56.6rem;
+		}
+		@include media($md){
+			top: 6rem;
 		}
 	}
 

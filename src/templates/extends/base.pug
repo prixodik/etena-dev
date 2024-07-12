@@ -23,7 +23,7 @@ html(class=classBody)
     meta(charset="utf-8")
     title=pageTitle ? baseData.projectName + ' | ' + pageTitle : baseData.projectName + ' | New page'
 
-    meta( name="viewport" content="width=device-width, initial-scale=1")
+    meta( name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
     meta( name="format-detection" content="telephone=no")
 
     meta( name="description" content="" )
@@ -67,18 +67,18 @@ html(class=classBody)
     link(rel="stylesheet" href="css/styles.css")
   body(class=classBody)
     block body
-      block header
-        include ../../components/header/template
-        +header()
-      block main
-        block content
-      block footer
-        include ../../components/footer/template
-        +footer()
+        block header
+          include ../../components/header/template
+          +header()
+        block main
+          block content
+        block footer
+          include ../../components/footer/template
+          +footer()
 
-      block popups
-        //-include ../../components/popup/template
-        //-+popupSend()
+        block popups
+          //-include ../../components/popup/template
+          //-+popupSend()
 
     block scripts
     
