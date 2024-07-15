@@ -789,7 +789,6 @@ h5, .title-h5 {
   top: 40vh;
   left: 7rem;
   z-index: 2;
-  animation: img1 10s linear infinite reverse;
 }
 @media (max-width: 1450px) {
   .first-section__img-1 {
@@ -801,7 +800,6 @@ h5, .title-h5 {
   top: 35vh;
   right: 15rem;
   z-index: 2;
-  animation: img2 10s 1s linear infinite reverse;
 }
 @media (max-width: 1450px) {
   .first-section__img-2 {
@@ -818,7 +816,6 @@ h5, .title-h5 {
   top: 25vh;
   left: 22rem;
   z-index: 2;
-  animation: img3 12s linear infinite reverse;
 }
 @media (max-width: 1450px) {
   .first-section__img-3 {

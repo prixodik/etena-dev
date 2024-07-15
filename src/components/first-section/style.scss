@@ -93,7 +93,7 @@
 		top: 40vh; //450px;
 		left: 7rem;
 		z-index: 2;
-		animation: img1 10s linear infinite reverse;
+		//animation: img1 10s linear infinite reverse;
 
 		@include media($lg){
 			left: 3rem;
@@ -104,7 +104,7 @@
 		top: 35vh; //345px;
 		right: 15rem;
 		z-index: 2;
-		animation: img2 10s 1s linear infinite reverse;
+		//animation: img2 10s 1s linear infinite reverse;
 
 		@include media($lg){
 			right: 10rem;
@@ -118,7 +118,7 @@
 		top: 25vh; //14rem;
 		left: 22rem;
 		z-index: 2;
-		animation: img3 12s linear infinite reverse;
+		//animation: img3 12s linear infinite reverse;
 
 		@include media($lg){
 			left: 13rem;

@@ -27,17 +27,19 @@ var uikit = {
 			},
 			next: {
 				trigger: '.js-four-section',
-				offset: 950
+				offset: 950,
+				speed: 2
 			}
 		},
 		{ // 3
 			prev: {
-				trigger: '.js-three-section-trigger'
+				trigger: '.js-three-section-trigger',
+				speed: 1.5
 			},
 			next: {
 				trigger: '.js-four-section',
 				offset: 1510,
-				speed: 2
+				speed: 1.5
 			}
 		},
 		{ // 4
@@ -123,14 +125,16 @@ var uikit = {
 			next: {
 				trigger: '.js-footer',
 				offset: 0,
-				speed: 2
+				speed: 1.5,
+				ease: 'linear'
 			}
 		},
 		{ // 11
 			prev: {
 				trigger: '.js-five-img',
 				offset: -100,
-				speed: 2
+				speed: 1.5,
+				ease: 'linear'
 			},
 			next: {}
 		}
@@ -1001,8 +1005,8 @@ var uikit = {
 		//var twoSection = document.getElementsByClassName('js-two-section');
 		gsap.set(footerLogo, {opacity: '0', x: '-=50%', y: '+=200'});
 		gsap.set(footerText, {opacity: '0', y: '-=200'});
-		gsap.set(footerHero, {x: '+=100'});
-		gsap.set(footerScrollUp, {x: '-=100'});
+		gsap.set(footerHero, {opacity: '0', x: '+=250'});
+		gsap.set(footerScrollUp, {opacity: '0', x: '-=150'});
 
 		var tweenLogo = gsap.timeline();
 		tweenLogo.to(footerLogo, {
@@ -1025,19 +1029,19 @@ var uikit = {
 			//.addIndicators({name: "footer-logo"})
 			.addTo(this.controller);
 
-		var sceneText = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 200, triggerHook: 0.6})
+		var sceneText = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight + 100), offset: 100, triggerHook: 0.6})
 			//.setPin(".js-first-section")
 			.setTween(tweenText)
 			//.addIndicators({name: "footer-text"})
 			.addTo(this.controller);
 
-		var sceneHero = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 100, triggerHook: 0.6})
+		var sceneHero = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight + 200), offset: 0, triggerHook: 0.7})
 			//.setPin(".js-first-section")
 			.setTween(tweenHero)
 			//.addIndicators({name: "footer-hero"})
 			.addTo(this.controller);
 
-		var sceneScrollUp = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 150, triggerHook: 0.6})
+		var sceneScrollUp = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight + 400), offset: 0, triggerHook: 0.8})
 			//.setPin(".js-first-section")
 			.setTween(tweenScrollUp)
 			//.addIndicators({name: "footer-scroll-up"})
@@ -1065,7 +1069,10 @@ var uikit = {
 		this.animFive();
 		this.animFooter();
 		this.scrollUp();
-		this.disableScroll();
+		
+		if(this.ww() > this.sm){
+			this.disableScroll();
+		}
 		//this.setMassCoordinSteps();
     }
 };
@@ -1124,7 +1131,9 @@ $(document).ready(function() {
 
 $(document).ready(function () {
 
-    uikit.disableScroll();
+	if(uikit.ww() > uikit.sm){
+		uikit.disableScroll();
+	}
 	/* function getWindowsScale() {
 		let scale = Math.round(window.devicePixelRatio * 100);
 		return scale + "%";

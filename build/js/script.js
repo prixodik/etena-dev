@@ -146,7 +146,9 @@ var uikit = {
 
 				trigger: '.js-four-section',
 
-				offset: 950
+				offset: 950,
+
+				speed: 2
 
 			}
 
@@ -156,7 +158,9 @@ var uikit = {
 
 			prev: {
 
-				trigger: '.js-three-section-trigger'
+				trigger: '.js-three-section-trigger',
+
+				speed: 1.5
 
 			},
 
@@ -166,7 +170,7 @@ var uikit = {
 
 				offset: 1510,
 
-				speed: 2
+				speed: 1.5
 
 			}
 
@@ -338,7 +342,9 @@ var uikit = {
 
 				offset: 0,
 
-				speed: 2
+				speed: 1.5,
+
+				ease: 'linear'
 
 			}
 
@@ -352,7 +358,9 @@ var uikit = {
 
 				offset: -100,
 
-				speed: 2
+				speed: 1.5,
+
+				ease: 'linear'
 
 			},
 
@@ -2094,9 +2102,9 @@ var uikit = {
 
 		gsap.set(footerText, {opacity: '0', y: '-=200'});
 
-		gsap.set(footerHero, {x: '+=100'});
+		gsap.set(footerHero, {opacity: '0', x: '+=250'});
 
-		gsap.set(footerScrollUp, {x: '-=100'});
+		gsap.set(footerScrollUp, {opacity: '0', x: '-=150'});
 
 
 
@@ -2142,7 +2150,7 @@ var uikit = {
 
 
 
-		var sceneText = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 200, triggerHook: 0.6})
+		var sceneText = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight + 100), offset: 100, triggerHook: 0.6})
 
 			//.setPin(".js-first-section")
 
@@ -2154,7 +2162,7 @@ var uikit = {
 
 
 
-		var sceneHero = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 100, triggerHook: 0.6})
+		var sceneHero = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight + 200), offset: 0, triggerHook: 0.7})
 
 			//.setPin(".js-first-section")
 
@@ -2166,7 +2174,7 @@ var uikit = {
 
 
 
-		var sceneScrollUp = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 150, triggerHook: 0.6})
+		var sceneScrollUp = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight + 400), offset: 0, triggerHook: 0.8})
 
 			//.setPin(".js-first-section")
 
@@ -2222,7 +2230,13 @@ var uikit = {
 
 		this.scrollUp();
 
-		this.disableScroll();
+		
+
+		if(this.ww() > this.sm){
+
+			this.disableScroll();
+
+		}
 
 		//this.setMassCoordinSteps();
 
@@ -2340,7 +2354,11 @@ $(document).ready(function () {
 
 
 
-    uikit.disableScroll();
+	if(uikit.ww() > uikit.sm){
+
+		uikit.disableScroll();
+
+	}
 
 	/* function getWindowsScale() {
 
