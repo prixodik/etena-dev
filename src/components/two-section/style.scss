@@ -11,6 +11,9 @@
 	@include media($lg){
 		top: -62vh;
 	}
+	@include media($sm){
+		top: -100vh;
+	}
 
 	&__container{
 		width: 100%;
@@ -63,9 +66,17 @@
 				display: none;
 			}
 		}
+		@include media($md){
+			&--hide-lg{
+				display: block;
+			}
+		}
 
 		@include media($md){
-			right: -25vw;
+			right: -15vw;
+		}
+		@include media($sm){
+			right: -15vw;
 		}
 	}
 
@@ -80,7 +91,10 @@
 		}
 
 		@include media($md){
-			left: -25vw;
+			left: -15vw;
+		}
+		@include media($sm){
+			left: -15vw;
 		}
 	}
 
@@ -139,6 +153,50 @@
 		}
 		&__mright{
 			animation: firstMRight 4s ease;
+		}
+	}
+
+	&.is-xs{
+		top: -180px!important;
+	}
+	&.is-xs &{
+		&__container{
+			height: 340px;
+		}
+
+		&__back{
+			width: 300px;
+			top: 54px;
+			left: 2rem;
+		}
+
+		&__shadow{
+			top: 95px;
+		}
+
+		&__shadow2{
+			top: 70px;
+		}
+
+		&__hero{
+			transform: translateX(calc(-50% - 5rem));
+			top: 20px;
+
+			img{
+				transform: scale(1)!important;
+			}
+		}
+
+		&__mright{
+			top: 0;
+			right: -10%;
+			width: 300px;
+		}
+
+		&__mleft{
+			top: 0;
+			left: -10%;
+			width: 300px;
 		}
 	}
 }

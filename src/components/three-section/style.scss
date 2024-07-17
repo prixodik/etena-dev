@@ -8,6 +8,10 @@
 	//overflow: hidden;
 	padding-top: 500px;
 
+	@include media($md){
+		
+	}
+
 	&__bg{
 		position: absolute;
 		top: 400px;
@@ -157,6 +161,9 @@
 			@include media($lg){
 				left: 35px;
 			}
+			@include media($md){
+				top: calc(100px - var(--scale));
+			}
 
 			&-wrap{
 				position: relative;
@@ -202,6 +209,9 @@
 			@include media($lg){
 				right: 70px;
 			}
+			@include media($md){
+				top: calc(100px - var(--scale));
+			}
 
 			&-wrap{
 				position: relative;
@@ -239,5 +249,128 @@
 
 		}
 
+	}
+
+	&.is-sm &{
+		&__container{
+			margin-top: 250px;
+		}
+	}
+
+	&.is-xs {
+		padding-top: 200px;
+		height: 940px;
+
+		.js-three-section-trigger{
+			top: -500px;
+			//height: 1px;
+			//background-color: red;
+			position: absolute;
+			left: 0;
+			width: 100%;
+			z-index: 20;
+		}
+	}
+	&.is-xs &{
+		&__bg{
+			height: 890px;
+			top: 240px;
+
+			&:after{
+				content: "";
+				display: block;
+				top: 100%;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: #38231e;
+			}
+
+			&-city{
+				margin-top: -60%;
+			}
+			&-sun{
+
+			}
+		}
+		&__container{
+			height: 610px;
+		}
+
+		&__hero{
+
+			&-center{
+				top: 0!important;
+				left: 50%;
+				transform: translate(-50%, 0%);
+	
+				&-wrap{
+					max-width: 50vw;
+				}
+				&-main{
+					max-width: 100%;
+				}
+				&-stone{
+					top: 60%;
+					left: -60%;
+					z-index: 0;
+					max-width: 200%;
+				}
+				&-shadow{
+					top: 78%;
+					left: -128px;
+					z-index: 1;
+					max-width: 177%;
+				}
+			}
+	
+			&-left{
+				top: auto!important;
+				bottom: 0;
+				left: 0;
+				margin-left: 0px;
+	
+				&-wrap{
+					max-width: 50vw;
+				}
+				&-main{
+					max-width: 100%;
+				}
+				&-stone-1{
+					display: none;
+				}
+	
+				&-stone-2{
+					max-width: 200%;
+					top: 257px;	
+					left: -70%;
+				}
+			}
+	
+			&-right{
+				top: auto!important;
+				bottom: 0;
+				right: 0px;
+				margin-right: -0px;
+	
+				&-wrap{
+					max-width: 50vw;
+				}
+				&-main{
+					max-width: 100%;
+				}
+				&-stone-1{
+					display: none;
+				}
+	
+				&-stone-2{
+					top: 20%;
+					left: -50px;
+					max-width: 200%;
+				}
+	
+			}
+	
+		}
 	}
 }

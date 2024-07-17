@@ -36,7 +36,7 @@ html {
 }
 @media (min-width: 768px) and (max-width: 1023px) {
 	html {
-		font-size: 10px;
+		font-size: 14px;
 	}
 }
 
@@ -104,6 +104,16 @@ body {
 	}
 }
 
+.js-debug-data{
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: red;
+	color: $white;
+	padding: 8px;
+	z-index: 9999;
+}
+
 button,
 input[type="submit"] {
 	@include transition();
@@ -122,6 +132,7 @@ p {
 
 img {
 	max-width: 100%;
+	display: block;
 }
 
 svg {

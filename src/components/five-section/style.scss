@@ -4,6 +4,10 @@
 	position: relative;
 	z-index: 5;
 
+	*{
+		transition: all .3s;
+	}
+
 	&__trigger{
 		display: block;
 		width: 100%;
@@ -136,6 +140,131 @@
 			z-index: 2;
 			bottom: -250px;
 			left: 0;
+		}
+	}
+
+	&.is-sm &{
+		&__container{
+			//max-width: 1345px;
+			margin: -0px auto 0;
+		}
+
+		&__row{
+			transform: scale(1)!important;
+		}
+	
+		&__title{
+			flex: 1 1 auto;
+			max-width: 65%;
+			opacity: 1!important;
+			transform: translateY(100px);
+		}
+	
+		&__text{
+			margin-top: 20px;
+			font-size: 16px;
+			opacity: 1!important;
+			transform: translateY(100px);
+	
+			p{
+				margin-bottom: 24px;
+	
+				&:last-child{
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		&__img{
+			transform: none!important;
+			margin-top: 100px;
+			height: 950px;
+		}
+
+		&__wrapper{
+			position: static;
+		}
+	}
+
+	
+	&.is-xs &{
+		&__container{
+			//max-width: 1345px;
+			padding-top: 200px;
+			margin: 0px auto 0;
+		}
+
+		&__row{
+			transform: scale(1)!important;
+			flex-wrap: wrap;
+		}
+	
+		&__title{
+			flex: 0 0 100%;
+			max-width: 100%;
+			opacity: 1!important;
+			transform: translateY(0px)!important;
+		}
+	
+		&__text{
+			flex: 0 0 100%;
+			max-width: 100%;
+			margin-top: 20px;
+			font-size: 16px;
+			opacity: 1!important;
+			transform: translateY(0px)!important;
+	
+			p{
+				margin-bottom: 24px;
+	
+				&:last-child{
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		&__img{
+			transform: none!important;
+			margin-top: 100px;
+			height: 300px;
+
+			&-cloud-1{
+				position: absolute;
+				top: -15px;
+				left: 25px;
+				z-index: 4;
+				transform: translateY(70px);
+				max-width: 30%;
+			}
+			&-cloud-2{
+				top: 10px;
+				right: 10px;
+				transform: translateY(50px);
+				max-width: 25%;
+			}
+			&-cloud-3{
+				top: 15px;
+				left: 60px;
+				transform: translateY(70px);
+				max-width: 20%;
+			}
+			&-cloud-4{
+				top: -20px;
+				left: 50%;
+				transform: translateY(60px);
+				max-width: 25%;
+			}
+			&-cloud-5{
+				top: -30px;
+				left: 35%;
+				z-index: 4;
+				transform: translateY(80px);
+				max-width: 15%;
+			}
+		}
+
+		&__wrapper{
+			position: static;
 		}
 	}
 }

@@ -2,13 +2,17 @@
 	position: relative;
 	z-index: 4;
 	overflow: hidden;
-	min-height: 600px;
+	min-height: 680px;
 	height: 100vh;
 	background: #64DFFF;
 	//transition: all .3s linear;
 
 	@media (min-width: 1941px) {
 		min-height: 100vh;
+	}
+
+	@include media($sm){
+		height: 100vh;
 	}
 
 	&__container{
@@ -168,13 +172,22 @@
 
 		img{
 			transform-origin: 50% 60%!important;
+			width: 100%;
 		}
 
 		@include media($lg){
 			width: 58rem;
 		}
 		@include media($md){
-			bottom: 60px;
+			bottom: 0px;
+		}
+		@include media($sm){
+			bottom: 0;
+
+			img{
+				transform-origin: 50% 100%!important;
+				//width: 100%;
+			}
 		}
 	}
 
@@ -187,11 +200,15 @@
 		animation: logo 10s linear infinite reverse;
 		width: 95vh;
 
+		img{
+			width: 100%;
+		}
+
 		@include media($lg){
 			width: 56.6rem;
 		}
 		@include media($md){
-			top: 6rem;
+			top: 1rem;
 		}
 	}
 
@@ -200,6 +217,10 @@
 		top: 11rem;
 		right: 0;
 		z-index: -1;
+
+		@include media($sm){
+			width: 30vw;
+		}
 	}
 	&__cloud-2{
 		position: absolute;
@@ -251,6 +272,149 @@
 			animation: firstParadise 3s ease;
 		}
 	}
+
+	&.is-sm{
+		/* height: auto;
+		min-height: 800px; */
+	}
+	&.is-sm &{
+		&__paradise{
+			bottom: 20px;
+		}
+		&__logo{
+			top: 30vh;
+			width: 95vw;
+		}
+		&__cloud-1{
+			top: 40vh;
+			right: 0;	
+			width: 70vw;
+		}
+		&__cloud-2{
+			top: 10vh;
+			right: 0;
+		}
+		&__cloud-3{
+			top: 20vh;
+			left: 0;
+			width: 60vw;
+		}
+
+		&__shadow-1{
+			top: auto;
+			bottom: 50px;
+			width: 60vw;
+		}
+		&__shadow-2{
+			top: auto;
+			bottom: 150px;
+		}
+		&__shadow-3{
+			top: auto;
+			bottom: 130px;
+			right: 11rem;
+			//width: 53.5rem;
+		}
+		&__shadow-4{
+			top: auto;
+			bottom: 0;
+			right: 0;
+			width: 100vw;
+		}
+
+		&__img-1{
+			top: 60vh;
+			left: 4rem;
+		}
+		&__img-2{
+			top: 58vh;
+			right: 7rem;
+		}
+		&__img-3{
+			top: 50vh;
+			left: 12rem;
+		}
+	}
+
+	&.is-xs {
+		//min-height: calc(100vh - var(--scale));
+		//height: calc(100vh - var(--scale));
+		min-height: 400px;
+
+		&.is-first-anim {
+			.first-section__paradise{
+				animation: firstParadiseXs 3s ease;
+			}
+		}
+	}
+	&.is-xs &{
+		&__paradise{
+			bottom: 50px;
+			width: 90vw;
+			transform: translateX(-50%);
+			animation: paradiseXs 15s .5s linear infinite reverse;
+		}
+		&__logo{
+			top: 30vh;
+			width: 95vw;
+		}
+		&__cloud-1{
+			top: 40vh;
+			right: 0;	
+			width: 70vw;
+		}
+		&__cloud-2{
+			top: 10vh;
+			right: 0;
+			width: 30vw;
+		}
+		&__cloud-3{
+			top: auto;
+			bottom: 30%;
+			left: 0;
+			width: 60vw;
+		}
+
+		&__shadow-1{
+			top: auto;
+			bottom: 50px;
+			width: 60vw;
+			transform: translateX(-50%);
+		}
+		&__shadow-2{
+			top: auto;
+			bottom: 90px;
+			transform: translateX(-50%);
+		}
+		&__shadow-3{
+			top: auto;
+			bottom: 130px;
+			right: 11rem;
+			//width: 53.5rem;
+		}
+		&__shadow-4{
+			top: auto;
+			bottom: 0;
+			right: 0;
+			width: 100vw;
+		}
+
+		&__img-1{
+			top: 65vh;
+			left: -20px;
+			width: 100px;
+		}
+		&__img-2{
+			top: 62vh;
+			right: 0;
+			width: 100px;
+		}
+		&__img-3{
+			top: 55vh;
+			left: 20%;
+			width: 90px;
+		}
+	}
 }
 
 @keyframes firstParadise {
@@ -264,6 +428,20 @@
 	100%{
 		opacity: 1;
 		transform: translate(calc(-50% - 2rem), 0%) scale(1);
+	}
+}
+
+@keyframes firstParadiseXs {
+	0%{
+		opacity: 0;
+		transform: translate(-50%, 100%) scale(0.8);
+	}
+	30%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 1;
+		transform: translate(-50%, 0%) scale(1);
 	}
 }
 
@@ -358,6 +536,17 @@
 	}
 	100%{
 		transform: translate(calc(-50% - 2rem), 0);
+	}
+}
+@keyframes paradiseXs {
+	0%{
+		transform: translate(-50%, 0);
+	}
+	50%{
+		transform: translate(-50%, 30px);
+	}
+	100%{
+		transform: translate(-50%, 0);
 	}
 }
 

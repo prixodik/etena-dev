@@ -3,8 +3,8 @@ $breakpointsPhone:             400px;
 $breakpointsPhoneWide:         480px;
 $breakpointsPhablet:           540px;
 $breakpointsTabletSmall:       640px;
-$breakpointsTablet:            768px;
-$breakpointsTabletWide:        992px;
+$breakpointsTablet:            980px;
+$breakpointsTabletWide:        1024px;
 $breakpointsDesktop:           1200px;
 $breakpointsDesktopWideMd:     1450px;
 $breakpointsDesktopWide:       1700px;
@@ -13,6 +13,7 @@ $xlg: $breakpointsDesktopWide;
 $lg: $breakpointsDesktopWideMd;
 $md: $breakpointsDesktop;
 $sm: $breakpointsTabletWide;
+$sm2: $breakpointsTablet;
 $xs: $breakpointsTabletSmall;
 $xxs: $breakpointsPhoneWide;
 
