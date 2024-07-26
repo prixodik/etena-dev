@@ -442,6 +442,8 @@ var uikit = {
 
 		var elements = $('.js-dotted'); // Получаем все элементы один раз
 
+		var scale = (this.wwOrigin() > this.sm)? 1 : 0.5;
+
 		var updateAnimation = function () {
 
 			elements.each(function () {
@@ -454,7 +456,7 @@ var uikit = {
 
 				$(this).css({
 
-					transform: `translate3d(${x}px, ${y}px, 0)`, // Используем translate3d для лучшей производительности
+					transform: `translate3d(${x}px, ${y}px, 0) scale(${scale})`, // Используем translate3d для лучшей производительности
 
 					opacity: 1 - $(this).css('opacity') // Переключаем прозрачность между 1 и 0
 
@@ -825,6 +827,20 @@ var uikit = {
 		//console.log(this.scale());
 
 		//console.log(52 / this.scale());
+
+
+
+		$('.first-section__pixel').each(function(){
+
+			let randomTop = Math.random() * 100;
+
+			let randomLeft = Math.random() * 60;
+
+			$(this).css('top', randomTop / uikit.scale()+'%')
+
+				.css('left', randomLeft / uikit.scale()+'%');
+
+		});
 
 		
 
@@ -1860,7 +1876,7 @@ var uikit = {
 
 		var sceneFourCloud1 = null;
 
-		sceneFourCloud1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 200, offset: 0, triggerHook: 0.7})
+		sceneFourCloud1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 0, triggerHook: 0.7})
 
 			//.setPin(".js-four-section")
 
@@ -1874,7 +1890,7 @@ var uikit = {
 
 		var sceneFourCloud1Move = null;
 
-		sceneFourCloud1Move = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 300, triggerHook: 0.7})
+		/* sceneFourCloud1Move = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 300, triggerHook: 0.7})
 
 			//.setPin(".js-four-section")
 
@@ -1882,13 +1898,13 @@ var uikit = {
 
 			//.addIndicators({name: "four-cloud-1-move"})
 
-			.addTo(this.controller);
+			.addTo(this.controller); */
 
 
 
 		var sceneFourCloud2 = null;
 
-		sceneFourCloud2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 200, offset: 1100, triggerHook: 0.7})
+		sceneFourCloud2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 1100, triggerHook: 0.7})
 
 			.setTween(tweenCloud2)
 
@@ -1900,13 +1916,13 @@ var uikit = {
 
 		var sceneFourCloud2Move = null;
 
-		sceneFourCloud2Move = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 1300, triggerHook: 0.7})
+		/* sceneFourCloud2Move = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 400, offset: 1300, triggerHook: 0.7})
 
 			.setTween(tweenCloud2Move)
 
 			//.addIndicators({name: "four-cloud-2-move"})
 
-			.addTo(this.controller);
+			.addTo(this.controller); */
 
 
 
@@ -1924,7 +1940,7 @@ var uikit = {
 
 		var sceneFourPlanet1 = null;
 
-		sceneFourPlanet1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 2200, triggerHook: 0.7})
+		sceneFourPlanet1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 2200, triggerHook: 0.7})
 
 			.setTween(tweenPlanet1)
 
@@ -1936,7 +1952,7 @@ var uikit = {
 
 		var sceneFourPlanet2 = null;
 
-		sceneFourPlanet2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 2600, triggerHook: 0.7})
+		sceneFourPlanet2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 2600, triggerHook: 0.7})
 
 			.setTween(tweenPlanet2)
 
@@ -1948,7 +1964,7 @@ var uikit = {
 
 		var sceneFourPlanet3 = null;
 
-		sceneFourPlanet3 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 300, offset: 3100, triggerHook: 0.7})
+		sceneFourPlanet3 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 3100, triggerHook: 0.7})
 
 			.setTween(tweenPlanet3)
 
@@ -2746,7 +2762,7 @@ var uikit = {
 
 
 
-		var sceneLogo = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight * 1), offset: 200, triggerHook: 1})
+		var sceneLogo = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: 0/* (footerHeight * 1) */, offset: 200, triggerHook: 1})
 
 			//.setPin(".js-first-section")
 
@@ -2770,7 +2786,7 @@ var uikit = {
 
 
 
-		var sceneHero = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight + 0), offset: 0, triggerHook: 0.7})
+		var sceneHero = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: 0/* (footerHeight + 0) */, offset: 0, triggerHook: 0.7})
 
 			//.setPin(".js-first-section")
 
@@ -2782,7 +2798,7 @@ var uikit = {
 
 
 
-		var sceneScrollUp = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: (footerHeight + 0), offset: 0, triggerHook: 0.8})
+		var sceneScrollUp = new ScrollMagic.Scene({triggerElement: ".js-footer", duration: 0/* (footerHeight + 0) */, offset: 0, triggerHook: 0.8})
 
 			//.setPin(".js-first-section")
 

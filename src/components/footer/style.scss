@@ -69,6 +69,7 @@
 		max-width: calc(100vw - 40px);
 		z-index: 0;
 		pointer-events: none;
+		transition: all 0.5s linear;
 
 		img{
 			width: 100%;
@@ -86,10 +87,16 @@
 	&__title {
 		color: $milk;
 		margin-bottom: 40px;
+		visibility: hidden;
 
 		&:last-child {
 			margin-bottom: 0;
 		}
+	}
+
+	&__buttons{
+		display: flex;
+		justify-content: center;
 	}
 
 	&__mountain-front {
@@ -107,6 +114,7 @@
 		right: -45px;
 		z-index: 2;
 		pointer-events: none;
+		transition: all 0.5s linear;
 
 		img{
 			width: 100%;
@@ -122,6 +130,7 @@
 		display: block;
 		height: 313px;
 		transform-origin: 50% 100%!important;
+		transition: all 0.5s linear;
 
 		img{
 			display: block;

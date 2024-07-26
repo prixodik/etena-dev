@@ -5,6 +5,17 @@
 	left: 0;
 	width: 100%;
 	z-index: 10;
+
+	&__container{
+		max-width: none;
+		padding-left: 32px;
+		padding-right: 32px;
+
+		@include media($sm){
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+	}
 	
 	&__row{
 		display: flex;

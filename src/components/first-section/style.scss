@@ -24,6 +24,13 @@
 		height: 100%;
 	}
 
+	&__pixel{
+		position: absolute;
+		z-index: 5;
+		transition: all 4s ease;
+		animation: opacity 4s ease infinite reverse;
+	}
+
 	&__pixel-1{
 		position: absolute;
 		top: 22rem;
@@ -167,7 +174,7 @@
 		left: 50%;
 		transform: translateX(calc(-50% - 2rem));
 		z-index: 1;
-		animation: paradise 15s .5s linear infinite reverse;
+		//animation: paradise 15s .5s linear infinite reverse;
 		width: 99vh;
 
 		img{
@@ -197,7 +204,7 @@
 		left: 50%;
 		transform: translateX(-50%);
 		z-index: 0;
-		animation: logo 10s linear infinite reverse;
+		//animation: logo 10s linear infinite reverse;
 		width: 95vh;
 
 		img{
@@ -352,7 +359,7 @@
 			bottom: 50px;
 			width: 90vw;
 			transform: translateX(-50%);
-			animation: paradiseXs 15s .5s linear infinite reverse;
+			//animation: paradiseXs 15s .5s linear infinite reverse;
 		}
 		&__logo{
 			top: 30vh;

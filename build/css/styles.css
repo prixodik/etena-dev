@@ -633,6 +633,17 @@ h5, .title-h5 {
   width: 100%;
   z-index: 10;
 }
+.header__container {
+  max-width: none;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+@media (max-width: 1024px) {
+  .header__container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 .header__row {
   display: flex;
   justify-content: space-between;
@@ -738,6 +749,12 @@ h5, .title-h5 {
   position: relative;
   z-index: 7;
   height: 100%;
+}
+.first-section__pixel {
+  position: absolute;
+  z-index: 5;
+  transition: all 4s ease;
+  animation: opacity 4s ease infinite reverse;
 }
 .first-section__pixel-1 {
   position: absolute;
@@ -875,7 +892,6 @@ h5, .title-h5 {
   left: 50%;
   transform: translateX(calc(-50% - 2rem));
   z-index: 1;
-  animation: paradise 15s 0.5s linear infinite reverse;
   width: 99vh;
 }
 .first-section__paradise img {
@@ -906,7 +922,6 @@ h5, .title-h5 {
   left: 50%;
   transform: translateX(-50%);
   z-index: 0;
-  animation: logo 10s linear infinite reverse;
   width: 95vh;
 }
 .first-section__logo img {
@@ -1042,7 +1057,6 @@ h5, .title-h5 {
   bottom: 50px;
   width: 90vw;
   transform: translateX(-50%);
-  animation: paradiseXs 15s 0.5s linear infinite reverse;
 }
 .first-section.is-xs .first-section__logo {
   top: 30vh;
@@ -2366,6 +2380,10 @@ h5, .title-h5 {
   flex: 0 0 100%;
   max-width: 100%;
 }
+.four-section.is-xs .four-section__planet-img:after {
+  width: 80%;
+  height: 80%;
+}
 .four-section.is-xs .four-section__planet-img img {
   max-width: 80%;
   margin: 0 auto;
@@ -2574,7 +2592,7 @@ h5, .title-h5 {
 .five-section.is-xs .five-section__img {
   transform: none !important;
   margin-top: 100px;
-  height: 300px;
+  height: 340px;
 }
 .five-section.is-xs .five-section__img-cloud-1 {
   position: absolute;
@@ -2675,6 +2693,7 @@ h5, .title-h5 {
   max-width: calc(100vw - 40px);
   z-index: 0;
   pointer-events: none;
+  transition: all 0.5s linear;
 }
 .footer__logo img {
   width: 100%;
@@ -2693,9 +2712,14 @@ h5, .title-h5 {
 .footer__title {
   color: #F6F0EA;
   margin-bottom: 40px;
+  visibility: hidden;
 }
 .footer__title:last-child {
   margin-bottom: 0;
+}
+.footer__buttons {
+  display: flex;
+  justify-content: center;
 }
 .footer__mountain-front {
   position: absolute;
@@ -2711,6 +2735,7 @@ h5, .title-h5 {
   right: -45px;
   z-index: 2;
   pointer-events: none;
+  transition: all 0.5s linear;
 }
 .footer__hero img {
   width: 100%;
@@ -2724,6 +2749,7 @@ h5, .title-h5 {
   display: block;
   height: 313px;
   transform-origin: 50% 100% !important;
+  transition: all 0.5s linear;
 }
 .footer__up img {
   display: block;
