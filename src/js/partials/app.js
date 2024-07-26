@@ -860,24 +860,24 @@ var uikit = {
 		// Создание анимаций для планет
 		var tweenPlanet1 = null;
 		tweenPlanet1 = gsap.timeline();
-		tweenPlanet1.to(planet1, {duration: 1, opacity: 1, y: '0%'});
+		tweenPlanet1.to(planet1, {duration: 0.4, opacity: 1, y: '0%'});
 		var tweenPlanet1Out = null;
 		tweenPlanet1Out = gsap.timeline();
-		tweenPlanet1Out.to(planet1, {duration: 1, opacity: 0, y: '-100px', scale: 1});
+		tweenPlanet1Out.to(planet1, {duration: 0.4, opacity: 0, y: '-100px', scale: 1});
 
 		var tweenPlanet2 = null;
 		tweenPlanet2 = gsap.timeline();
-		tweenPlanet2.to(planet2, {duration: 1, opacity: 1, y: '0%'});
+		tweenPlanet2.to(planet2, {duration: 0.4, opacity: 1, y: '0%'});
 		var tweenPlanet2Out = null;
 		tweenPlanet2Out = gsap.timeline();
-		tweenPlanet2Out.to(planet2, {duration: 1, opacity: 0, y: '-100px', scale: 1});
+		tweenPlanet2Out.to(planet2, {duration: 0.4, opacity: 0, y: '-100px', scale: 1});
 
 		var tweenPlanet3 = null;
 		tweenPlanet3 = gsap.timeline();
-		tweenPlanet3.to(planet3, {duration: 1, opacity: 1, y: '0%'});
+		tweenPlanet3.to(planet3, {duration: 0.4, opacity: 1, y: '0%'});
 		var tweenPlanet3Out = null;
 		tweenPlanet3Out = gsap.timeline();
-		tweenPlanet3Out.to(planet3, {duration: 1, opacity: 0, y: '-100px', scale: 1});
+		tweenPlanet3Out.to(planet3, {duration: 0.4, opacity: 0, y: '-100px', scale: 1});
 
 		// Animation for each letter
 		// Создание таймлайна с помощью GSAP 3
@@ -924,19 +924,19 @@ var uikit = {
 			.addTo(this.controller);
 
 		var sceneFourPlanet1 = null;
-		sceneFourPlanet1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 2200, triggerHook: 0.7})
+		sceneFourPlanet1 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 2200, triggerHook: 0.9})
 			.setTween(tweenPlanet1)
 			//.addIndicators({name: "four-planet-1"})
 			.addTo(this.controller);
 
 		var sceneFourPlanet2 = null;
-		sceneFourPlanet2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 2600, triggerHook: 0.7})
+		sceneFourPlanet2 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 2600, triggerHook: 0.9})
 			.setTween(tweenPlanet2)
 			//.addIndicators({name: "four-planet-2"})
 			.addTo(this.controller);
 
 		var sceneFourPlanet3 = null;
-		sceneFourPlanet3 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 3100, triggerHook: 0.7})
+		sceneFourPlanet3 = new ScrollMagic.Scene({triggerElement: ".js-four-section", duration: 0, offset: 3100, triggerHook: 0.9})
 			.setTween(tweenPlanet3)
 			//.addIndicators({name: "four-planet-3"})
 			.addTo(this.controller);

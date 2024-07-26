@@ -258,8 +258,8 @@
 	}
 
 	&.is-xs {
-		padding-top: 200px;
-		height: 940px;
+		padding-top: 250px;
+		height: 890px;
 
 		.js-three-section-trigger{
 			top: -500px;
@@ -294,7 +294,7 @@
 			}
 		}
 		&__container{
-			height: 610px;
+			height: 410px;
 		}
 
 		&__hero{
@@ -305,10 +305,11 @@
 				transform: translate(-50%, 0%);
 	
 				&-wrap{
-					max-width: 50vw;
+					max-width: 60vw;
 				}
 				&-main{
 					max-width: 100%;
+					transform: scale(1)!important;
 				}
 				&-stone{
 					top: 60%;
@@ -331,7 +332,7 @@
 				margin-left: 0px;
 	
 				&-wrap{
-					max-width: 50vw;
+					max-width: 45vw;
 				}
 				&-main{
 					max-width: 100%;
@@ -354,7 +355,7 @@
 				margin-right: -0px;
 	
 				&-wrap{
-					max-width: 50vw;
+					max-width: 45vw;
 				}
 				&-main{
 					max-width: 100%;

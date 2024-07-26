@@ -238,9 +238,10 @@
 	}
 	&.is-xs &{
 		&__logo{
-			top: calc(-25px + var(--scale));
+			top: auto; //calc(-25px + var(--scale));
+			bottom: 100px;
 			max-width: calc(100vw - 40px);
-			transform: translateX(-50%);
+			transform: translateX(-50%)!important;
 			/* transform: translateX(-0%);
 			left: 0; */
 			width: 100vw;

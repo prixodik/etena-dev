@@ -357,29 +357,29 @@
 	&.is-xs &{
 		&__paradise{
 			bottom: 50px;
-			width: 90vw;
+			width: 150vw;
 			transform: translateX(-50%);
 			//animation: paradiseXs 15s .5s linear infinite reverse;
 		}
 		&__logo{
-			top: 30vh;
-			width: 95vw;
+			top: 32vh;
+			width: 115vw;
 		}
 		&__cloud-1{
-			top: 40vh;
+			top: 36vh;
 			right: 0;	
-			width: 70vw;
+			width: 80vw;
 		}
 		&__cloud-2{
 			top: 10vh;
 			right: 0;
-			width: 30vw;
+			width: 45vw;
 		}
 		&__cloud-3{
 			top: auto;
-			bottom: 30%;
-			left: 0;
-			width: 60vw;
+			bottom: 25%;
+			left: -40%;
+			width: 100vw;
 		}
 
 		&__shadow-1{
@@ -410,15 +410,16 @@
 			top: 65vh;
 			left: -20px;
 			width: 100px;
+			display: none;
 		}
 		&__img-2{
-			top: 62vh;
-			right: 0;
-			width: 100px;
+			top: 50vh;
+			right: 10px;
+			width: 60px;
 		}
 		&__img-3{
-			top: 55vh;
-			left: 20%;
+			top: 43vh;
+			left: 10%;
 			width: 90px;
 		}
 	}
