@@ -1,5 +1,5 @@
 .five-section{
-	background: /* url('../images/five-section/five-img.png') 50% 50%/auto 100% no-repeat */ #38231e;
+	background: /* url('../images/five-section/five-img.webp') 50% 50%/auto 100% no-repeat */ #38231e;
 	color: $milk;
 	position: relative;
 	z-index: 5;
@@ -121,7 +121,7 @@
 		}
 
 		&-bg{
-			background: url('../images/five-section/five-img.png') 50% 50%/auto 100% no-repeat;
+			background: url('../images/five-section/five-img.webp') 50% 50%/auto 100% no-repeat;
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
@@ -131,7 +131,7 @@
 		}
 
 		&-shadow{
-			background: url('../images/five-section/five-shadows.png') 50% 100%/auto 100% no-repeat;
+			background: url('../images/five-section/five-shadows.webp') 50% 100%/auto 100% no-repeat;
 			width: 100%;
 			height: 100%;
 			object-fit: cover;

@@ -32,9 +32,7 @@ gulp.task('images:build', done => {
 			])
 		))
 		.pipe(sink)
-		// .pipe(webp())
-		.pipe(sink.tap())
-		.pipe(gulp.dest(route.build.images ));
+		.pipe(gulp.dest(route.build.images)) // Сначала сохраняем оригинальные изображения
+		.pipe(webp()) // Затем преобразуем в WebP
+		.pipe(gulp.dest(route.build.images)); // Сохраняем WebP изображения в ту же директорию
 });
-
-
