@@ -237,6 +237,9 @@
 		overflow: hidden;
 	}
 	&.is-xs &{
+		&__title{
+			display: none;
+		}
 		&__logo{
 			top: auto; //calc(-25px + var(--scale));
 			bottom: 100px;

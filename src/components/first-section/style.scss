@@ -356,13 +356,13 @@
 	}
 	&.is-xs &{
 		&__paradise{
-			bottom: 50px;
+			bottom: 30px;
 			width: 150vw;
 			transform: translateX(-50%);
 			//animation: paradiseXs 15s .5s linear infinite reverse;
 		}
 		&__logo{
-			top: 32vh;
+			top: 25vh;
 			width: 115vw;
 		}
 		&__cloud-1{

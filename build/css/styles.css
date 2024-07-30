@@ -1054,12 +1054,12 @@ h5, .title-h5 {
   animation: firstParadiseXs 3s ease;
 }
 .first-section.is-xs .first-section__paradise {
-  bottom: 50px;
+  bottom: 30px;
   width: 150vw;
   transform: translateX(-50%);
 }
 .first-section.is-xs .first-section__logo {
-  top: 32vh;
+  top: 25vh;
   width: 115vw;
 }
 .first-section.is-xs .first-section__cloud-1 {
@@ -2386,6 +2386,7 @@ h5, .title-h5 {
 .four-section.is-xs .four-section__planet-img:after {
   width: 80%;
   height: 80%;
+  display: none;
 }
 .four-section.is-xs .four-section__planet-img img {
   max-width: 60%;
@@ -2846,6 +2847,9 @@ h5, .title-h5 {
   height: 520px;
   padding: 150px 0;
   overflow: hidden;
+}
+.footer.is-xs .footer__title {
+  display: none;
 }
 .footer.is-xs .footer__logo {
   top: auto;
