@@ -181,6 +181,7 @@
 		&__hero{
 			transform: translateX(calc(-50% - 5rem));
 			top: 20px;
+			z-index: 5;
 
 			img{
 				transform: scale(1)!important;

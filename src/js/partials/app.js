@@ -12,9 +12,8 @@ var uikit = {
 	_resizing: false,
 	scale: function(){
 		let ratio = window.devicePixelRatio;
-		
 		ratio = (ratio >= 2)? 1 : ratio;
-		console.log('DevicePixelRatio = '+ratio);
+		//console.log('DevicePixelRatio = '+ratio);
 		
 		if(ratio > 1 && ratio <= 2){
 			return (1 / ratio);
@@ -254,7 +253,7 @@ var uikit = {
 		} else if (e.type === 'touchmove') {
 			if (uikit._touchStartY === null) {
 				uikit._touchStartY = e.touches[0].clientY;
-				console.log(e.touches[0].clientY);
+				//console.log(e.touches[0].clientY);
 			}
 			
 			scrollCount = uikit._touchStartY - e.touches[0].clientY;
@@ -1321,7 +1320,7 @@ var uikit = {
 	
 		if (scale > 1 && scale <= 2) {
 			
-			console.log('+--'+scaleProc);
+			//console.log('+--'+scaleProc);
 			$('<style>:root {--scale: ' + scaleProc + '%;}</style>').appendTo('head');
 			$('.js-scale').css('transform','scale(' + (1 / scale) + ')');
 
@@ -1360,7 +1359,7 @@ var uikit = {
 			this.animFooterXs();
 		}
 		this.scrollUp();
-		//this.debugData();
+		//-this.debugData();
 
 		if(this.wwOrigin() > 1023 && this.whOrigin() < this.wwOrigin()){
 			this.disableScroll();

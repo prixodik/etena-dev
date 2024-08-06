@@ -1444,6 +1444,7 @@ h5, .title-h5 {
 .two-section.is-xs .two-section__hero {
   transform: translateX(calc(-50% - 5rem));
   top: 20px;
+  z-index: 5;
 }
 .two-section.is-xs .two-section__hero img {
   transform: scale(1) !important;
